@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>Diary</title>
-    </head>
-    <body>
-        <header>
-            <img src="/images/logo.png" alt="logo" id = "logo">
-        </header>
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Diary</title>
+</head>
+<body>
+<div class="flex-container">
+    <header>
+        <img src="/images/logo.png" alt="logo" id="logo">
+    </header>
+    <main class="main-flex">
         <nav>
-            <ul id = "menu">
+            <ul id="menu">
                 <a href="">
                     <li>My groups</li>
                 </a>
@@ -25,11 +26,17 @@
                 </a>
             </ul>
         </nav>
-        <main>
-
-        </main>
-        <footer>
-
-        </footer>
-    </body>
+        <div id="content">
+            <div>
+                some text
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>
+            @junstudio-2021
+        </p>
+    </footer>
+</div>
+</body>
 </html>

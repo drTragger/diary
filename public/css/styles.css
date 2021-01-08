@@ -1,9 +1,14 @@
 header{
-    border-bottom: solid black 1px;
+    border: solid black 1px;
 }
 
 #logo{
     width: 70px;
+}
+
+nav{
+    border: solid black 1px;
+    width: 20%;
 }
 
 #menu li{
@@ -12,4 +17,22 @@ header{
 
 #menu a{
     text-decoration: none;
+}
+
+footer{
+    border: solid black 1px;
+    text-align: center;
+}
+
+#content{
+    border: solid black 1px;
+    width: 80%;
+}
+
+.flex-container{
+    flex-direction: column;
+}
+
+.main-flex{
+    flex-direction: row;
 }
