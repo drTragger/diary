@@ -30,9 +30,11 @@ footer{
 }
 
 .flex-container{
+    display: flex;
     flex-direction: column;
 }
 
 .main-flex{
+    display: flex;
     flex-direction: row;
 }
