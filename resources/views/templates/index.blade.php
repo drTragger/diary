@@ -44,7 +44,7 @@
         </nav>
         <div id="content">
             <div>
-                some content
+                @yield('content')
             </div>
         </div>
     </main>

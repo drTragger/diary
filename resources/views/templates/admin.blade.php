@@ -43,7 +43,7 @@
 
         </nav>
         <main>
-
+@yield('content')
         </main>
         <footer>
 
