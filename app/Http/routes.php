@@ -21,4 +21,4 @@ Route::get('/', 'Users@index')->name('Users.index');
 
 Route::get('/id', 'GroupController@delete')->name('group.delete');
 
-Route::get('/create','HomeworkController@createTask')->name('homework.createTask');
+Route::get('/createHomework','HomeworkController@createTask')->name('homework.createTask');

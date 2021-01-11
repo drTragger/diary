@@ -9,7 +9,7 @@ class GroupController extends Controller
 {
     public function create()
     {
-        echo 'group controller create action';
+        return view('groupView.group' );
     }
 
     public function delete(){
