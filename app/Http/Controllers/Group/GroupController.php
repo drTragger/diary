@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Group;
 
+use App\Group;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,7 +14,7 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         $groups = Group::all(); //TODO choose user`s groups
-        return view('',  //TODO write view
+        return view('group.index',  //TODO write view
             [
                 'groups' => $groups,
             ]
@@ -39,7 +41,8 @@ class GroupController extends Controller
         $this->validate(
             $request,
             [
-                //TODO validation
+                    'name'=>'required|min:6',
+                    'description'=>'required|min:6',
             ]
         );
         $user = $request->user();
@@ -50,6 +53,8 @@ class GroupController extends Controller
         $group->owner_id = $user->id;
         $group->status = $request->status;
         $group->save();
+        
+        return redirect(route('groups.index'));
     }
 
     public function show($id)
@@ -71,6 +76,9 @@ class GroupController extends Controller
         return redirect(route('')); //TODO write redirect
     }
 
+    public function selectUser() {
+        return view('group.participant');
+    }
     public function addUser()
     {
 
