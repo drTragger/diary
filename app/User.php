@@ -33,7 +33,7 @@ class User extends Authenticatable
     public function answers() {
         return $this->hasMany('App\Answer');
     }
-//    public function checkedAsnwers() {
-//        return $this->hasMany('App\Answer');
-//    }
+    public function checkedAnswers() {
+        return $this->hasMany('App\Checked_answers');
+    }
 }
