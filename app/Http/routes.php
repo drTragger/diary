@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/create', 'GroupController@create')->name('group.create');
 
 Route::get('/', 'Users@index')->name('Users.index');
+
+Route::get('/id', 'GroupController@delete')->name('group.delete');

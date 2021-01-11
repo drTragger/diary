@@ -9,6 +9,6 @@ class Users extends Controller
 {
     public function index()
     {
-        return view('templates.index');
+        echo 'users controller index action';
     }
 }

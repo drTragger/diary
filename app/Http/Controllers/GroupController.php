@@ -9,6 +9,10 @@ class GroupController extends Controller
 {
     public function create()
     {
-        return view('templates.index');
+        echo 'group controller create action';
+    }
+
+    public function delete(){
+        echo 'group controller delete action';
     }
 }
