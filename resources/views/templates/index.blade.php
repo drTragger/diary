@@ -7,7 +7,14 @@
 <body>
 <div class="flex-container">
     <header>
-        <img src="/images/logo.png" alt="logo" id="logo">
+        <div class="header-flex">
+            <div id="images">
+                <img src="/images/logo.png" alt="logo" id="logo">
+            </div>
+            <div id="user">
+                user name
+            </div>
+        </div>
     </header>
     <main class="main-flex">
         <nav>
@@ -19,16 +26,25 @@
                     <li>Marks</li>
                 </a>
                 <a href="">
-                    <li>Created group</li>
+                    <li>Participants</li>
                 </a>
                 <a href="#">
-                    <li>Log out</li>
+                    <li>New homework</li>
+                </a>
+                <a href="#">
+                    <li>Submited homework</li>
+                </a>
+                <a href="#">
+                    <li>Add participant</li>
+                </a>
+                <a href="#">
+                    <li>Delete group</li>
                 </a>
             </ul>
         </nav>
         <div id="content">
             <div>
-                some text
+                some content
             </div>
         </div>
     </main>
