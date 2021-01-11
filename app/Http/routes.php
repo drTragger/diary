@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/create', 'GroupController@create')->name('group.create');
 
 Route::get('/', 'Users@index')->name('Users.index');
 
 Route::get('/id', 'GroupController@delete')->name('group.delete');
+
+Route::get('/create','HomeworkController@createTask')->name('homework.createTask');
