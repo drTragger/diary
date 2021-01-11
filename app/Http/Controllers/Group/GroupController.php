@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Group;
 
+use App\Group;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,7 +13,7 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         $groups = Group::all(); //TODO choose user`s groups
-        return view('',  //TODO write view
+        return view('groups.index',  //TODO write view
             [
                 'groups' => $groups,
             ]
@@ -54,8 +55,15 @@ class GroupController extends Controller
 
     public function show($id)
     {
+        $group= Group::find($id);
 
+        return(view('groups.show',
+            [
+                'group'=>$group
+            ]
+        ));
     }
+
 
     /**
      *  Remove the group from storage.
