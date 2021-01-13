@@ -1,4 +1,4 @@
-@extends('templates.index')
+@extends('templates.default')
 
 @section('content')
     @include('common.errors')

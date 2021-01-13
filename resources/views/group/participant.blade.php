@@ -1,4 +1,4 @@
-@extends('templates.index')
+@extends('templates.default')
 
 @section('content')
     @include('common.errors')
@@ -12,6 +12,7 @@
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <label for="participant">participant</label>
+{{--                        <input type="hidden" name="id" value="{{$group->id}}">--}}
                         <input type="text" name="participant" id="participant">
                         <input type="submit" name="Add participant">
                     </form>

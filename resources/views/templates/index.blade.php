@@ -37,12 +37,7 @@
                 <a href="#">
                     <li>Submited homework</li>
                 </a>
-                <a href="{{route('groups.selectUser')}}">
-                    <li>Add participant</li>
-                </a>
-                <a href="#">
-                    <li>Delete group</li>
-                </a>
+
             </ul>
         </nav>
         <div id="content">
