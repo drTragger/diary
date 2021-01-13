@@ -9,12 +9,10 @@
 					@if(count($groups)>0)
 						@foreach($groups as $group)
 							<div style="border:2px solid #000">
-								<p>{{$group->id}}</p>
-								<p>{{$group->name}}</p>
-								<p>{{$group->description}}</p>
-								<p>{{$group->owner_id}}</p>
-								<p>{{$group->status}}</p>
-								<p>{{$group->date_created}}</p>
+								<p>Title: {{$group->name}}</p>
+								<p>Description: {{$group->description}}</p>
+								<p>Owner: {{$group->owner_id}}</p>
+								<p>Date created: {{$group->date_created}}</p>
 							</div>
 						@endforeach
 					@else

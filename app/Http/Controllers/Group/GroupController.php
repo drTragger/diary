@@ -36,7 +36,7 @@ class GroupController extends Controller
      *
      * @param Request $request
      */
-    public function add(Request $request)
+    public function addGroup(Request $request)
     {
         $this->validate(
             $request,
@@ -79,6 +79,7 @@ class GroupController extends Controller
     public function selectUser() {
         return view('group.participant');
     }
+    
     public function addUser()
     {
 
