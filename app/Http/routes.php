@@ -26,8 +26,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-//Route::group(['prefix' => 'marks'], function () {
-//    Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
-//
-//    Route::get('/{userId}', 'HomeworkController@getMark')->name('homework.mark');
-//});
+Route::group(['prefix' => 'marks'], function () {
+    Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
+
+    Route::get('/{userId}', 'HomeworkController@getMark')->name('homework.mark');
+});
