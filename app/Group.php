@@ -9,6 +9,6 @@
         protected $fillable = ['name', 'description', 'owner_id', 'status',];
         public function user()
         {
-            return $this->belongsTo('App\User');
+            return $this->belongsTo('App\User', 'owner_id');
         }
     }

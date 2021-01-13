@@ -50,9 +50,8 @@
             );
             return redirect(route('groups.index'));
         }
-        public function show($id)
+        public function show(Group $group)
         {
-            $group = Group::find($id);
             return view('group.selectGroup', ['group' => $group]);
         }
         /**

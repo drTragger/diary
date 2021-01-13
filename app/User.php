@@ -25,7 +25,7 @@ class User extends Authenticatable
     ];
     
     public function groups() {
-        return $this->hasMany('App\Group');
+        return $this->hasMany('App\Group', 'owner_id');
     }
     public function tasks() {
         return $this->hasMany('App\Task');

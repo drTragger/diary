@@ -30,8 +30,8 @@
                             <div style="border:2px solid #000">
                                 <p>Title: {{$group->name}}</p>
                                 <p>Description: {{$group->description}}</p>
-                                <p>Owner: {{$group->owner_id}}</p>
-                                <p>Date created: {{$group->date_created}}</p>
+                                <p>Owner: {{$group->user->name}}</p>
+                                <p>Date created: {{$group->created_at}}</p>
                                 <div>
                                     <a href="{{route('groups.show', $group->id)}}">more information</a>
                                 </div>
