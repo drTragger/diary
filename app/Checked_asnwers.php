@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Checked_asnwers extends Model
 {
-    protected $fillable = ['id', 'teacher_id', 'answer_id', 'group_id', 'content', 'score', 'date_created', 'date_update'];
-    
-    public function user() {
+    protected $fillable = [];
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
+    }
+
+    public function answer()
+    {
+        return $this->hasOne('App\Answer');
     }
 }

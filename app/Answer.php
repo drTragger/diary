@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     protected $fillable = ['id', 'owner_id', 'content', 'group_id', 'date_created', 'date_updated'];
-    
-    public function user() {
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
-    
+
+    public function checkedAnswer()
+    {
+        return $this->hasOne('App\Checked_answers');
+    }
 }
