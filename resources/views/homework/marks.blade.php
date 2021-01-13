@@ -1,5 +1,5 @@
-@extends('templates.index')
+@extends('templates.default')
 
 @section('content')
-    <p>{{ $user }}</p>
+
 @endsection

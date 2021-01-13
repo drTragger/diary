@@ -13,7 +13,7 @@ class HomeworkService
      * @param int $groupId
      * @return Checked_asnwers
      */
-    public function getMarks(int $groupId): Checked_asnwers
+    public function getMarks(int $groupId)
     {
         return Checked_asnwers::where('group_id', $groupId);
     }

@@ -16,11 +16,11 @@ class HomeworkController extends Controller
         $this->homeworkService = $service;
     }
 
-    public function getMarks(GetMarksRequest $request)
+    public function getMarks(Request $request)
     {
         $user = $request->user();
-        return view('homework.marks', ['user' => 'john']);
-        //$this->homeworkService->getMarks($request->groupId)
+        return view('homework.marks', ['user' =>  'John']);
+//        $this->homeworkService->getMarks($request->groupId)
     }
 
     public function getMark(Request $request)
