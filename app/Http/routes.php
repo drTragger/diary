@@ -25,11 +25,12 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group'], function () {
     Route::get('/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
     Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
 });
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'groups'], function () {
+Route::group(['prefix' => 'marks'], function () {
     Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
 
     Route::get('/{userId}', 'HomeworkController@getMark')->name('homework.mark');
