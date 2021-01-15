@@ -1,5 +1,7 @@
 @extends('templates.default')
-
+@section('nav')
+    @include('templates.topnav')
+@endsection
 @section('content')
 
 <div class="container">
@@ -16,7 +18,7 @@
                         {{method_field('PUT')}}
                         <label for="participant">Электронная почта ученика</label>
                         <input type="text" name="email" id="participant">
-                        <input type="hidden" name="id" value="{{$groupId}}">
+                        <input type="hidden" name="id" value="{{$group->id}}">
                         <input type="submit" name="Add participant">
                     </form>
                 </div>
