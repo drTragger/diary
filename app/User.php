@@ -36,4 +36,7 @@ class User extends Authenticatable
     public function checkedAnswers() {
         return $this->hasMany('App\Checked_answers');
     }
+    public function userGroups() {
+        return $this->hasMany('App\UserGroup', 'user_id');
+    }
 }
