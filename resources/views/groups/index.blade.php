@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <form action="{{route('group.show', $group->id)}}"
+                        <form action="{{route('groups.show', $group->id)}}"
                               method="POST"> {{--                TODO check the route--}}
                             {{ csrf_field() }}
                             {{ method_field('GET') }}
