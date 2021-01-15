@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class GroupController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+
     public function index(Request $request)
     {
         $groups = Group::paginate(10); //count pagination
@@ -73,12 +78,12 @@ class GroupController extends Controller
         return redirect(route('groups.index'));
     }
 
-    public function selectUser($groupId)
+    public function selectUser(Group $group)
     {
-        return view('group.participant', ['groupId' => $groupId,]);
+        return view('group.participant', ['group' => $group,]);
     }
 
-    public function addUser(Request $request)
+    public function addUser(Request $request, User $user)
     {
         $this->validate(
             $request,
