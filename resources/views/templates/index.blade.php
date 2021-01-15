@@ -19,8 +19,11 @@
     <main class="main-flex">
         <nav>
             <ul id="menu">
-                <a href="">
+                <a href="{{route('groups.index')}}">
                     <li>My groups</li>
+                </a>
+                <a href="{{route('groups.create')}}">
+                    <li>Create Group</li>
                 </a>
                 <a href="">
                     <li>Marks</li>
@@ -34,18 +37,11 @@
                 <a href="#">
                     <li>Submited homework</li>
                 </a>
-                <a href="#">
-                    <li>Add participant</li>
-                </a>
-                <a href="#">
-                    <li>Delete group</li>
-                </a>
+
             </ul>
         </nav>
         <div id="content">
-            <div>
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
     </main>
     <footer>

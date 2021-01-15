@@ -14,11 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::group(['prefix'=>'group'], function (){
-    Route::get('/', 'Group\GroupController@index', function (){
-        return view('templates.index');
-    })->name('group.index');
-    Route::get('/{id}', 'GroupController@show')->name('group.show');
+Route::group(['prefix'=>'groups', 'namespace'=>'Group'], function () {
+    Route::get('/', 'GroupController@index')->name('groups.index');
+    Route::get('/create', 'GroupController@create')->name('groups.create');
+    Route::put('/','GroupController@addGroup')->name('groups.add');
+    Route::get('/{group}', 'GroupController@show')->name('groups.show');
+    Route::get('/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
+    Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
 });
+
+Route::auth();
