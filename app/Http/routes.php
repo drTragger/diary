@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix'=>'groups', 'namespace'=>'Group'], function () {
-    Route::get('/', 'GroupController@index')->name('groups.index');
+    Route::get('/', 'GroupController@index', function (){
+        return view('templates.index');
+    })->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
     Route::put('/','GroupController@addGroup')->name('groups.add');
     Route::get('/{group}', 'GroupController@show')->name('groups.show');
