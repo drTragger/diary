@@ -14,7 +14,7 @@ class GroupController extends Controller
     {
         $groups = Group::paginate(10); //count pagination
         return view(
-            'group.index',  //TODO write view
+            'group.index',
             [
                 'groups' => $groups,
             ]
@@ -27,7 +27,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('group.create'); //TODO edit view
+        return view('group.create');
     }
 
     /**
@@ -44,7 +44,6 @@ class GroupController extends Controller
             ]
         );
         $user = $request->user();
-        //TODO change function to create()
         Group::create(
             [
                 'name' => $request->name,
@@ -71,15 +70,33 @@ class GroupController extends Controller
         $group = Group::find($id);
         //        $this->authorize('destroy', $group);
         $group->delete();
-        return redirect(route('')); //TODO write redirect
+        return redirect(route('groups.index'));
     }
 
-    public function selectUser()
+    public function selectUser($groupId)
     {
-        return view('group.participant');
+        return view('group.participant', ['groupId' => $groupId,]);
     }
 
-    public function addUser()
+    public function addUser(Request $request)
     {
+        $this->validate(
+            $request,
+            [
+                'email' => 'required|min:6',
+            ]
+        );
+        dd($request);
+//        dd(User::where('email', $request->email )->get());
+        $user = User::where('email', $request->email)->get();
+        if (!empty($user)) {
+            // TODO add user to group
+        } else {
+            $mess = 'Данного пользователя ненайдено';
+            return redirect(route('groups.selectUser', ['mess' => $mess]));
+            //TODO view error massage
+        }
+
+//        return redirect(route('groups.show'));
     }
 }

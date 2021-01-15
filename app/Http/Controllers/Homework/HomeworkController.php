@@ -28,4 +28,8 @@ class HomeworkController extends Controller
         $user = $request->user();
         return view('homework.marks', ['marks' => $this->homeworkService->getMark($user->id)]);
     }
+
+    public function addTask() {
+        // TODO make
+    }
 }
