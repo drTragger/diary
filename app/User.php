@@ -36,7 +36,7 @@ class User extends Authenticatable
     public function checkedAnswers() {
         return $this->hasMany('App\Checked_answers');
     }
-    public function userGroups() {
-        return $this->hasMany('App\UserGroup', 'user_id');
+    public function usersGroups() {
+        return $this->belongsToMany('App\Group', 'users_groups', 'user_id', 'group_id');
     }
 }
