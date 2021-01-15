@@ -1,0 +1,290 @@
+:root {
+    /*    styles*/
+    --border-default: 2px solid #000;
+    --border-radius-default: 10px;
+
+    --a-btn-bg-color: rgba(255, 255, 255, 1);
+    --a-btn-bg-color_hover: rgba(0, 86, 214, .3);
+}
+
+/*DEFAULT START*/
+* {
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.default {
+    display: grid;
+    grid-template-rows: 0fr 1fr 0fr;
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.justify-space-around {
+    justify-content: space-around;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.height-max-content {
+    height: max-content;
+}
+
+/*DEFAULT END*/
+
+/*AUTH START*/
+.auth-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    padding: 10px;
+}
+
+.auth-logo-container {
+
+}
+
+.auth-a-logo {
+
+}
+
+.auth-logo {
+    object-fit: contain;
+    width: 200px;
+}
+
+.auth-form-width {
+    min-width: 250px;
+    width: 400px;
+}
+
+/*AUTH END*/
+
+/*HEADER START*/
+.default-header {
+    border: var(--border-default);
+}
+
+.default-nav {
+    padding: 0 20px;
+}
+
+.default-nav-account {
+    height: min-content;
+}
+
+.logo {
+    object-fit: contain;
+    width: 200px;
+}
+
+/*HEADER END*/
+
+/*MAIN START*/
+
+.left-content {
+    border: var(--border-default);
+    border-top: none;
+    padding: 10px;
+    position: relative;
+}
+
+.left-nav {
+    top: 0;
+    left: 0;
+    position: sticky;
+}
+
+.left-content-ul {
+
+}
+
+.left-content-ul > * {
+    margin: 10px 0;
+}
+
+.main-nav-a-btn {
+    background-color: var(--a-btn-bg-color);
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+
+    text-align: center;
+    width: 120px;
+    white-space: normal;
+}
+
+.main-nav-a-btn:hover {
+    background-color: var(--a-btn-bg-color_hover);
+}
+
+.right-content {
+    width: 90%;
+    margin: 10px auto;
+
+
+}
+
+.groups-container {
+    width: 100%;
+}
+
+.groups-item, group-item {
+
+
+    /*margin: 10px 10px;*/
+    padding: 10px;
+}
+
+.groups-item {
+    /*width: calc(50% - 20px);*/
+}
+
+.group-item {
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    padding: 10px;
+    /*margin: 10px;*/
+}
+
+/*MAIN END*/
+/*FOOTER START*/
+footer {
+    border: var(--border-default);
+    height: 70px;
+    text-align: center;
+}
+
+/*FOOTER END*/
+/*ALL START*/
+.margin-0-auto {
+    margin: 0 auto;
+}
+
+.container-form {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.container-a-bnt-info {
+    margin: 20px 0 0;
+}
+
+.a-btn-info {
+    background-color: var(--a-btn-bg-color);
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    width: max-content;
+}
+
+.a-btn-info:hover {
+    background-color: var(--a-btn-bg-color_hover);
+}
+
+.pages {
+    width: max-content;
+    margin: 0 auto;
+}
+
+/*ALL END*/
+
+
+/*nav{*/
+/*    border: solid black 1px;*/
+/*    width: 20%;*/
+/*}*/
+
+/*#menu li{*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*#menu a{*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*footer{*/
+/*    border: solid black 1px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*#content{*/
+/*    border: solid black 1px;*/
+/*    width: 80%;*/
+/*}*/
+
+/*.flex-container{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*.main-flex{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+/*.header-flex{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-between;*/
+/*}*/

@@ -11,13 +11,20 @@
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
-Route::group(['prefix'=>'groups', 'namespace'=>'Group'], function () {
+//Route::get('/auth', function () {
+//    return view ('templates.auth');
+//})->name('auth.index');
+
+Route::group(['prefix' => 'groups', 'namespace' => 'Group'], function () {
     Route::get('/', 'GroupController@index')->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
-    Route::put('/','GroupController@addGroup')->name('groups.add');
+    Route::put('/', 'GroupController@addGroup')->name('groups.add');
     Route::get('/{group}', 'GroupController@show')->name('groups.show');
     Route::get('/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
     Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
