@@ -1,47 +1,39 @@
 @extends('templates.default')
 
+@section('nav')
+    <li>
+        <a href="{{route('groups.create')}}"
+           class="btn main-nav-a-btn">Создать новую группу
+        </a>
+    </li>
+@endsection
+
 @section('content')
     @include('common.errors')
-    <nav>
-        <ul id="list-group">
-            <li class="list-group-item">
-                <a href="{{route('groups.index')}}"
-                   class="nav-link">My groups
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href=""
-                   class="nav-link">Marks
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{route('groups.create')}}"
-                   class="nav-link">Create Group
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    @if(count($groups)>0)
-                        @foreach($groups as $group)
-                            <div style="border:2px solid #000">
-                                <p>Title: {{$group->name}}</p>
-                                <p>Description: {{$group->description}}</p>
-                                <p>Owner: {{$group->user->name}}</p>
-                                <p>Date created: {{$group->created_at}}</p>
-                                <div>
-                                    <a href="{{route('groups.show', $group->id)}}">more information</a>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        NOTHING
-                    @endif
+    @if(count($groups)>0)
+        <div class="container d-flex flex-direction-row flex-wrap groups-container">
+            <diw class="row margin-0-auto w-100">
+        @foreach($groups as $group)
+                <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
+                    <div class="group-item">
+                        <div>
+                        <p>Название: {{$group->name}}</p>
+                        <p>Описание: {{mb_strimwidth($group->description, 0, 200, '...')}}</p>
+                        <p>Владелец: {{$group->user->name}}</p>
+                        <p>Дата создания: {{mb_strimwidth($group->created_at,0,10)}}</p>
+                        </div>
+                        <div class="container-a-bnt-info d-flex flex-direction-column">
+                            <a href="{{route('groups.show', $group->id)}}" class="btn a-btn-info align-self-center">Больше
+                                информации</a>
+                        </div>
+                        </div>
+
                 </div>
-            </div>
+        @endforeach
+            </diw>
         </div>
-    </div>
+        <div class="pages">{{$groups->render()}}</div>
+    @else
+        NOTHING
+    @endif
 @endsection

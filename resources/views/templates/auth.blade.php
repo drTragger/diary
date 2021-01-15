@@ -28,45 +28,19 @@
         }
     </style>
 </head>
-<body class="default">
-<header class="default-header">
-    <nav class="default-nav d-flex justify-space-between align-items-center">
-        <div class="d-flex justify-center">
-            <a class="" href="{{ route('groups.index') }}">
-                <img src="/images/logo.png" alt="Logo" class="logo" title="На главную">
+<body>
+<div class="container auth-container">
+    <div class="auth">
+        <div class="auth-logo-container">
+            <a class="auth-a-logo" href="{{ url('/login') }}" title="На главную">
+                <img src="/images/logo.png" alt="Logo" class="auth-logo">
             </a>
         </div>
-        <div class="default-nav-account">
-            <p>Пользователь: {{ Auth::user()->name }}</p>
-            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Выйти</a>
-        </div>
-    </nav>
-</header>
-<main class="d-flex">
-    <div class="left-content">
-        <nav class="left-nav">
-            <ul class="left-content-ul">
-                <li>
-                    <a href="{{route('groups.index')}}"
-                       class="btn main-nav-a-btn">Мои группы
-                    </a>
-                </li>
-                <li>
-                    <a href=""
-                       class="btn main-nav-a-btn">Задачи
-                    </a>
-                </li>
-                @yield('nav')
-            </ul>
-        </nav>
-    </div>
-    <div class="right-content d-flex flex-direction-row flex-wrap">
         @yield('content')
     </div>
-</main>
-<footer>
-    some text
-</footer>
+</div>
+
+
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
         integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"

@@ -2,26 +2,18 @@
 
 @section('content')
     @include('common.errors')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div>
-                    <form action="{{route('groups.add')}}" method="POST">
-
-                        {{csrf_field()}}
-                        {{method_field('PUT')}}
-                        <label for="name">name</label>
-                        <input type="text" name="name" id="name">
-                        <label for="description">description</label>
-                        <input type="text" name="description" id="description">
-                        <input type="hidden" name="status" value="on">
-                        <input type="submit"
-                               name="Add">
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="container-form">
+        <h3 class="text-center">Создание новой группы</h3>
+        <form action="{{route('groups.add')}}" method="POST" class="d-flex flex-direction-column">
+            {{csrf_field()}}
+            {{method_field('PUT')}}
+            <label for="name">Название</label>
+            <input type="text" name="name" id="name">
+            <label for="description">Описание</label>
+            <textarea type="text" name="description" id="description"></textarea>
+            <input type="hidden" name="status" value="on">
+            <input type="submit"
+                   value="Создать">
+        </form>
     </div>
-</div>
 @endsection

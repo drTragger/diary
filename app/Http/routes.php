@@ -12,17 +12,29 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
-Route::group(['prefix'=>'groups', 'namespace'=>'Group'], function () {
-    Route::get('/', 'GroupController@index', function (){
-        return view('templates.index');
-    })->name('groups.index');
+
+Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'auth'], function () {
+    Route::get('/', 'GroupController@index')->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
-    Route::put('/','GroupController@addGroup')->name('groups.add');
+    Route::put('/', 'GroupController@addGroup')->name('groups.add');
+    Route::delete('/{id}', 'GroupController@delete')->name('groups.delete');
     Route::get('/{group}', 'GroupController@show')->name('groups.show');
-    Route::get('/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
+    Route::get('/select-participant/{group}', 'GroupController@selectUser')->name('groups.selectUser');
     Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
+
+    Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
+
+    });
+});
+
+Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
+    Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
+    Route::get('/{userId}', 'HomeworkController@getMark')->name('homework.mark');
 });
 
 Route::auth();
+
+//Route::get('/home', 'HomeController@index');
+
