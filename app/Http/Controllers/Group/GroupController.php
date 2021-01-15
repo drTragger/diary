@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Group;
 
 use App\Group;
 use App\User;
+use App\UsersGroup;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -17,11 +19,17 @@ class GroupController extends Controller
 
     public function index(Request $request)
     {
-        $groups = Group::paginate(10); //count pagination
+        //$groups = Group::paginate(10); //count pagination
+
+        $user = $request->user();
+        $groups = $user->groups; // получение групп которыми владеет пользователь
+        $studentGroups = $user->usersGroups; // получение групп в которых пользователь является студентом
+        //TODO view отдельно для групп
         return view(
             'group.index',
             [
                 'groups' => $groups,
+                'studentsGroups' => $studentGroups,
             ]
         );
     }
