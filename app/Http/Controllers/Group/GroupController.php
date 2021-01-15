@@ -9,9 +9,27 @@
     {
         public function index(Request $request)
         {
+            $user = $request->user()->id;
+
+//            $ch = Group::where('user_id', '=', $user);
+//            $ch = User::find($user); // нахождение владельца группы
+//            $groups = Group::with('user')->get();
+//
+//            dd($groups);
+
+
+
+
+//            foreach ($ch->groups as $group){
+//                var_dump($group);
+//            }
+//            foreach ($ch->groups as $group){
+//                var_dump($group);
+//            }
+//dd($ch);
             $groups = Group::all(); //TODO choose user`s groups
             return view(
-                    'group.index',  //TODO write view
+                    'groups.index',  //TODO write view
                     [
                             'groups' => $groups,
                     ]
