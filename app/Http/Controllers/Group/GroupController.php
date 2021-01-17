@@ -21,7 +21,7 @@ class GroupController extends Controller
         $user = $request->user();
         $studentGroups = $user->usersGroups;
         $groups = $user->groups->merge($studentGroups);
-        $groups = $this->paginate($groups,10)->setPath('groups');
+        $groups = $this->paginate($groups, 10)->setPath('groups');
         return view(
             'group.index',
             [
@@ -66,7 +66,13 @@ class GroupController extends Controller
 
     public function show(Group $group)
     {
-        return view('group.selectGroup', ['group' => $group]);
+        //TODO use validator
+        $user = Auth::user()->id;
+        $owner = $group->owner_id;
+        if ($user == $owner) {
+            return view('group.showOwnerGroup', ['group' => $group]);
+        }
+        return view('group.showStudentGroup', ['group' => $group]);
     }
 
     /**
