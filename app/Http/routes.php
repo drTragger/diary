@@ -25,9 +25,12 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
 
     Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
-
+//        Route::get('/', 'GroupController@index')->name('homework.index');
     });
 });
+//Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
+//    Route::get('/', 'HomeworkController@index')->name('homework.index');
+//});
 
 Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
     Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');

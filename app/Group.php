@@ -14,4 +14,8 @@
         public function students(){
             return $this->belongsToMany('App\User', 'users_groups', 'group_id', 'user_id');
         }
+//
+//        public function tasks() {
+//            return $this->hasMany('App\Task', 'group_id');
+//        }
     }

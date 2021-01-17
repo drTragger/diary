@@ -6,6 +6,7 @@
     </li>
     <li>
         <a href="#" class="btn main-nav-a-btn">Homework</a>
+{{--        <a href="{{route('homework.index')}}" class="btn main-nav-a-btn">Homework</a>--}}
     </li>
 @endsection
 @section('content')
