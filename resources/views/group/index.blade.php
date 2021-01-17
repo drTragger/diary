@@ -12,7 +12,7 @@
     @include('common.errors')
     @if(count($groups)>0)
         <div class="container d-flex flex-direction-row flex-wrap groups-container">
-            <diw class="row margin-0-auto w-100">
+            <div class="row margin-0-auto w-100">
         @foreach($groups as $group)
                 <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
                     <div class="group-item">
@@ -30,7 +30,7 @@
 
                 </div>
         @endforeach
-            </diw>
+            </div>
         </div>
         <div class="pages">{{$groups->render()}}</div>
     @else
