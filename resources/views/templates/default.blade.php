@@ -48,12 +48,7 @@
             <ul class="left-content-ul">
                 <li>
                     <a href="{{route('groups.index')}}"
-                       class="btn main-nav-a-btn">Мои группы
-                    </a>
-                </li>
-                <li>
-                    <a href=""
-                       class="btn main-nav-a-btn">Задачи
+                       class="btn main-nav-a-btn">My groups
                     </a>
                 </li>
                 @yield('nav')

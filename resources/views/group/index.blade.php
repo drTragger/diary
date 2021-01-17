@@ -2,8 +2,13 @@
 
 @section('nav')
     <li>
+        <a href=""
+           class="btn main-nav-a-btn">All Marks
+        </a>
+    </li>
+    <li>
         <a href="{{route('groups.create')}}"
-           class="btn main-nav-a-btn">Создать новую группу
+           class="btn main-nav-a-btn">Create group
         </a>
     </li>
 @endsection
@@ -13,23 +18,23 @@
     @if(count($groups)>0)
         <div class="container d-flex flex-direction-row flex-wrap groups-container">
             <div class="row margin-0-auto w-100">
-        @foreach($groups as $group)
-                <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
-                    <div class="group-item">
-                        <div>
-                        <p>Название: {{$group->name}}</p>
-                        <p>Описание: {{mb_strimwidth($group->description, 0, 200, '...')}}</p>
-                        <p>Владелец: {{$group->user->name}}</p>
-                        <p>Дата создания: {{mb_strimwidth($group->created_at,0,10)}}</p>
-                        </div>
-                        <div class="container-a-bnt-info d-flex flex-direction-column">
-                            <a href="{{route('groups.show', $group->id)}}" class="btn a-btn-info align-self-center">Больше
-                                информации</a>
-                        </div>
+                @foreach($groups as $group)
+                    <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
+                        <div class="group-item">
+                            <div>
+                                <p>Название: {{$group->name}}</p>
+                                <p>Описание: {{mb_strimwidth($group->description, 0, 200, '...')}}</p>
+                                <p>Владелец: {{$group->user->name}}</p>
+                                <p>Дата создания: {{mb_strimwidth($group->created_at,0,10)}}</p>
+                            </div>
+                            <div class="container-a-bnt-info d-flex flex-direction-column">
+                                <a href="{{route('groups.show', $group->id)}}" class="btn a-btn-info align-self-center">Больше
+                                    информации</a>
+                            </div>
                         </div>
 
-                </div>
-        @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="pages">{{$groups->render()}}</div>
