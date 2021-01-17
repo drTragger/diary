@@ -3,7 +3,7 @@
     @include('templates.topnav')
 @endsection
 @section('content')
-    <p>Owner hello</p>
+    <p>Stud</p>
     <div class="group-item margin-0-auto w-90 height-max-content d-flex align-self-center">
         <div class="">
             <p>Название: {{$group->name}}</p>
@@ -12,5 +12,5 @@
             <p>Дата создания: {{$group->created_at}}</p>
         </div>
     </div>
-
+    <p>Stud</p>
 @endsection
