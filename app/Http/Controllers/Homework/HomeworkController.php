@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Homework;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Task;
@@ -28,15 +28,18 @@ class HomeworkController extends Controller
 
     public function getMarks(Request $request)
     {
-        $user = $request->user();
-        return view('homework.marks', ['user' => 'John']);
-//        $this->homeworkService->getMarks($request->groupId)
+        return view('homework.marks', ['marks' =>  $this->homeworkService->getMarks($group)]);
     }
 
-    public function getMark(Request $request)
+    public function answer()
     {
-        $user = $request->user();
-        return view('homework.marks', ['marks' => $this->homeworkService->getMark($user->id)]);
+        // TODO create a feature to display the task
+        return view('homework.answer');
+    }
+
+    public function addAnswer(AnswerRequest $request)
+    {
+        dd($request->getContent());
     }
 
     public function addTask()

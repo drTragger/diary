@@ -15,6 +15,6 @@ class Answer extends Model
 
     public function checkedAnswer()
     {
-        return $this->hasOne('App\Checked_answers');
+        return $this->hasOne('App\Checked_answers', 'answer_id');
     }
 }
