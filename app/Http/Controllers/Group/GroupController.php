@@ -98,20 +98,15 @@ class GroupController extends Controller
         $this->validate(
             $request,
             [
-                'email' => 'required|min:6',
+                'email' => 'required|min:6|exists:users',
             ]
         );
-        dd($request);
-//        dd(User::where('email', $request->email )->get());
-        $user = User::where('email', $request->email)->get();
+        $user = User::where('email', $request->email)->first();
         if (!empty($user)) {
-            // TODO add user to group
+            $user->usersGroups()->attach($user->id, ['group_id'=>$request->id,]);
+            return redirect(route('groups.selectUser', $request->id));
         } else {
-            $mess = 'Данного пользователя ненайдено';
-            return redirect(route('groups.selectUser', ['mess' => $mess]));
-            //TODO view error massage
+            return redirect(route('groups.selectUser'));
         }
-
-//        return redirect(route('groups.show'));
     }
 }
