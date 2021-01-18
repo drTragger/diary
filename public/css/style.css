@@ -247,10 +247,11 @@ footer {
     margin: 0 auto;
 }
 
-.answer {
+.answer, .add-task {
     margin: 0 auto;
     text-align: center;
 }
+
 
 /*ALL END*/
 
