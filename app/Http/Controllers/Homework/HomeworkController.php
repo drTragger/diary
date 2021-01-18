@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Homework;
 
+use App\Http\Controllers\Controller;
 use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\GetMarksRequest;
