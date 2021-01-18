@@ -12,7 +12,7 @@
             return $this->belongsTo('App\User', 'owner_id');
         }
         public function students(){
-            return $this->belongsToMany('App\User', 'users_groups', 'group_id', 'user_id');
+            return $this->belongsToMany('App\User', 'users_groups', 'group_id', 'user_id')->withTimestamps();
         }
 //
 //        public function tasks() {
