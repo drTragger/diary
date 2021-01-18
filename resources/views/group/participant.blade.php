@@ -16,7 +16,7 @@
 
                         {{csrf_field()}}
                         {{method_field('PUT')}}
-                        <label for="participant">Электронная почта ученика</label>
+                        <label for="participant">Student's email</label>
                         <input type="text" name="email" id="participant">
                         <input type="hidden" name="id" value="{{$group->id}}">
                         <input type="submit" name="Add participant">
