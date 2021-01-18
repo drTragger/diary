@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class GetMarksRequest extends Request
+class AnswerRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class GetMarksRequest extends Request
     public function rules()
     {
         return [
-            'groupId' => 'required|integer|min:0',
+            'content' => 'required|max:65535'
         ];
     }
 }

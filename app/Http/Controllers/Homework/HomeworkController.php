@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Homework;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\GetMarksRequest;
-use App\Http\Requests;
+use App\Group;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AnswerRequest;
 use App\Http\Services\HomeworkService;
 
 class HomeworkController extends Controller
@@ -16,17 +16,20 @@ class HomeworkController extends Controller
         $this->homeworkService = $service;
     }
 
-    public function getMarks(Request $request)
+    public function getMarks(Group $group)
     {
-        $user = $request->user();
-        return view('homework.marks', ['user' =>  'John']);
-//        $this->homeworkService->getMarks($request->groupId)
+        return view('homework.marks', ['marks' =>  $this->homeworkService->getMarks($group)]);
     }
 
-    public function getMark(Request $request)
+    public function answer()
     {
-        $user = $request->user();
-        return view('homework.marks', ['marks' => $this->homeworkService->getMark($user->id)]);
+        // TODO create a feature to display the task
+        return view('homework.answer');
+    }
+
+    public function addAnswer(AnswerRequest $request)
+    {
+        dd($request->getContent());
     }
 
     public function addTask() {

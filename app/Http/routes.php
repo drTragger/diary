@@ -30,8 +30,13 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
 });
 
 Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
-    Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
-    Route::get('/{userId}', 'HomeworkController@getMark')->name('homework.mark');
+    Route::get('/{group}', 'HomeworkController@getMarks')->name('homework.marks');
+    Route::get('/', 'HomeworkController@getMark')->name('homework.mark');
+});
+
+Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
+    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
+    Route::post('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
 });
 
 Route::auth();
