@@ -37,8 +37,8 @@
             </a>
         </div>
         <div class="default-nav-account">
-            <p>Пользователь: {{ Auth::user()->name }}</p>
-            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Выйти</a>
+            <p>User: {{ Auth::user()->name }}</p>
+            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log out</a>
         </div>
     </nav>
 </header>
@@ -60,7 +60,7 @@
     </div>
 </main>
 <footer>
-    some text
+    &copy; junstudio 2020
 </footer>
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
