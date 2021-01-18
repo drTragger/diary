@@ -105,8 +105,6 @@ class GroupController extends Controller
         if (!empty($user)) {
             $user->usersGroups()->attach($user->id, ['group_id'=>$request->id,]);
             return redirect(route('groups.selectUser', $request->id));
-        } else {
-            return redirect(route('groups.selectUser'));
         }
     }
 }
