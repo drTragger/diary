@@ -1,6 +1,5 @@
 @extends('templates.default')
 @section('nav')
-    {{--    @include('templates.topnav')--}}
     <li>
         <a href="#" class="btn main-nav-a-btn">Marks</a>
     </li>
