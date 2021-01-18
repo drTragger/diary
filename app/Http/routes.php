@@ -28,9 +28,9 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
 //        Route::get('/', 'GroupController@index')->name('homework.index');
     });
 });
-//Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
-//    Route::get('/', 'HomeworkController@index')->name('homework.index');
-//});
+Route::group(['prefix' => 'groups/homework', 'namespace' => 'Homework',], function () {
+    Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
+});
 
 Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
     Route::get('/', 'HomeworkController@getMarks')->name('homework.marks');
