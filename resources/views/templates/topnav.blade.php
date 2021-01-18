@@ -2,6 +2,9 @@
     <a href="#" class="btn main-nav-a-btn">Ученики</a>
 </li>
 <li>
+    <a href="{{ route('homework.marks', $group->id) }}" class="btn main-nav-a-btn">Marks</a>
+</li>
+<li>
     <a href="{{route('groups.selectUser', $group->id)}}" class="btn main-nav-a-btn">Добавить ученика</a>
 </li>
 <li>
