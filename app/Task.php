@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['id', 'teacher_id', 'group_id', 'name', 'content', 'date_created', 'date_created'];
-    
-    public function user() {
+    protected $fillable = ['teacher_id', 'group_id', 'name', 'content'];
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
-//
-//    public function groups() {
-//        return $this->belongsTo('App\Group');
-//    }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group', 'group_id');
+    }
 }

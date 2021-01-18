@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Homework;
 
+use App\Group;
 use App\Http\Controllers\Controller;
-use App\Task;
+use App\Http\Requests\AnswerRequest;
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\GetMarksRequest;
-use App\Http\Requests;
 use App\Http\Services\HomeworkService;
 
 class HomeworkController extends Controller
@@ -26,7 +26,7 @@ class HomeworkController extends Controller
 //        return view('homework.homework', ['tasks'=>$tasks]);
     }
 
-    public function getMarks(Request $request)
+    public function getMarks(Group $group)
     {
         return view('homework.marks', ['marks' =>  $this->homeworkService->getMarks($group)]);
     }
@@ -42,8 +42,15 @@ class HomeworkController extends Controller
         dd($request->getContent());
     }
 
-    public function addTask()
+    public function task(int $groupId)
     {
-        // TODO make
+        return view('homework.task', ['groupId' => $groupId]);
+    }
+
+    public function addTask(TaskRequest $request)
+    {
+        return $this->homeworkService->addTask($request->all())
+            ? redirect(route('groups.show', $request->get('groupId')))
+            : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
     }
 }

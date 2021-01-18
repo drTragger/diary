@@ -22,14 +22,14 @@
                     <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
                         <div class="group-item">
                             <div>
-                                <p>Название: {{$group->name}}</p>
-                                <p>Описание: {{mb_strimwidth($group->description, 0, 200, '...')}}</p>
-                                <p>Владелец: {{$group->user->name}}</p>
-                                <p>Дата создания: {{mb_strimwidth($group->created_at,0,10)}}</p>
+                                <p>Name: {{$group->name}}</p>
+                                <p>Description: {{mb_strimwidth($group->description, 0, 200, '...')}}</p>
+                                <p>Owner: {{$group->user->name}}</p>
+                                <p>Date created: {{mb_strimwidth($group->created_at,0,10)}}</p>
                             </div>
                             <div class="container-a-bnt-info d-flex flex-direction-column">
-                                <a href="{{route('groups.show', $group->id)}}" class="btn a-btn-info align-self-center">Больше
-                                    информации</a>
+                                <a href="{{route('groups.show', $group->id)}}" class="btn a-btn-info align-self-center">More
+                                    info</a>
                             </div>
                         </div>
 

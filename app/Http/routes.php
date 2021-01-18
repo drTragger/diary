@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -40,6 +42,9 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
     Route::post('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+    Route::get('/task/{groupId}', 'HomeworkController@task')->name('homework.task');
+    Route::post('/create_task', 'HomeworkController@addTask')->name('homework.addTask');
+    Route::get('/tasks/{groupId}', 'HomeworkController@showTasks')->name('homework.tasks');
 });
 
 Route::auth();
