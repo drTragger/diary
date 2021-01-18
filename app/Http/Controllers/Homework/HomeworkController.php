@@ -20,10 +20,18 @@ class HomeworkController extends Controller
 
     public function index(Request $request)
     {
-//        $user = $request->user();
-//        $tasks = Task::all();
-//        dd($tasks);
-//        return view('homework.homework', ['tasks'=>$tasks]);
+        $user = $request->user(); //пользователь
+        $group = $request->id; //группа
+        $tasks = Task::where('group_id', $group)->get();
+        $owner = Task::select('teacher_id')
+            ->where('group_id', $group)
+            ->first()
+            ->teacher_id;
+        $group = Group::where('id', $group)->get();
+        if ($user === $owner) {
+            return view('homework.homeworkOwner', ['tasks' => $tasks, 'group' => $group]); //todo group and nav
+        }
+        return view('homework.homeworkStudent', ['tasks' => $tasks, 'group' => $group]);
     }
 
     public function getMarks(Group $group)
