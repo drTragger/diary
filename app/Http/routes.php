@@ -30,9 +30,7 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
 //        Route::get('/', 'GroupController@index')->name('homework.index');
     });
 });
-Route::group(['prefix' => 'groups/homework', 'namespace' => 'Homework',], function () {
-    Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
-});
+
 
 Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
     Route::get('/{group}', 'HomeworkController@getMarks')->name('homework.marks');
@@ -40,11 +38,11 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 });
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
+    Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
     Route::post('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
     Route::get('/task/{groupId}', 'HomeworkController@task')->name('homework.task');
     Route::post('/create_task', 'HomeworkController@addTask')->name('homework.addTask');
-    Route::get('/tasks/{groupId}', 'HomeworkController@showTasks')->name('homework.tasks');
 });
 
 Route::auth();

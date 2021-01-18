@@ -6,6 +6,7 @@ use App\Group;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\TaskRequest;
+use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
 
