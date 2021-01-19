@@ -77,7 +77,7 @@ class GroupController extends Controller
 
     public function confirmDeactivate($group)
     {
-        return view('group.confirmDelete', ['group' => $group]);
+        return view('group.confirmDeactivate', ['group' => $group]);
     }
 
     /**
@@ -104,23 +104,23 @@ class GroupController extends Controller
                 'email' => 'required|min:6|exists:users',
             ]
         );
-//        $mess = '';
         $user = User::where('email', $request->email)->first();
         if (count($user->usersGroups) == 0) {
-//            $mess = 'The participant was added';
+            $mess = 'The participant was added';
             $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
-            return redirect(route('groups.selectUser', $request->id));
+            return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
         } else {
             $userGroups = [];
             foreach ($user->usersGroups as $group) {
                 $userGroups[] = $group->pivot->group_id;
             }
             if (!in_array($request->id, $userGroups)) {
+                $mess = 'The participant was added';
                 $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
-                return redirect(route('groups.selectUser', $request->id));
+                return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
             } else {
-//                $mess = 'This participant was added earlier!';
-                return redirect(route('groups.selectUser', $request->id));
+                $mess = 'This participant was added earlier!';
+                return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
             }
         }
     }
