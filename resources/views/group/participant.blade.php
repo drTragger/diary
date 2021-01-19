@@ -11,11 +11,14 @@
                     <div>
                         @include('common.errors')
                     </div>
+                    @if(!empty(session('mess')))
+                        <div>{{session('mess')}}</div>
+                    @endif
                     <div>
                         <form action="{{route('groups.addUser')}}" method="POST" class="d-flex flex-direction-column">
                             {{csrf_field()}}
                             {{method_field('patch')}}
-                            <label for="participant">Электронная почта ученика</label>
+                            <label for="participant">Participant's email</label>
                             <input type="text" name="email" id="participant">
                             <input type="hidden" name="id" value="{{$group->id}}">
                             <input type="submit" name="Add participant">
