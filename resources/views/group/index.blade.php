@@ -19,6 +19,7 @@
         <div class="container d-flex flex-direction-row flex-wrap groups-container">
             <div class="row margin-0-auto w-100">
                 @foreach($groups as $group)
+                    @if($group->status == '1')
                     <div class="col-3 col-sm-4 groups-item d-flex flex-direction-column justify-space-between">
                         <div class="group-item">
                             <div>
@@ -34,6 +35,7 @@
                         </div>
 
                     </div>
+                    @endif
                 @endforeach
             </div>
         </div>

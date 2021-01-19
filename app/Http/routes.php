@@ -21,10 +21,11 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::get('/', 'GroupController@index')->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
     Route::put('/', 'GroupController@addGroup')->name('groups.add');
-    Route::delete('/{id}', 'GroupController@delete')->name('groups.delete');
+    Route::get('/confirm-delete/{group}', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
+    Route::put('/{group}', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
     Route::get('/{group}', 'GroupController@show')->name('groups.show');
     Route::get('/select-participant/{group}', 'GroupController@selectUser')->name('groups.selectUser');
-    Route::put('/add-participant', 'GroupController@addUser')->name('groups.addUser');
+    Route::patch('/add-participant', 'GroupController@addUser')->name('groups.addUser');
 
     Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
 //        Route::get('/', 'GroupController@index')->name('homework.index');

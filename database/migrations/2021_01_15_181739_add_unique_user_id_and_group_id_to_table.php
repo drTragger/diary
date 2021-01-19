@@ -13,7 +13,7 @@ class AddUniqueUserIdAndGroupIdToTable extends Migration
     public function up()
     {
         Schema::table('users_groups', function (Blueprint $table) {
-            $table->unique('user_id', 'group_id');
+            $table->unique(['user_id', 'group_id']);
         });
     }
 
@@ -25,7 +25,7 @@ class AddUniqueUserIdAndGroupIdToTable extends Migration
     public function down()
     {
         Schema::table('users_groups', function (Blueprint $table) {
-            $table->unique('user_id', 'group_id');
+            $table->dropUnique(['user_id', 'group_id']);
         });
     }
 }

@@ -75,25 +75,28 @@ class GroupController extends Controller
         return view('group.showStudentGroup', ['group' => $group]);
     }
 
+    public function confirmDeactivate($group)
+    {
+        return view('group.confirmDeactivate', ['group' => $group]);
+    }
+
     /**
-     *  Remove the group from storage.
-     * @param $id
+     *  Deactivate the group from storage.
+     * @param $group
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function delete($id)
+    public function deactivateGroup($group)
     {
-        $group = Group::find($id);
-        //        $this->authorize('destroy', $group);
-        $group->delete();
+        Group::where('id', $group)->update(['status' => Group::INACTIVE]);
         return redirect(route('groups.index'));
     }
 
     public function selectUser(Group $group)
     {
-        return view('group.participant', ['group' => $group,]);
+        return view('group.participant', ['group' => $group]);
     }
 
-    public function addUser(Request $request, User $user)
+    public function addUser(Request $request)
     {
         $this->validate(
             $request,
@@ -102,9 +105,23 @@ class GroupController extends Controller
             ]
         );
         $user = User::where('email', $request->email)->first();
-        if (!empty($user)) {
-            $user->usersGroups()->attach($user->id, ['group_id'=>$request->id,]);
-            return redirect(route('groups.selectUser', $request->id));
+        if (count($user->usersGroups) == 0) {
+            $mess = 'The participant was added';
+            $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
+            return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
+        } else {
+            $userGroups = [];
+            foreach ($user->usersGroups as $group) {
+                $userGroups[] = $group->pivot->group_id;
+            }
+            if (!in_array($request->id, $userGroups)) {
+                $mess = 'The participant was added';
+                $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
+                return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
+            } else {
+                $mess = 'This participant was added earlier!';
+                return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
+            }
         }
     }
 }
