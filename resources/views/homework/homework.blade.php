@@ -24,12 +24,13 @@
                                 @yield('result')
                             </div>
                         </div>
-
                     </div>
                 @endforeach
             </div>
         </div>
         <div class="pages">{{$tasks->render()}}</div>
+    @else
+        <p class="row margin-0-auto ">No homework</p>
     @endif
 @endsection
 
