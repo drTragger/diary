@@ -7,6 +7,7 @@ use App\Checked_asnwers;
 use App\Group;
 use App\Task;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeworkService
@@ -36,6 +37,19 @@ class HomeworkService
         ]);
 
         if ($createdTask->name === $task['subject'] && $createdTask->content === $task['task']) {
+            return true;
+        }
+        return false;
+    }
+
+    public function checkOwner(Request $request){
+        $group = $request->id; //группа
+        $owner = Task::select('teacher_id')
+            ->where('group_id', $group)
+            ->first()
+            ->teacher_id;
+        $user = Auth::user()->id;
+        if($owner === $user){
             return true;
         }
         return false;
