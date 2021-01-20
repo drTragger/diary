@@ -21,11 +21,15 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::get('/', 'GroupController@index')->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
     Route::put('/', 'GroupController@addGroup')->name('groups.add');
+    Route::get('/rename/{group}', 'GroupController@renameGroup')->name('groups.renameGroup');
+    Route::put('/rename', 'GroupController@saveRename')->name('groups.saveRename');
     Route::get('/confirm-delete/{group}', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
     Route::put('/{group}', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
     Route::get('/{group}', 'GroupController@show')->name('groups.show');
     Route::get('/select-participant/{group}', 'GroupController@selectUser')->name('groups.selectUser');
     Route::patch('/add-participant', 'GroupController@addUser')->name('groups.addUser');
+    Route::get('/participants/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
+    Route::put('/participants/deactivate/{participant}', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
 
     Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
 //        Route::get('/', 'GroupController@index')->name('homework.index');
@@ -40,7 +44,7 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
-    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
+    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers'); // Kirill participant's answer
     Route::post('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
     Route::get('/task/{groupId}', 'HomeworkController@task')->name('homework.task');
     Route::post('/create_task', 'HomeworkController@addTask')->name('homework.addTask');
