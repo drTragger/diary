@@ -1,6 +1,6 @@
 @extends('homework.homework')
 @section('nav')
-    {{--    @include('templates.topnav')    TODO nav--}}
+        @include('templates.topnav')
 @endsection
 @section('result')
     <div>
