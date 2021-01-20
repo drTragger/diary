@@ -29,6 +29,7 @@
                 @endforeach
             </div>
         </div>
+        <div class="pages">{{$tasks->render()}}</div>
     @endif
 @endsection
 
