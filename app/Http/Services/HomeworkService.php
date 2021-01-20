@@ -42,14 +42,13 @@ class HomeworkService
         return false;
     }
 
-    public function checkOwner(Request $request){
-        $group = $request->id; //группа
-        $owner = Task::select('teacher_id')
-            ->where('group_id', $group)
-            ->first()
-            ->teacher_id;
+    public function checkOwner(Request $request)
+    {
+        $group = $request->id;
+        $group = Group::where('id', $group)->first();
+        $owner = $group->owner_id;
         $user = Auth::user()->id;
-        if($owner === $user){
+        if ($owner === $user) {
             return true;
         }
         return false;
