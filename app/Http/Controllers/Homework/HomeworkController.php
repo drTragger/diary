@@ -9,7 +9,6 @@ use App\Http\Requests\TaskRequest;
 use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
-use Illuminate\Support\Facades\Auth;
 
 class HomeworkController extends Controller
 {
