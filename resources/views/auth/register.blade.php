@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-6 col-md-offset-4 d-flex justify-center">
+            <div class="d-flex justify-center">
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Sign in
                 </button>

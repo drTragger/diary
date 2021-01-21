@@ -3,8 +3,17 @@
     --border-default: 2px solid #000;
     --border-radius-default: 10px;
 
-    --a-btn-bg-color: rgba(255, 255, 255, 1);
-    --a-btn-bg-color_hover: rgba(0, 86, 214, .3);
+    --a-btn-color: rgba(255, 255, 255, 1);
+    --a-btn-bg-color: rgba(0, 0, 0, 1);
+    --a-btn-bg-color_hover: rgba(53, 52, 52, 1);
+
+    --footer-background-color: rgba(0, 0, 0, 1);
+
+    --left-content-gradient-start: rgba(0, 0, 0, 1);
+    --left-content-gradient-end: rgba(98, 179, 227, 1);
+
+    --header-gradient-start: rgba(98, 179, 227, 1);
+    --header-gradient-end: rgba(232, 238, 241, 1);
 }
 
 /*DEFAULT START*/
@@ -17,6 +26,16 @@
 
 html, body {
     height: 100%;
+}
+
+a {
+    color:var(--a-btn-color);
+}
+a:hover {
+    color: var(--a-btn-color)!important;
+}
+footer {
+    background-color: var(--footer-background-color);
 }
 
 body.default {
@@ -78,6 +97,9 @@ textarea {
     height: max-content;
 }
 
+.min-width-50 {
+    min-width: 50%;
+}
 /*DEFAULT END*/
 
 /*AUTH START*/
@@ -121,7 +143,10 @@ textarea {
 
 /*HEADER START*/
 .default-header {
-    border: var(--border-default);
+    /*border: var(--border-default);*/
+    /*border-top:none;*/
+    border-bottom: 2px solid #000;
+    background: linear-gradient(var(--header-gradient-end), var(--header-gradient-start));
 }
 
 .default-nav {
@@ -143,9 +168,13 @@ textarea {
 
 .left-content {
     border: var(--border-default);
+    border-left: none;
     border-top: none;
+    border-bottom: none;
     padding: 10px;
     position: relative;
+
+    background: linear-gradient(var(--left-content-gradient-end), var(--left-content-gradient-start));
 }
 
 .left-nav {
@@ -166,8 +195,8 @@ textarea {
     background-color: var(--a-btn-bg-color);
     border: var(--border-default);
     border-radius: var(--border-radius-default);
-
     text-align: center;
+    color: var(--a-btn-color);
     width: 120px;
     white-space: normal;
 }

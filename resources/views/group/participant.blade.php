@@ -21,7 +21,7 @@
                             <label for="participant">Participant's email</label>
                             <input type="text" name="email" id="participant">
                             <input type="hidden" name="id" value="{{$group->id}}">
-                            <input type="submit" name="Add participant">
+                            <input type="submit" value="Add participant">
                         </form>
                     </div>
                 </div>
