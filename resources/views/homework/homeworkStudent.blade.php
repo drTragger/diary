@@ -11,7 +11,7 @@
     @include('common.errors')
     <div class="container-form">
         <h3 class="text-center">Send task</h3>
-        <form action="{{route('homework.addAnswer')}}" method="POST" class="d-flex flex-direction-column">  {{--TODO send task--}}
+        <form action="{{route('homework.addAnswer')}}" method="POST" class="d-flex flex-direction-column">
             {{csrf_field()}}
             {{method_field('put')}}
             <input type="hidden" name="group_id" value="{{$group->id}}">

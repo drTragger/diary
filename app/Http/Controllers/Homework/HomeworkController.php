@@ -45,14 +45,6 @@ class HomeworkController extends Controller
         return view('homework.answer');
     }
 
-    public function showHomework(Request $request) {
-//        dd($request->group_id);
-        $task = json_decode($request->task);
-//        dd($request,$id, $task);
-
-        return view('homework.showHomework', ['task'=>$task, 'id'=>$request->group_id]);
-    }
-
     public function addAnswer(Request $request)
     {
         $this->validate(
@@ -68,17 +60,6 @@ class HomeworkController extends Controller
             'task_id'=>$request->task_id,
         ]);
         return redirect(route('homework.index', $request->group_id));
-    }
-
-    public function getAnswer() { // для учителя
-        
-    }
-
-    public function tasks(Request $request) {
-//        dd($request->groupId);
-        $tasks = Task::where('teacher_id', Auth::user()->id)->where('group_id', $request->groupId)->paginate(2);
-//        dd($tasks);
-        return view('homework.tasks', ['tasks'=>$tasks]);
     }
 
     public function task(int $groupId)
