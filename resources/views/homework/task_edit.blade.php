@@ -1,5 +1,7 @@
 @extends('templates.default')
-
+@section('nav')
+        @include('templates.topnav')
+@endsection
 @section('content')
     <form action="{{ route('homework.editTask') }}" method="post">
         {{ csrf_field() }}

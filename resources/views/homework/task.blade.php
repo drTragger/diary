@@ -1,5 +1,7 @@
 @extends('templates.default')
-
+@section('nav')
+    @include('templates.stnav')
+@endsection
 @section('content')
     <div class="add-task">
         <form action="{{ route('homework.addTask') }}" method="POST">
