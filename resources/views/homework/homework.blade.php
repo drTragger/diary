@@ -16,6 +16,8 @@
                                 <p>{{$task->content}}</p>
                             </div>
                             <div class="container-a-bnt-info d-flex flex-direction-column">
+                                <a href="{{route('homework.show', $task->id)}}" class="btn a-btn-info align-self-center">Do homework</a>
+{{--                                TODO diff btn for st and teacher--}}
                                 @yield('result')
                             </div>
                         </div>

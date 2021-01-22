@@ -59,4 +59,11 @@ class HomeworkController extends Controller
             ? redirect(route('groups.show', $request->get('groupId')))
             : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
     }
+    public function showTask(Request $request){
+        $task = $request->id;
+        $task = $tasks = Task::where('id', $task)->first();
+        $group = $task->group_id;
+        $group = Group::where('id', $group)->first();
+        return view('homework.answer', ['task' => $task, 'group' => $group]);
+    }
 }
