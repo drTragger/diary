@@ -60,11 +60,6 @@ class HomeworkController extends Controller
         return redirect(route('homework.index', $request->group_id));
     }
 
-    public function getAnswer()
-    { // для учителя
-
-    }
-
     public function task(int $groupId)
     {
         return view('homework.task', ['groupId' => $groupId]);
