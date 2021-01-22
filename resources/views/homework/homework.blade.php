@@ -1,6 +1,10 @@
 @extends('templates.default')
 @section('nav')
-    @yield('stnav')
+    @if($check)
+        @include('templates.topnav')
+    @else
+        @include('templates.stnav')
+    @endif
 @endsection
 @section('content')
     @if(count($tasks)>0)
@@ -47,8 +51,11 @@
                     @endforeach
                     </tbody>
                 </table>
-                @else
-                    <p class="row margin-0-auto ">No homework</p>
+            </div>
+        </div>
+        <div class="pages">{{$tasks->render()}}</div>
+    @else
+        <p class="row margin-0-auto ">No homework</p>
     @endif
 @endsection
 
