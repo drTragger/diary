@@ -27,11 +27,8 @@ class HomeworkController extends Controller
         $tasks = Task::where('group_id', $group)->get();
         $tasks = Controller::paginate($tasks, 10)->setPath((int)$group . '/');
         $group = Group::where('id', $group)->first();
-        if ($this->homeworkService->checkOwner($request)) {
-            return view('homework.homeworkOwner', ['tasks' => $tasks, 'group' => $group]);
-        } else {
-            return view('homework.homeworkStudent', ['tasks' => $tasks, 'group' => $group]);
-        }
+        $check = $this->homeworkService->checkOwner($request);
+        return view('homework.homework', ['tasks' => $tasks, 'group' => $group, 'check' => $check] );
     }
 
     public function getMarks(Group $group)
@@ -91,5 +88,12 @@ class HomeworkController extends Controller
         return $this->homeworkService->addTask($request->all())
             ? redirect(route('groups.show', $request->get('groupId')))
             : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
+    }
+    public function showTask(Request $request){
+        $task = $request->id;
+        $task = $tasks = Task::where('id', $task)->first();
+        $group = $task->group_id;
+        $group = Group::where('id', $group)->first();
+        return view('homework.answer', ['task' => $task, 'group' => $group]);
     }
 }

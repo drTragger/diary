@@ -22,15 +22,20 @@
                             <td>{{$task->name}}</td>
                             <td>{{mb_strimwidth($task->created_at,0,10)}}</td>
                             <td>
-                                <form action="{{route('homework.show',[$group->id, $task])}}" method="post">
-                                    {{csrf_field()}}
-                                    {{--                                        {{method_field('get')}}--}}
-                                    <input type="hidden" name="task" value="{{$task}}">
-                                    <input type="hidden" name="group_id" value="{{$group->id}}">
-                                    <input type="hidden" name="task_content" value="{{$task->content}}">
-                                    <input type="hidden" name="task_name" value="{{$task->name}}">
-                                    <input type="submit" value="TODO">
-                                </form>
+                                @if($check)
+                                    @include('homework.homeworkOwner')
+                                @else
+                                    @include('homework.homeworkStudent')
+                                @endif
+{{--                                <form action="{{route('homework.show',[$group->id, $task])}}" method="post">--}}
+{{--                                    {{csrf_field()}}--}}
+{{--                                    --}}{{--                                        {{method_field('get')}}--}}
+{{--                                    <input type="hidden" name="task" value="{{$task}}">--}}
+{{--                                    <input type="hidden" name="group_id" value="{{$group->id}}">--}}
+{{--                                    <input type="hidden" name="task_content" value="{{$task->content}}">--}}
+{{--                                    <input type="hidden" name="task_name" value="{{$task->name}}">--}}
+{{--                                    <input type="submit" value="TODO">--}}
+{{--                                </form>--}}
                             </td>
                         </tr>
                     @endforeach
