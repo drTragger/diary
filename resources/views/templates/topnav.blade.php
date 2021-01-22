@@ -20,5 +20,5 @@
     <a href="{{route('groups.renameGroup',$group)}}" class="btn main-nav-a-btn">Rename Group</a>
 </li>
 <li>
-    <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn main-nav-a-btn">deactivate group</a>
+    <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn main-nav-a-btn">Deactivate group</a>
 </li>

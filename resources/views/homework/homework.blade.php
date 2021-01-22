@@ -9,6 +9,13 @@
                 @foreach ($tasks as $task)
                     <div class="d-flex flex-column bd-highlight ">
                         <div class="group-item w-75">
+                            @if(\Illuminate\Support\Facades\Auth::user()->id === $group->owner_id)
+                                <form action="{{ route('homework.taskEdition', ['task' => $task->id]) }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <button type="submit" class="btn btn-default">Edit</button>
+                                </form>
+                            @endif
                             <div>
                                 <p>Homework# {{$task->id}}</p>
                                 <p>Subject: {{$task->name}}</p>
