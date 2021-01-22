@@ -31,9 +31,9 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::get('/participants/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
     Route::put('/participants/deactivate/{participant}', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
 
-    Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
-//        Route::get('/', 'GroupController@index')->name('homework.index');
-    });
+//    Route::group(['prefix' => 'homework', 'namespace' => 'Homework',], function () {
+////        Route::get('/', 'GroupController@index')->name('homework.index');
+//    });
 });
 
 
@@ -44,10 +44,13 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
-    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers'); // Kirill participant's answer
-    Route::post('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+    Route::post('/{id}/{task}', 'HomeworkController@showHomework')->name('homework.show');
+    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
+    Route::put('/answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+
     Route::group(['prefix' => 'tasks'], function () {
-        Route::get('/{groupId}', 'HomeworkController@task')->name('homework.task');
+        Route::get('/all/{groupId}', 'HomeworkController@tasks')->name('homework.tasks'); //show all tasks for teacher
+        Route::get('/{groupId}/', 'HomeworkController@task')->name('homework.task'); //show select task
         Route::post('/create', 'HomeworkController@addTask')->name('homework.addTask');
         Route::get('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
         Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
