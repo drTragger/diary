@@ -1,6 +1,10 @@
 @extends('templates.default')
 @section('nav')
-    @yield('stnav')
+    @if($check)
+        @include('templates.topnav')
+    @else
+        @include('templates.stnav')
+    @endif
 @endsection
 @section('content')
     @if(count($tasks)>0)
@@ -16,9 +20,11 @@
                                 <p>{{$task->content}}</p>
                             </div>
                             <div class="container-a-bnt-info d-flex flex-direction-column">
-                                <a href="{{route('homework.show', $task->id)}}" class="btn a-btn-info align-self-center">Do homework</a>
-{{--                                TODO diff btn for st and teacher--}}
-                                @yield('result')
+                                @if($check)
+                                    @include('homework.homeworkOwner')
+                                @else
+                                    @include('homework.homeworkStudent')
+                                @endif
                             </div>
                         </div>
                     </div>
