@@ -52,7 +52,7 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
         Route::get('/all/{groupId}', 'HomeworkController@tasks')->name('homework.tasks'); //show all tasks for teacher
         Route::get('/{groupId}/', 'HomeworkController@task')->name('homework.task'); //show select task
         Route::post('/create', 'HomeworkController@addTask')->name('homework.addTask');
-        Route::get('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
+        Route::post('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
         Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
         Route::delete('/delete/{task}', 'HomeworkController@deleteTask')->name('homework.deleteTask');
     });

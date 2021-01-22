@@ -10,6 +10,7 @@ use App\Http\Requests\TaskRequest;
 use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
 class HomeworkController extends Controller
@@ -71,7 +72,7 @@ class HomeworkController extends Controller
     }
 
     public function getAnswer() { // для учителя
-        
+
     }
 
     public function tasks(Request $request) {
@@ -91,5 +92,23 @@ class HomeworkController extends Controller
         return $this->homeworkService->addTask($request->all())
             ? redirect(route('groups.show', $request->get('groupId')))
             : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
+    }
+
+    public function taskEdition(Task $task, Request $request)
+    {
+        $task = $this->homeworkService->getTask($task->id)->first();
+        return view('homework.task_edit', ['task' => $task, 'group_id' => $request->get('group_id')]);
+    }
+
+    public function editTask(TaskRequest $request)
+    {
+        $this->homeworkService->editTask($request->all());
+        return redirect(route('homework.index', ['id' => $request->get('group_id')]));
+    }
+
+    public function deleteTask(Task $task)
+    {
+        $this->homeworkService->deleteTask($task);
+        return Redirect::back();
     }
 }
