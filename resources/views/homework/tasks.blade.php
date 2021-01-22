@@ -18,6 +18,11 @@
                             <input type="hidden" name="group_id" value="{{ $group->id }}">
                             <button type="submit" class="btn btn-default">Edit</button>
                         </form>
+                        <form action="{{ route('homework.deleteTask', ['task' => $task->id]) }}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <button type="submit" class="btn btn-default">Delete</button>
+                        </form>
                     @endif
                     <h4>{{$task->name}}</h4>
                     <p>{{$task->content}}</p>
