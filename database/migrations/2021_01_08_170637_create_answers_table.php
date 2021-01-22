@@ -17,8 +17,13 @@ class CreateAnswersTable extends Migration
             $table->unsignedInteger('owner_id');
             $table->text('content');
             $table->unsignedInteger('group_id');
+            $table->unsignedInteger('task_id');
             $table->timestamps();
-            
+
+
+            $table->foreign('task_id')
+                ->references('id')
+                ->on('tasks');
             $table->foreign('owner_id')
                 ->references('id')
                 ->on('users');
