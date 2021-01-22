@@ -62,9 +62,9 @@ class HomeworkController extends Controller
         return redirect(route('homework.index', $group->id));
     }
 
-    public function task(int $groupId)
+    public function task(Group $group)
     {
-        return view('homework.task', ['groupId' => $groupId]);
+        return view('homework.task', ['group' => $group]);
     }
 
     public function addTask(TaskRequest $request)

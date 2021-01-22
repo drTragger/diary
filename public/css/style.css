@@ -28,6 +28,22 @@ html, body {
     height: 100%;
 }
 
+.tasks {
+    position: relative;
+}
+
+.actions { /* Кирилл, не удаляй это */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
+}
+
+.actions form:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
 a {
     color:var(--a-btn-color);
 }
