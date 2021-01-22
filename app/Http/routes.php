@@ -44,7 +44,6 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
-    Route::post('/{id}/{task}', 'HomeworkController@showHomework')->name('homework.show');
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
     Route::put('/answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
 

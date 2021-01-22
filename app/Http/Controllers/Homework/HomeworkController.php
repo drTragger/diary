@@ -43,7 +43,6 @@ class HomeworkController extends Controller
         return view('homework.answer');
     }
 
-
     public function addAnswer(Request $request)
     {
         $this->validate(
@@ -74,7 +73,7 @@ class HomeworkController extends Controller
     public function addTask(TaskRequest $request)
     {
         return $this->homeworkService->addTask($request->all())
-            ? redirect(route('groups.show', $request->get('groupId')))
+            ? redirect(route('homework.index', $request->get('groupId')))
             : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
     }
 
@@ -102,6 +101,6 @@ class HomeworkController extends Controller
     public function deleteTask(Task $task)
     {
         $this->homeworkService->deleteTask($task);
-        return redirect()->back();
+        return Redirect::back();
     }
 }
