@@ -100,6 +100,10 @@ textarea {
 .min-width-50 {
     min-width: 50%;
 }
+
+.color-black {
+    color:#000;
+}
 /*DEFAULT END*/
 
 /*AUTH START*/
@@ -231,7 +235,7 @@ textarea {
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     padding: 10px;
-    /*margin: 10px;*/
+    margin: 10px;
 }
 
 /*MAIN END*/
@@ -283,43 +287,3 @@ footer {
 
 
 /*ALL END*/
-
-
-/*nav{*/
-/*    border: solid black 1px;*/
-/*    width: 20%;*/
-/*}*/
-
-/*#menu li{*/
-/*    list-style-type: none;*/
-/*}*/
-
-/*#menu a{*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*footer{*/
-/*    border: solid black 1px;*/
-/*    text-align: center;*/
-/*}*/
-
-/*#content{*/
-/*    border: solid black 1px;*/
-/*    width: 80%;*/
-/*}*/
-
-/*.flex-container{*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-
-/*.main-flex{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
-
-/*.header-flex{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    justify-content: space-between;*/
-/*}*/
