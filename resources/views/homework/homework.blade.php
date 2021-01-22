@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('nav')
-    @yield('stnav')
+    @yield('studentnav')
 @endsection
 @section('content')
     @if(count($tasks)>0)
