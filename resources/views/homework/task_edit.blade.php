@@ -4,6 +4,7 @@
     <form action="{{ route('homework.editTask') }}" method="post">
         {{ csrf_field() }}
         {{ method_field('put') }}
+        <input type="hidden" name="group_id" value="{{ $group_id }}">
         <input type="hidden" name="task_id" value="{{ $task->id }}">
         <div class="form-group">
             <label for="subject">Subject</label>

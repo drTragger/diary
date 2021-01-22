@@ -53,4 +53,22 @@ class HomeworkService
         }
         return false;
     }
+
+    public function getTask(int $id)
+    {
+        return Task::where('id', $id);
+    }
+
+    public function editTask($request)
+    {
+        $task = Task::where('id', '=', $request['task_id'])->first();
+        $task->name = $request['subject'];
+        $task->content = $request['task'];
+        $task->save();
+    }
+
+    public function deleteTask(Task $task)
+    {
+        $task->delete();
+    }
 }
