@@ -1,11 +1,6 @@
 @extends('templates.default')
 @section('nav')
-    <li>
-        <a href="#" class="btn main-nav-a-btn">Marks</a>
-    </li>
-    <li>
-        <a href="#" class="btn main-nav-a-btn">Homework</a>
-    </li>
+    @yield('stnav')
 @endsection
 @section('content')
     @if(count($tasks)>0)

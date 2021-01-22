@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Helper\Table;
 
 class GroupController extends Controller
 {
@@ -75,6 +76,26 @@ class GroupController extends Controller
         return view('group.showStudentGroup', ['group' => $group]);
     }
 
+    public function renameGroup($group)
+    {
+//        dd($group);
+        return view('group.rename', ['group' => $group]);
+    }
+
+    public function saveRename(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'group_name' => 'required|min:6'
+            ]
+        );
+        $group = Group::find($request->group_id);
+        $group->name = $request->group_name;
+        $group->save();
+        return redirect(route('groups.index'));
+    }
+
     public function confirmDeactivate($group)
     {
         return view('group.confirmDeactivate', ['group' => $group]);
@@ -96,6 +117,28 @@ class GroupController extends Controller
         return view('group.participant', ['group' => $group]);
     }
 
+    public function showParticipants($group)
+    {
+        $group = Group::find($group);
+        $participants = [];
+        foreach ($group->students as $participant) {
+            if ($participant->pivot->status != Group::INACTIVE) {
+                $user = User::find($participant->pivot->user_id);
+                $participants[] = $user;
+            }
+        }
+        return view('group.showParticipants', ['participants' => $participants, 'group' => $group]);
+    }
+
+    public function deactivateParticipant($participant, Request $request)
+    {
+        $group = Group::find($request->group_id);
+        $group->students()->updateExistingPivot($participant, ['status' => Group::INACTIVE]);
+
+        return redirect(route('groups.showParticipants', $request->group_id));
+
+    }
+
     public function addUser(Request $request)
     {
         $this->validate(
@@ -107,7 +150,7 @@ class GroupController extends Controller
         $user = User::where('email', $request->email)->first();
         if (count($user->usersGroups) == 0) {
             $mess = 'The participant was added';
-            $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
+            $user->usersGroups()->attach($user->id, ['group_id' => $request->id, 'status' => Group::ACTIVE]);
             return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
         } else {
             $userGroups = [];
@@ -116,7 +159,7 @@ class GroupController extends Controller
             }
             if (!in_array($request->id, $userGroups)) {
                 $mess = 'The participant was added';
-                $user->usersGroups()->attach($user->id, ['group_id' => $request->id,]);
+                $user->usersGroups()->attach($user->id, ['group_id' => $request->id, 'status' => Group::ACTIVE]);
                 return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
             } else {
                 $mess = 'This participant was added earlier!';

@@ -37,7 +37,7 @@
             </a>
         </div>
         <div class="default-nav-account">
-            <p>User: {{ Auth::user()->name }}</p>
+            <p><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}</p>
             <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log out</a>
         </div>
     </nav>
@@ -59,8 +59,12 @@
         @yield('content')
     </div>
 </main>
-<footer>
-    &copy; junstudio 2020
+<footer class="d-flex justify-center align-items-center">
+    <div>
+        <h4>
+            &copy; junstudio 2020
+        </h4>
+    </div>
 </footer>
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"

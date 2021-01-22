@@ -18,7 +18,7 @@ class Group extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\User', 'users_groups', 'group_id', 'user_id');
+        return $this->belongsToMany('App\User', 'users_groups', 'group_id', 'user_id')->withPivot('status');
     }
 
     public function tasks()
