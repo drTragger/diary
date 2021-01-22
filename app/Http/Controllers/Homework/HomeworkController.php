@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Homework;
 
+use App\Answer;
 use App\Group;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnswerRequest;
@@ -9,6 +10,7 @@ use App\Http\Requests\TaskRequest;
 use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
+use Illuminate\Support\Facades\Auth;
 
 class HomeworkController extends Controller
 {
@@ -43,9 +45,40 @@ class HomeworkController extends Controller
         return view('homework.answer');
     }
 
-    public function addAnswer(AnswerRequest $request)
+    public function showHomework(Request $request) {
+//        dd($request->group_id);
+        $task = json_decode($request->task);
+//        dd($request,$id, $task);
+
+        return view('homework.showHomework', ['task'=>$task, 'id'=>$request->group_id]);
+    }
+
+    public function addAnswer(Request $request)
     {
-        dd($request->getContent());
+        $this->validate(
+            $request,
+            [
+                'answer' => 'required',
+            ]
+        );
+        Answer::create([
+            'owner_id'=>Auth::user()->id,
+            'content'=>$request->answer,
+            'group_id'=>$request->group_id,
+            'task_id'=>$request->task_id,
+        ]);
+        return redirect(route('homework.index', $request->group_id));
+    }
+
+    public function getAnswer() { // для учителя
+        
+    }
+
+    public function tasks(Request $request) {
+//        dd($request->groupId);
+        $tasks = Task::where('teacher_id', Auth::user()->id)->where('group_id', $request->groupId)->paginate(2);
+//        dd($tasks);
+        return view('homework.tasks', ['tasks'=>$tasks]);
     }
 
     public function task(int $groupId)
