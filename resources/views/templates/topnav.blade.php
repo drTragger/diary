@@ -5,7 +5,7 @@
     <a href="{{route('groups.selectUser', $group->id)}}" class="btn main-nav-a-btn">Add participant</a>
 </li>
 <li>
-    <a href="{{ route('homework.index', [$group->id]) }}" class="btn main-nav-a-btn">Tasks</a>
+    <a href="{{ route('homework.tasks', [$group->id]) }}" class="btn main-nav-a-btn">Tasks</a>
 </li>
 <li>
     <a href="{{ route('homework.task', $group->id) }}" class="btn main-nav-a-btn">Add Task</a>
