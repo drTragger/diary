@@ -1,11 +1,6 @@
-@extends('homework.homework')
-@section('nav')
-        @include('templates.topnav')
-@endsection
-@section('result')
-    <div>
+<div>
         Submitted: X students
 {{--     TODO get submitted tasks--}}
-    </div>
-@endsection
+</div>
+
 

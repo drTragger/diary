@@ -55,6 +55,7 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
         Route::post('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
         Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
         Route::delete('/delete/{task}', 'HomeworkController@deleteTask')->name('homework.deleteTask');
+        Route::get('/show/{id}', 'HomeworkController@showTask')->name('homework.show');
     });
 });
 
