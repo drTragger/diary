@@ -71,4 +71,9 @@ class HomeworkService
     {
         $task->delete();
     }
+
+    public function getGroupById(int $id)
+    {
+        return Group::where('id', $id)->first();
+    }
 }
