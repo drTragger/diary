@@ -39,9 +39,10 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 });
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
+    Route::get('/task/{id}/answer', 'HomeworkController@answer')->name('homework.answer');
     Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
-    Route::put('/answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+    Route::put('/save-answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
 
     Route::group(['prefix' => 'tasks'], function () {
         Route::get('/{groupId}/', 'HomeworkController@task')->name('homework.task');
@@ -49,7 +50,7 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
         Route::post('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
         Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
         Route::delete('/delete/{task}', 'HomeworkController@deleteTask')->name('homework.deleteTask');
-        Route::get('/show/{id}', 'HomeworkController@showTask')->name('homework.show');
+        Route::get('/{task}/group/{group}', 'HomeworkController@showTask')->name('homework.show');
     });
 });
 
