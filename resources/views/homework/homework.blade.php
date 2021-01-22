@@ -1,6 +1,10 @@
 @extends('templates.default')
 @section('nav')
-    @yield('stnav')
+    @if($check)
+        @include('templates.topnav')
+    @else
+        @include('templates.stnav')
+    @endif
 @endsection
 @section('content')
     @if(count($tasks)>0)
@@ -27,15 +31,15 @@
                                 @else
                                     @include('homework.homeworkStudent')
                                 @endif
-{{--                                <form action="{{route('homework.show',[$group->id, $task])}}" method="post">--}}
-{{--                                    {{csrf_field()}}--}}
-{{--                                    --}}{{--                                        {{method_field('get')}}--}}
-{{--                                    <input type="hidden" name="task" value="{{$task}}">--}}
-{{--                                    <input type="hidden" name="group_id" value="{{$group->id}}">--}}
-{{--                                    <input type="hidden" name="task_content" value="{{$task->content}}">--}}
-{{--                                    <input type="hidden" name="task_name" value="{{$task->name}}">--}}
-{{--                                    <input type="submit" value="TODO">--}}
-{{--                                </form>--}}
+                                {{--                                <form action="{{route('homework.show',[$group->id, $task])}}" method="post">--}}
+                                {{--                                    {{csrf_field()}}--}}
+                                {{--                                    --}}{{--                                        {{method_field('get')}}--}}
+                                {{--                                    <input type="hidden" name="task" value="{{$task}}">--}}
+                                {{--                                    <input type="hidden" name="group_id" value="{{$group->id}}">--}}
+                                {{--                                    <input type="hidden" name="task_content" value="{{$task->content}}">--}}
+                                {{--                                    <input type="hidden" name="task_name" value="{{$task->name}}">--}}
+                                {{--                                    <input type="submit" value="TODO">--}}
+                                {{--                                </form>--}}
                             </td>
                         </tr>
                     @endforeach
