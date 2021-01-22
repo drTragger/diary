@@ -13,7 +13,7 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->unsignedInteger('teacher_id');
             $table->unsignedInteger('group_id');
             $table->char('name',60);
