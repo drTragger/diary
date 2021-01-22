@@ -1,4 +1,9 @@
 @extends('templates.default')
+@if($check)
+    @include('templates.topnav')
+@else
+    @include('templates.stnav')
+@endif
 @section('content')
     <div class="container">
         @if(!empty ($tasks))
