@@ -285,10 +285,12 @@ footer {
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     width: max-content;
+    color: var(--a-btn-color);
 }
 
 .a-btn-info:hover {
     background-color: var(--a-btn-bg-color_hover);
+    color: var(--a-btn-color);
 }
 
 .pages {
