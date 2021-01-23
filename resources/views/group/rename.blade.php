@@ -11,8 +11,8 @@
                     <form action="{{route('groups.saveRename')}}" method="post">
                         {{csrf_field()}}
                         {{method_field('put')}}
-                        <input type="hidden" name="group_id" value="{{$group}}">
-                        <input type="text" name="group_name">
+                        <input type="hidden" name="group_id" value="{{ $group->id }}">
+                        <input type="text" name="group_name" value="{{ $group->name }}">
                         <input type="submit" value="Save Change">
                     </form>
                 </div>

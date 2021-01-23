@@ -76,7 +76,7 @@ class GroupController extends Controller
         return view('group.showStudentGroup', ['group' => $group]);
     }
 
-    public function renameGroup($group)
+    public function renameGroup(Group $group)
     {
 //        dd($group);
         return view('group.rename', ['group' => $group]);
@@ -87,11 +87,11 @@ class GroupController extends Controller
         $this->validate(
             $request,
             [
-                'group_name' => 'required|min:6'
+                'group_name' => 'required|min:5'
             ]
         );
-        $group = Group::find($request->group_id);
-        $group->name = $request->group_name;
+        $group = Group::where('id', $request->get('group_id'))->first();
+        $group->name = $request->get('group_name');
         $group->save();
         return redirect(route('groups.index'));
     }
