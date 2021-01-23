@@ -21,9 +21,8 @@
             <input type="hidden" name="group_id" value="{{$group}}">
             <input type="hidden" name="task_id" value="{{$task->id}}">
             <label for="answer">Answer</label>
-            <textarea type="text" name="answer" id="answer"></textarea>
-            <input type="submit"
-                   value="Summit">
+            <textarea name="answer" id="answer"></textarea>
+            <button type="submit" class="btn a-btn-info">Submit</button>
         </form>
     </div>
 @endsection

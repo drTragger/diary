@@ -85,7 +85,7 @@ class HomeworkController extends Controller
     public function taskEdition(Task $task, Request $request)
     {
         $task = $this->homeworkService->getTask($task->id)->first();
-        return view('homework.task_edit', ['task' => $task, 'group_id' => $request->get('group_id')]);
+        return view('homework.task_edit', ['task' => $task, 'group' => $this->homeworkService->getGroupById($request->get('group_id'))]);
     }
 
     public function editTask(TaskRequest $request)
