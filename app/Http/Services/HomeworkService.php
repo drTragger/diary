@@ -3,9 +3,7 @@
 
 namespace App\Http\Services;
 
-use App\Checked_asnwers;
-use App\Group;
-use App\Task;
+use App\{Group, Task, Checked_asnwers};
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
