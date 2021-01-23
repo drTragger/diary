@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('nav')
-        @include('templates.topnav')
+    @include('templates.topnav')
 @endsection
 @section('content')
     <form action="{{ route('homework.editTask') }}" method="post">

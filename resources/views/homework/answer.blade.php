@@ -15,7 +15,8 @@
         <h4>Homework</h4>
         <div>{{$task->content}}</div>
         <hr>
-        <form action="{{route('homework.addAnswer')}}" method="POST" class="d-flex flex-direction-column">  {{--TODO send task--}}
+        <form action="{{route('homework.addAnswer')}}" method="POST"
+              class="d-flex flex-direction-column">  {{--TODO send task--}}
             {{csrf_field()}}
             {{method_field('put')}}
             <input type="hidden" name="group_id" value="{{$group}}">
