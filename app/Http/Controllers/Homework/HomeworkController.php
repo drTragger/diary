@@ -96,18 +96,21 @@ class HomeworkController extends Controller
         return Redirect::back();
     }
 
-    public function submittedTasks(Request $request){
+    public function submittedTasks(Request $request)
+    {
         $group = $request->group;
         $tasks = Task::where('group_id', $group)->get();
         $group = Group::where('id', $group)->first();
         return view('homework.submittedTask', ['tasks' => $tasks, 'group' => $group]);
     }
 
-    public function estimateTask(Task $task){
-        $group = $task->group_id;
-        $answers = Answer::where('group_id', $group);
-        $group = Group::where('id', $group)->first();
-        //Todo get answers
+    public function estimateTask(Task $task)
+    {
+        $answers = Answer::where('task_id', $task->id)
+            ->join('users', 'owner_id', '=', 'users.id')
+            ->select('answers.*', 'users.name')
+            ->get();
+        $group = Group::where('id', $task->group_id)->first();
         return view('homework.estimate', ['answers' => $answers, 'group' => $group]);
     }
 
