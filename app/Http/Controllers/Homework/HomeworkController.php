@@ -95,4 +95,20 @@ class HomeworkController extends Controller
         $this->homeworkService->deleteTask($task);
         return Redirect::back();
     }
+
+    public function submittedTasks(Request $request){
+        $group = $request->group;
+        $tasks = Task::where('group_id', $group)->get();
+        $group = Group::where('id', $group)->first();
+        return view('homework.submittedTask', ['tasks' => $tasks, 'group' => $group]);
+    }
+
+    public function estimateTask(Task $task){
+        $group = $task->group_id;
+        $answers = Answer::where('group_id', $group);
+        $group = Group::where('id', $group)->first();
+        //Todo get answers
+        return view('homework.estimate', ['answers' => $answers, 'group' => $group]);
+    }
+
 }
