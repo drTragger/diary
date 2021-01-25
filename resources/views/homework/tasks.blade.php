@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     <div class="container">
-        @if(!empty ($tasks))
+        @if(count($tasks) > 0)
             @foreach($tasks as $task)
                 <div class="col-6 group-item tasks">
                     @if($check)
@@ -40,6 +40,8 @@
             <div class="w-100 d-flex justify-center">
                 {{ $tasks->links() }}
             </div>
+        @else
+            <p>You have no homework</p>
         @endif
     </div>
 @endsection

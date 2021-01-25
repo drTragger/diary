@@ -21,10 +21,21 @@ class HomeworkController extends Controller
     public function index(Request $request)
     {
         $group = $request->id;
-        $tasks = Task::where('group_id', $group)->get();
-        $tasks = Controller::paginate($tasks, 10)->setPath((int)$group . '/');
-        $group = Group::where('id', $group)->first();
         $check = $this->homeworkService->checkOwner($request);
+        $tasks = Task::with('answers')->where('group_id', $group)->get();
+
+        if (!$check) {
+            $unsubmittedTasks = [];
+            foreach ($tasks as $task) {
+                if (empty($task->answers->where('owner_id', Auth::user()->id)->all())) {
+                    $unsubmittedTasks[] = $task;
+                }
+            }
+            $tasks = $unsubmittedTasks;
+        }
+
+        $tasks = Controller::paginate($tasks)->setPath((int)$group);
+        $group = Group::where('id', $group)->first();
         return view('homework.tasks', ['tasks' => $tasks, 'group' => $group, 'check' => $check]);
     }
 
