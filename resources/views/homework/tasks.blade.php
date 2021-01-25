@@ -8,6 +8,7 @@
 @endsection
 @section('content')
     <div class="container">
+        <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
         @if(count($tasks) > 0)
             @foreach($tasks as $task)
                 <div class="col-6 group-item tasks margin-0-auto mb-3">
@@ -41,7 +42,9 @@
                 {{ $tasks->links() }}
             </div>
         @else
-            <p>You have no homework</p>
+            <div class="card bg-warning">
+                <div class="card-body">You have no homework</div>
+            </div>
         @endif
     </div>
 @endsection

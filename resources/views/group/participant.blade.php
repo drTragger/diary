@@ -18,10 +18,12 @@
                         <form action="{{route('groups.addUser')}}" method="POST" class="d-flex flex-direction-column">
                             {{csrf_field()}}
                             {{method_field('patch')}}
-                            <label for="participant">Participant's email</label>
-                            <input type="text" name="email" id="participant">
                             <input type="hidden" name="id" value="{{$group->id}}">
-                            <input type="submit" value="Add participant">
+                            <div class="form-group">
+                                <label for="participant">Participant's email</label>
+                                <input type="text" name="email" id="participant" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Add participant</button>
                         </form>
                     </div>
                 </div>
