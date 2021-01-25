@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\Group;
-use App\User;
+use App\{Group, User};
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Console\Helper\Table;
+use Illuminate\View\View;
 
 class GroupController extends Controller
 {
@@ -33,7 +35,7 @@ class GroupController extends Controller
 
     /**
      * Show the form for creating a new group.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -43,6 +45,7 @@ class GroupController extends Controller
     /**
      * Add a newly created resource in storage.
      * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function addGroup(Request $request)
     {
@@ -67,18 +70,14 @@ class GroupController extends Controller
 
     public function show(Group $group)
     {
-        //TODO use validator
-        $user = Auth::user()->id;
-        $owner = $group->owner_id;
-        if ($user == $owner) {
+        if (Auth::user()->id == $group->owner_id) {
             return view('group.showOwnerGroup', ['group' => $group]);
         }
         return view('group.showStudentGroup', ['group' => $group]);
     }
 
-    public function renameGroup($group)
+    public function renameGroup(Group $group)
     {
-//        dd($group);
         return view('group.rename', ['group' => $group]);
     }
 
@@ -87,11 +86,11 @@ class GroupController extends Controller
         $this->validate(
             $request,
             [
-                'group_name' => 'required|min:6'
+                'group_name' => 'required|min:5'
             ]
         );
-        $group = Group::find($request->group_id);
-        $group->name = $request->group_name;
+        $group = Group::where('id', $request->get('group_id'))->first();
+        $group->name = $request->get('group_name');
         $group->save();
         return redirect(route('groups.index'));
     }
@@ -104,7 +103,7 @@ class GroupController extends Controller
     /**
      *  Deactivate the group from storage.
      * @param $group
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      */
     public function deactivateGroup($group)
     {

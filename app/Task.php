@@ -17,4 +17,9 @@ class Task extends Model
     {
         return $this->belongsTo('App\Group', 'group_id');
     }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer', 'task_id');
+    }
 }

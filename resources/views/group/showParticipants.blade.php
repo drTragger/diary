@@ -2,15 +2,15 @@
 
 @section('content')
     @include('common.errors')
-    <div class="container-form">
+    <div class="container">
         <h3 class="text-center">Participants</h3>
         @if(!empty($participants))
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Remove</th>
+                    <th class="table-col-1">Name</th>
+                    <th class="table-col-2">Email</th>
+                    <th class="table-col-3">Remove</th>
                 </tr>
                 </thead>
 

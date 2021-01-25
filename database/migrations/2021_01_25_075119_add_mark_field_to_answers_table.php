@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToTable extends Migration
+class AddMarkFieldToAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddStatusToTable extends Migration
      */
     public function up()
     {
-        Schema::table('users_groups', function (Blueprint $table) {
-            $table->char('status', 10);
+        Schema::table('answers', function (Blueprint $table) {
+            $table->unsignedTinyInteger('mark')->nullable();
         });
     }
 
@@ -24,8 +24,8 @@ class AddStatusToTable extends Migration
      */
     public function down()
     {
-        Schema::table('users_groups', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('answers', function (Blueprint $table) {
+            $table->dropColumn('mark');
         });
     }
 }

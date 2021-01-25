@@ -28,6 +28,22 @@ html, body {
     height: 100%;
 }
 
+.tasks {
+    position: relative;
+}
+
+.actions { /* Кирилл, не удаляй это */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
+}
+
+.actions form:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
 a {
     color:var(--a-btn-color);
 }
@@ -269,10 +285,12 @@ footer {
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     width: max-content;
+    color: var(--a-btn-color);
 }
 
 .a-btn-info:hover {
     background-color: var(--a-btn-bg-color_hover);
+    color: var(--a-btn-color);
 }
 
 .pages {
@@ -285,5 +303,18 @@ footer {
     text-align: center;
 }
 
+/*TABLE WIDTH START*/
+
+.table-col-1 {
+    width: 20%;
+}
+.table-col-2 {
+    width: 60%;
+}
+.table-col-3 {
+    width: 20%;
+}
+
+/*TABLE WIDTH END*/
 
 /*ALL END*/

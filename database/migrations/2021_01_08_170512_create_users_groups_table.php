@@ -16,8 +16,11 @@ class CreateUsersGroupsTable extends Migration
             $table->increments('id')->unsigned();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('group_id');
+            $table->char('status', 10);
             $table->timestamps();
-            
+
+
+            $table->unique(['user_id', 'group_id']);
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');

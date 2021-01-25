@@ -1,12 +1,13 @@
 @extends('templates.default')
 @section('nav')
-        @include('templates.topnav')
+    @include('templates.topnav')
 @endsection
 @section('content')
+    <div class="container">
     <form action="{{ route('homework.editTask') }}" method="post">
         {{ csrf_field() }}
         {{ method_field('put') }}
-        <input type="hidden" name="group_id" value="{{ $group_id }}">
+        <input type="hidden" name="group_id" value="{{ $group->id }}">
         <input type="hidden" name="task_id" value="{{ $task->id }}">
         <div class="form-group">
             <label for="subject">Subject</label>
@@ -19,4 +20,5 @@
         </div>
         <button type="submit" class="btn btn-default">Edit</button>
     </form>
+    </div>
 @endsection

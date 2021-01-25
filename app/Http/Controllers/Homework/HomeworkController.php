@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Homework;
 
-use App\Answer;
-use App\Group;
+use App\{Answer, Group, Task};
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\TaskRequest;
-use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\{Redirect, Auth};
 
 class HomeworkController extends Controller
 {
@@ -25,10 +21,21 @@ class HomeworkController extends Controller
     public function index(Request $request)
     {
         $group = $request->id;
-        $tasks = Task::where('group_id', $group)->get();
-        $tasks = Controller::paginate($tasks, 10)->setPath((int)$group . '/');
-        $group = Group::where('id', $group)->first();
         $check = $this->homeworkService->checkOwner($request);
+        $tasks = Task::with('answers')->where('group_id', $group)->get();
+
+        if (!$check) {
+            $unsubmittedTasks = [];
+            foreach ($tasks as $task) {
+                if (empty($task->answers->where('owner_id', Auth::user()->id)->all())) {
+                    $unsubmittedTasks[] = $task;
+                }
+            }
+            $tasks = $unsubmittedTasks;
+        }
+
+        $tasks = Controller::paginate($tasks)->setPath((int)$group);
+        $group = Group::where('id', $group)->first();
         return view('homework.tasks', ['tasks' => $tasks, 'group' => $group, 'check' => $check]);
     }
 
@@ -37,13 +44,14 @@ class HomeworkController extends Controller
         return view('homework.marks', ['marks' => $this->homeworkService->getMarks($group)]);
     }
 
-    public function answer()
+    public function answer(Request $request)
     {
-        // TODO create a feature to display the task
-        return view('homework.answer');
+        $task = json_decode($request->task);
+        dd($task);
+//        return view('homework.showHomework', ['task'=>$task, 'id'=>$request->group_id]);
     }
 
-    public function addAnswer(Request $request)
+    public function addAnswer(Request $request) //student
     {
         $this->validate(
             $request,
@@ -51,18 +59,19 @@ class HomeworkController extends Controller
                 'answer' => 'required',
             ]
         );
+        $group = json_decode($request->group_id);
         Answer::create([
             'owner_id' => Auth::user()->id,
             'content' => $request->answer,
-            'group_id' => $request->group_id,
+            'group_id' => $group->id,
             'task_id' => $request->task_id,
         ]);
-        return redirect(route('homework.index', $request->group_id));
+        return redirect(route('homework.index', $group->id));
     }
 
-    public function task(int $groupId)
+    public function task(Group $group)
     {
-        return view('homework.task', ['groupId' => $groupId]);
+        return view('homework.task', ['group' => $group]);
     }
 
     public function addTask(TaskRequest $request)
@@ -74,9 +83,8 @@ class HomeworkController extends Controller
 
     public function showTask(Request $request)
     {
-        $task = $request->id;
-        $task = $tasks = Task::where('id', $task)->first();
-        $group = $task->group_id;
+        $task = $tasks = Task::where('id', $request->task)->first();
+        $group = $request->group;
         $group = Group::where('id', $group)->first();
         return view('homework.answer', ['task' => $task, 'group' => $group]);
     }
@@ -84,7 +92,7 @@ class HomeworkController extends Controller
     public function taskEdition(Task $task, Request $request)
     {
         $task = $this->homeworkService->getTask($task->id)->first();
-        return view('homework.task_edit', ['task' => $task, 'group_id' => $request->get('group_id')]);
+        return view('homework.task_edit', ['task' => $task, 'group' => $this->homeworkService->getGroupById($request->get('group_id'))]);
     }
 
     public function editTask(TaskRequest $request)
@@ -98,4 +106,26 @@ class HomeworkController extends Controller
         $this->homeworkService->deleteTask($task);
         return Redirect::back();
     }
+
+    public function submittedTasks(Request $request)
+    {
+        $group = $request->group;
+        $tasks = Task::where('group_id', $group)->get();
+        $group = Group::where('id', $group)->first();
+        return view('homework.submittedTask', ['tasks' => $tasks, 'group' => $group]);
+    }
+
+    public function estimateTask(Task $task)
+    {
+        $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->get();
+        $group = Group::where('id', $task->group_id)->first();
+        return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
+    }
+
+    public function setMark(Answer $answer, Request $request)
+    {
+        $this->homeworkService->setMark($request->get('mark'), $answer);
+        return redirect(route('homework.estimate', $request->get('task')));
+    }
+
 }
