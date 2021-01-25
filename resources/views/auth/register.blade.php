@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <div class="panel-heading">Registration</div>
+    <h3 class="col-12">Registration</h3>
 
-    <form class="form-horizontal auth-form-width" role="form" method="POST" action="{{ url('/register') }}">
+    <form class="col-12 " role="form" method="POST" action="{{ url('/register') }}">
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            <div class="d-flex justify-center">
+            <div class="text-center">
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Sign in
                 </button>

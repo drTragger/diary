@@ -2,10 +2,9 @@
 
 @section('content')
     @include('common.errors')
-    <div class="margin-0-auto min-width-50">
-        <div class="container-form">
-            <h3 class="text-center">Create new group</h3>
-            <form action="{{route('groups.add')}}" method="POST" class="d-flex flex-direction-column">
+        <div class="container-form d-flex flex-wrap justify-content-center">
+            <h3 class="text-center col-12">Create new group</h3>
+            <form action="{{route('groups.add')}}" method="POST" class="mt-5 text-center col-12">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="form-group">
@@ -20,5 +19,4 @@
                 <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
-    </div>
 @endsection

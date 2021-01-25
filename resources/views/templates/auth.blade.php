@@ -15,7 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <style>
         body {
@@ -28,13 +28,13 @@
     </style>
 </head>
 <body>
-<div class="container auth-container">
-    <div class="auth">
-        <div class="auth-logo-container">
-            <a class="auth-a-logo" href="{{ url('/login') }}" title="На главную">
-                <img src="/images/logo.png" alt="Logo" class="auth-logo">
-            </a>
-        </div>
+<div class="container mt-5 mb-3 col-6 d-flex flex-wrap text-center">
+    <div class="row col-12">
+        <a class="mb-4 margin-0-auto" href="{{ url('/login') }}" title="To main the page">
+            <img src="/images/logo.png" alt="Logo" class="img-fluid">
+        </a>
+    </div>
+    <div class="row col-12">
         @yield('content')
     </div>
 </div>

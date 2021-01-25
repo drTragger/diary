@@ -1,12 +1,4 @@
 @extends('templates.default')
-@section('nav')
-    <li>
-        <a href="#" class="btn main-nav-a-btn">Marks</a>
-    </li>
-    <li>
-        <a href="{{ route('homework.index', $group) }}" class="btn main-nav-a-btn">Homework</a>
-    </li>
-@endsection
 @section('content')
     @include('common.errors')
     <div class="container-form">

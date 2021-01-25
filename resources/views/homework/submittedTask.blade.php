@@ -1,7 +1,5 @@
 @extends('templates.default')
-@section('nav')
-    @include('templates.topnav')
-@endsection
+
 @section('content')
     @if(!empty($tasks))
         <div class="container">

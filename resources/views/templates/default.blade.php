@@ -15,56 +15,44 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!--our styles-->
     <link rel="stylesheet" href="/css/style.css">
 
     <style>
         body {
             font-family: 'Lato';
         }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
     </style>
 </head>
 <body class="default">
 <header class="default-header">
-    <nav class="default-nav d-flex justify-space-between align-items-center">
-        <div class="d-flex justify-center">
-            <a class="" href="{{ route('groups.index') }}">
-                <img src="/images/logo.png" alt="Logo" class="logo" title="На главную">
-            </a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-sm col-12">
+        <div class="col-2">
+            <!--Logo-->
+            <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page" class="rounded logo"></a>
         </div>
-        <div class="default-nav-account">
-            <p><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}</p>
-            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log out</a>
+        <div class="col-8">
+            <!--Category-->
+            <ul class="navbar-nav">
+                <a href="{{route('groups.index')}}" class="nav-link text-dark">Название сайта</a>
+            </ul>
+        </div>
+        <div class="2">
+            <!--User-->
+            <p title="It is you"><i class="fa fa-user-circle" aria-hidden="true"></i>: {{ Auth::user()->name }} </p>
+            <a href="{{ url('/logout') }}"><i class="fa fa-times" aria-hidden="true"></i> Logout</a>
         </div>
     </nav>
 </header>
 <main class="d-flex">
-    <div class="left-content">
-        <nav class="left-nav">
-            <ul class="left-content-ul">
-                <li>
-                    <a href="{{route('groups.index')}}"
-                       class="btn main-nav-a-btn">My groups
-                    </a>
-                </li>
-                @yield('nav')
-            </ul>
-        </nav>
-    </div>
-    <div class="right-content d-flex flex-direction-row flex-wrap">
+    <div class="container mt-4 mb-4">
         @yield('content')
     </div>
 </main>
-<footer class="d-flex justify-center align-items-center">
-    <div>
-        <h4>
-            &copy; junstudio 2020
-        </h4>
-    </div>
-</footer>
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
         integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"

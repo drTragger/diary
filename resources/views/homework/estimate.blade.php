@@ -1,7 +1,4 @@
 @extends('templates.default')
-@section('nav')
-    @include('templates.topnav')
-@endsection
 @section('content')
     @if(!empty($answers->all()))
         <div class="container-form">

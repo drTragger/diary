@@ -1,9 +1,6 @@
 @extends('templates.default')
-@section('nav')
-    @include('templates.topnav')
-@endsection
+
 @section('content')
-    <div class="container">
     <form action="{{ route('homework.editTask') }}" method="post">
         {{ csrf_field() }}
         {{ method_field('put') }}
@@ -20,5 +17,4 @@
         </div>
         <button type="submit" class="btn btn-default">Edit</button>
     </form>
-    </div>
 @endsection

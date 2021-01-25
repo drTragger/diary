@@ -1,7 +1,6 @@
 @extends('templates.default')
 
 @section('content')
-    <div class="container">
         @if(count($marks) > 0)
             <table class="table">
                 <thead>
@@ -28,5 +27,4 @@
                 <div class="card-body">There are no marks</div>
             </div>
         @endif
-    </div>
 @endsection
