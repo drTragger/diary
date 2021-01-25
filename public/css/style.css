@@ -303,5 +303,18 @@ footer {
     text-align: center;
 }
 
+/*TABLE WIDTH START*/
+
+.table-col-1 {
+    width: 20%;
+}
+.table-col-2 {
+    width: 60%;
+}
+.table-col-3 {
+    width: 20%;
+}
+
+/*TABLE WIDTH END*/
 
 /*ALL END*/

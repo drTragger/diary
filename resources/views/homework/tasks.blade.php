@@ -10,7 +10,7 @@
     <div class="container">
         @if(!empty ($tasks))
             @foreach($tasks as $task)
-                <div class="col-6 group-item tasks">
+                <div class="col-6 group-item tasks margin-0-auto mb-3">
                     @if($check)
                         <div class="actions">
                             <form action="{{ route('homework.taskEdition', ['task' => $task->id]) }}"
