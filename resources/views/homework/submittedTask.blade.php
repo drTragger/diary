@@ -4,13 +4,13 @@
 @endsection
 @section('content')
     @if(!empty($tasks))
-        <div class="container-form">
+        <div class="container">
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Subject</th>
-                    <th>Estimate</th>
+                    <th class="table-col-1">#</th>
+                    <th class="table-col-2">Subject</th>
+                    <th class="table-col-3">Estimate</th>
                 </tr>
                 </thead>
                 <tbody class="table">

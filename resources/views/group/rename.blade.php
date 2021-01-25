@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 margin-0-auto">
             <div class="panel panel-default">
-                <div class="panel-heading">Rename Group</div>
+                <div class="panel-heading text-center">Rename Group</div>
 
                 <div class="panel-body">
-                    <form action="{{route('groups.saveRename')}}" method="post">
+                    <form action="{{route('groups.saveRename')}}" method="post" class="d-flex justify-center">
                         {{csrf_field()}}
                         {{method_field('put')}}
                         <input type="hidden" name="group_id" value="{{ $group->id }}">
