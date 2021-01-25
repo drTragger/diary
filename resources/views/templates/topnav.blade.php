@@ -14,7 +14,7 @@
     <a href="{{ route('homework.submittedTask', $group->id) }}" class="btn main-nav-a-btn">Submitted homework</a>
 </li>
 <li>
-    <a href="#" class="btn main-nav-a-btn">Marks</a>
+    <a href="{{ route('homework.marks', $group->id) }}" class="btn main-nav-a-btn">Marks</a>
 </li>
 <li>
     <a href="{{route('groups.renameGroup', $group)}}" class="btn main-nav-a-btn">Rename Group</a>

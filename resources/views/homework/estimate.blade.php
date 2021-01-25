@@ -3,7 +3,7 @@
     @include('templates.topnav')
 @endsection
 @section('content')
-    @if(!empty($answers))
+    @if(!empty($answers->all()))
         <div class="container-form">
             <table class="table">
                 <thead>
@@ -33,5 +33,7 @@
                 </tbody>
             </table>
         </div>
+    @else
+        <p>Nothing to estimate</p>
     @endif
 @endsection
