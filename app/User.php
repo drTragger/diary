@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Task' );
     }
     public function answers() {
-        return $this->hasMany('App\Answer');
+        return $this->hasMany('App\Answer', 'owner_id');
     }
     public function checkedAnswers() {
         return $this->hasMany('App\Checked_answers');

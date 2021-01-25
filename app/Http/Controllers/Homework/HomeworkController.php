@@ -106,12 +106,15 @@ class HomeworkController extends Controller
 
     public function estimateTask(Task $task)
     {
-        $answers = Answer::where('task_id', $task->id)
-            ->join('users', 'owner_id', '=', 'users.id')
-            ->select('answers.*', 'users.name')
-            ->get();
+        $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->get();
         $group = Group::where('id', $task->group_id)->first();
-        return view('homework.estimate', ['answers' => $answers, 'group' => $group]);
+        return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
+    }
+
+    public function setMark(Answer $answer, Request $request)
+    {
+        $this->homeworkService->setMark($request->get('mark'), $answer);
+        return redirect(route('homework.estimate', $request->get('task')));
     }
 
 }

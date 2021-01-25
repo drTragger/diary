@@ -3,7 +3,7 @@
 
 namespace App\Http\Services;
 
-use App\{Group, Task, Checked_asnwers};
+use App\{Answer, Group, Task, Checked_asnwers};
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,5 +73,12 @@ class HomeworkService
     public function getGroupById(int $id)
     {
         return Group::where('id', $id)->first();
+    }
+
+    public function setMark(int $mark, Answer $answer)
+    {
+        $answer = Answer::where('id', '=', $answer->id)->first();
+        $answer->mark = $mark;
+        $answer->save();
     }
 }
