@@ -18,7 +18,7 @@
             <input type="hidden" name="task_id" value="{{$task->id}}">
             <div class="form-group">
                 <label for="answer">Answer</label>
-                <textarea class="form-control" rows="5" id="answer" name="answer"></textarea>
+                <textarea class="form-control" rows="5" id="answer" name="answer">{{ old('answer') }}</textarea>
             </div>
             <div class="inline">
                 <span>*optional</span>

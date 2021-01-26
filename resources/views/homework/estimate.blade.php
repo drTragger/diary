@@ -30,11 +30,13 @@
                         <th scope="row">{{$answer->id}}</th>
                         <td>{{ $answer->user->name }}</td>
                         <td>{{ $answer->content }}</td>
-                        @if(isset($task->file))
+                        @if(isset($answer->file))
                             <td>
                                 <a href="{{ route('homework.downloadAnswer', ['task' => $answer->id]) }}"
                                    class="btn btn-info">Attachment</a>
                             </td>
+                        @else
+                            <td>No attachment</td>
                         @endif
                         <td>
                             <form action="{{ route('homework.setMark', $answer->id) }}" method="post"

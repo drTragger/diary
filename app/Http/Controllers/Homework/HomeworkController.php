@@ -128,9 +128,11 @@ class HomeworkController extends Controller
 
     public function downloadAnswer(Answer $answer)
     {
-        $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
-        return file_exists($path) ?
-            response()->download($path) :
-            redirect()->route('groups.index');
+        $path = 'app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file;
+        if (file_exists($path)) {
+            $path = storage_path($path);
+            return response()->download($path);
+        }
+        return redirect()->route('groups.index');
     }
 }
