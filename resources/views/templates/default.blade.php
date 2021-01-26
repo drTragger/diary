@@ -28,21 +28,21 @@
     </style>
 </head>
 <body>
-<header class="default-header">
+<header class="default-header " id="shadow">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm col-12">
-        <div class="col-2">
+        <div class="col-5">
             <!--Logo-->
             <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page"
                                                      class="rounded logo"></a>
         </div>
-        <div class="col-8">
+        <div class="col-6 text-center">
             <!--Category-->
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ">
                 <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3></a></li>
             </ul>
         </div>
-        <div class="2">
+        <div class="col-1">
             <!--User-->
             <p title="It is you"><i class="fa fa-user-circle" aria-hidden="true"></i>: {{ Auth::user()->name }} </p>
             <a href="{{ url('/logout') }}"><i class="fa fa-times" aria-hidden="true"></i> Logout</a>

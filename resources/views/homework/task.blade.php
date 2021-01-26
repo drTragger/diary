@@ -13,13 +13,14 @@
             </ul>
         </div>
     @endif
-    <div class="add-task">
+    <div class="add-task fill-bg">
         <form action="{{ route('homework.addTask') }}" method="POST" enctype="multipart/form-data" class="text-center">
             {{ csrf_field() }}
             <input type="hidden" name="group_id" value="{{ $group->id }}">
             <div class="form-group">
                 <label for="subject">Title</label>
-                <input type="text" name="subject" id="subject" class="form-control" value="{{ old('subject') }}" required maxlength="60" autofocus>
+                <input type="text" name="subject" id="subject" class="form-control" value="{{ old('subject') }}"
+                       required maxlength="60" autofocus>
             </div>
             <div class="form-group">
                 <label for="task">Task</label>

@@ -7,7 +7,7 @@
     @include('common.errors')
     <a href="{{route('groups.selectUser', $group->id)}}" class="btn btn-success">Add participant</a>
     @if(!empty($participants))
-        <table class="table">
+        <table class="table text-center">
             <thead>
             <tr>
                 <th class="table-col-1">Name</th>
@@ -18,7 +18,7 @@
 
             <tbody class="table">
             @foreach($participants as $participant)
-                <tr>
+                <tr class="table-color">
                     <td>{{$participant->name}}</td>
                     <td>{{$participant->email}}</td>
                     <td>

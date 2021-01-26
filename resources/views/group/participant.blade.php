@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-secondary">Back</a>
+    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-warning">Back</a>
 @endsection
 @section('content')
     @if ($errors->any())
@@ -13,7 +13,7 @@
         </div>
     @endif
     <div class="panel panel-default col-12">
-        <div>
+        <div class="fill-bg">
             <form action="{{route('groups.addUser')}}" method="POST" class="text-center">
                 {{csrf_field()}}
                 {{method_field('patch')}}

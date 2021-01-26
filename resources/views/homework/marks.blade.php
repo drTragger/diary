@@ -1,11 +1,11 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.index')}}" class="btn btn-secondary">Back</a>
+    <a href="{{route('groups.index')}}" class="btn btn-warning">Back</a>
 @endsection
 
 @section('content')
     @if(count($marks) > 0)
-        <table class="table">
+        <table class="table text-center">
             <thead>
             <tr>
                 <th>Task title</th>
@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             @foreach($marks as $mark)
-                <tr>
+                <tr class="table-color">
                     <td>{{ $mark->task->name }}</td>
                     <td>{{ $mark->task->content }}</td>
                     <td>{{ $mark->user->name }}</td>

@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-warning">Back</a>
 @endsection
 @section('content')
     @if ($errors->any())
@@ -13,7 +13,7 @@
         </div>
     @endif
     @if(!empty($answers->all()))
-        <div class="container-form">
+        <div class="container-form fill-bg">
             <table class="table">
                 <thead>
                 <tr>
@@ -55,6 +55,8 @@
             </table>
         </div>
     @else
-        <p>Nothing to estimate</p>
+        <div class="bg-warning text-center pt-3 pb-2">
+            <p>Nothing to estimate</p>
+        </div>
     @endif
 @endsection

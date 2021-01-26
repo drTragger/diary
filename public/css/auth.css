@@ -55,7 +55,8 @@ form {
 }
 
 .button:hover {
-    color: #d3d3d3
+    color: #d3d3d3;
+    transition: 1s;
 }
 
 .icons {
@@ -73,7 +74,7 @@ form {
     height: 30px;
     position: absolute;
     background: var(--border);
-    top: 0px;
+    top: 0;
     left: 100%;
 }
 
@@ -116,7 +117,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     border: 0;
     -webkit-text-fill-color: var(--button);
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
     transition: background-color 5000s ease-in-out 0s;
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%);
 }
@@ -134,6 +135,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     color: var(--border);
     font-size: 1em;
+    transition: 0.7s;
 }
 
 .forgot-label {
@@ -166,12 +168,12 @@ i {
 }
 
 .checkbox:checked:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .checkbox:checked {
     background: rgba(3, 3, 3, .4);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.5);
     color: #fff;
 }
 
@@ -179,7 +181,7 @@ i {
     content: '\2714';
     font-size: 10px;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 4px;
     color: #fff;
 }
@@ -199,4 +201,5 @@ i {
 .button:hover {
     background-color: var(--button);
     color: var(--border);
+    transition: 1s;
 }

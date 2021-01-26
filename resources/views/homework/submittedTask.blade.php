@@ -13,7 +13,7 @@
                 </thead>
                 <tbody class="table">
                 @foreach($tasks as $task)
-                    <tr>
+                    <tr class="table-color">
                         <td>{{$task->id}}</td>
                         <td>{{$task->name}}</td>
                         <td>
