@@ -4,13 +4,14 @@
 @endsection
 
 @section('content')
+
     @if($group->owner_id == Auth::user()->id)
         <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
     @endif
     @if(count($tasks) > 0)
         <div class="d-flex flex-wrap justify-content-around mt-4">
             @foreach($tasks as $task)
-                <div class="col-5 border border-dark  pt-3 pb-3 bg-task mb-4 grid-t-r">
+                <div class="col-5 border border-dark  pt-3 pb-3 bg-task mb-4 grid-t-r fill-bg">
                     <div>
                         <h4 class="homework-title">{{$task->name}}</h4>
                         <p class="word-wrap">{{mb_strimwidth($task->content, 0 , 200, '...')}}</p>

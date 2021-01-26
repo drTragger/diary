@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="add-task">
+    <div class="add-task fill-bg">
         <form action="{{ route('homework.addTask') }}" method="POST" class="text-center">
             {{ csrf_field() }}
             <input type="hidden" name="groupId" value="{{ $group->id }}">

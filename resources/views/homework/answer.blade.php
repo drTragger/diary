@@ -5,7 +5,7 @@
 
 @section('content')
     @include('common.errors')
-    <div class="container-form bg-light pt-4">
+    <div class="container-form bg-light pt-4 fill-bg">
             <h3 class="text-center">Homework</h3>
             <h4 class="text-center">Title: {{$task->name}}</h4>
             <p class="word-wrap p-2">{{$task->content}}</p>
