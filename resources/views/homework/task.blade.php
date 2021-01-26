@@ -10,7 +10,7 @@
             <input type="hidden" name="groupId" value="{{ $group->id }}">
             <div class="form-group">
                 <label for="subject">Title</label>
-                <input type="text" name="subject" id="subject" class="form-control" required maxlength="60">
+                <input type="text" name="subject" id="subject" class="form-control" required maxlength="60" autofocus>
             </div>
             <div class="form-group">
                 <label for="task">Task</label>

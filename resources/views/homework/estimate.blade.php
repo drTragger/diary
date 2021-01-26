@@ -1,28 +1,33 @@
 @extends('templates.default')
+@section('back')
+    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+@endsection
 @section('content')
     @if(!empty($answers->all()))
         <div class="container-form">
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Participant</th>
-                    <th>Answer</th>
-                    <th>Mark</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Participant</th>
+                    <th scope="col">Answer</th>
+                    <th scope="col">Mark</th>
                 </tr>
                 </thead>
-                <tbody class="table">
+                <tbody>
                 @foreach($answers as $answer)
                     <tr>
-                        <td>{{$answer->id}}</td>
+                        <th scope="row">{{$answer->id}}</th>
                         <td>{{$answer->user->name}}</td>
                         <td>{{$answer->content}}</td>
                         <td>
-                            <form action="{{ route('homework.setMark', $answer->id) }}" method="post">
+                            <form action="{{ route('homework.setMark', $answer->id) }}" method="post"
+                                  class="form-inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="task" value="{{ $task->id }}">
-                                <input type="number" name="mark" placeholder="Enter the mark" required>
-                                <input type="submit" value="Save" class="btn a-btn-info align-self-center">
+                                <input type="number" name="mark" class="form-control" placeholder="Enter the mark"
+                                       required>
+                                <button type="submit" class="btn btn-secondary">Estimate</button>
                             </form>
                         </td>
                     </tr>

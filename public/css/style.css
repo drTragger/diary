@@ -79,3 +79,22 @@ main {
     display: flex;
     gap: 1rem;
 }
+
+.pagination {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.pagination-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--ligth-main-color);
+}
+
+.pagination span, .pagination a {
+    padding: 5px;
+    color: #000000;
+}

@@ -22,7 +22,7 @@
                         <td>{{ $group->created_at }}</td>
                         <td>
                             <a href="{{ route('homework.index', $group->id) }}"
-                               class="btn btn-primary">Homework</a>
+                               class="btn btn-primary text-black">Homework</a>
                             <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-success">Marks</a>
                             @if($group->owner_id == Auth::user()->id)
                                 <a href="{{route('groups.showParticipants', $group->id)}}"

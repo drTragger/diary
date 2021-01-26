@@ -42,9 +42,10 @@
                     @endif
                 </div>
             @endforeach
-
-            <div class="w-100 d-flex justify-center">
-                {{ $tasks->links() }}
+            <div class="pagination">
+                <div class="pagination-buttons">
+                    {{ $tasks->links() }}
+                </div>
             </div>
         </div>
     @else

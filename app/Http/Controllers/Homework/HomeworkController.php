@@ -35,7 +35,7 @@ class HomeworkController extends Controller
             $tasks = $unsubmittedTasks;
         }
 
-        $tasks = Controller::paginate($tasks)->setPath((int)$group);
+        $tasks = Controller::paginate($tasks, 6)->setPath((int)$group);
         $group = Group::where('id', $group)->first();
         return view('homework.tasks', ['tasks' => $tasks, 'group' => $group, 'check' => $check]);
     }
