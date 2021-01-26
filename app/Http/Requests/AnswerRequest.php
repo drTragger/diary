@@ -25,8 +25,16 @@ class AnswerRequest extends Request
     public function rules()
     {
         return [
-            'answer' => 'required|max:65535',
-            'file' => 'image|file|max:1024',
+            'subject' => 'required|max:255',
+            'task' => 'required|max:65535',
+            'file' => 'mimes:doc,docx,xls,xlsx,pdf,jpeg,jpg,png|max:1024'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'file.mimes' => 'File must be an image of a file',
         ];
     }
 }
