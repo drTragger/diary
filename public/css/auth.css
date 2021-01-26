@@ -1,0 +1,202 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+
+:root {
+    --bg: #1a1f25;
+    --button: #e6b333;
+    --border: #22272d;
+}
+
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+html, body {
+    background: var(--bg);
+    font-family: 'Roboto', sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+#man-people-user, #lock-locker {
+    fill: white;
+}
+
+.wrapper {
+    width: 300px;
+    margin: 12% auto;
+}
+
+form {
+    position: relative;
+}
+
+.clear {
+    clear: both;
+}
+
+.sign-in {
+    float: left;
+    color: white;
+    font-size: 1.3em;
+}
+
+.button {
+    float: right;
+    color: #7f8084;
+    border: 1px solid var(--border);
+    padding: 7px 15px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #d3d3d3
+}
+
+.icons {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    padding: 7px;
+    left: 5px;
+}
+
+.icon::after {
+    content: "";
+    width: 1px;
+    height: 30px;
+    position: absolute;
+    background: var(--border);
+    top: 0px;
+    left: 100%;
+}
+
+
+input {
+    width: 100%;
+    padding: 5px;
+    height: 40px;
+    border-radius: 3px;
+    margin: 5px 0;
+    outline: none;
+}
+
+input[type="text"]:focus, input[type="email"]:focus input[type="password"]:focus {
+    border: 1px solid white;
+    box-shadow: none;
+}
+
+.user-input:focus .user {
+    background: white !important;
+
+}
+
+input {
+    background: transparent;
+    border: 2px solid var(--border);
+    padding-left: 45px;
+    color: var(--button);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 0;
+    -webkit-text-fill-color: var(--button);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%);
+}
+
+input[type="submit"] {
+    background: var(--button);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    cursor: pointer;
+    padding-right: 45px;
+}
+
+input[type="submit"]:hover {
+    color: var(--border);
+    font-size: 1em;
+}
+
+.forgot-label {
+    font-size: 0.8em;
+    color: #7f8084;
+    float: right;
+    padding: 3px 0;
+    cursor: pointer;
+}
+
+i {
+    color: white;
+}
+
+#remember-container {
+    position: relative;
+    margin: 10px 20px;
+}
+
+.checkbox {
+    position: relative;
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 5px;
+    border-radius: 4px;
+    background: rgba(3, 3, 3, .2);
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+}
+
+.checkbox:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox:checked {
+    background: rgba(3, 3, 3, .4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.checkbox:checked:after {
+    content: '\2714';
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    color: #fff;
+}
+
+#remember {
+    position: absolute;
+    font-size: 0.8em;
+    color: #7f8084;
+    top: 2px;
+    left: 20px;
+}
+
+.help-block {
+    color: var(--button)
+}
+
+.button:hover {
+    background-color: var(--button);
+    color: var(--border);
+}
