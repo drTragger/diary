@@ -42,7 +42,7 @@ class HomeworkController extends Controller
 
     public function getMarks(Group $group)
     {
-        return view('homework.marks', ['marks' => $this->homeworkService->getMarks($group)]);
+        return view('homework.marks', ['marks' => $this->homeworkService->getMarks($group), 'group' => $group]);
     }
 
     public function answer(Request $request)

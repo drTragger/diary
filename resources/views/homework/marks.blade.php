@@ -23,8 +23,10 @@
                     <td>
                         @if(isset($mark->mark))
                             {{ $mark->mark }}
-                        @else
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->id === $group->owner_id)
                             <a href="{{ route('homework.estimate', ['task' => $mark->task_id]) }}" class="btn btn-secondary">Estimate</a>
+                        @else
+                            Not estimated
                         @endif
                     </td>
                 </tr>

@@ -43,7 +43,8 @@
                                   class="form-inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="task" value="{{ $task->id }}">
-                                <input type="number" name="mark" class="form-control" placeholder="Enter the mark"
+                                <input type="number" name="mark" class="form-control"
+                                       placeholder="Enter the mark"
                                        required>
                                 <button type="submit" class="btn btn-secondary">Estimate</button>
                             </form>
