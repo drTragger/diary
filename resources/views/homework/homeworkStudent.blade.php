@@ -3,5 +3,5 @@
 {{--    {{csrf_field()}}--}}
 {{--    <button type="submit" class="btn btn-primary">Submit</button>--}}
 {{--</form>--}}
-<a href="{{route('homework.show', ['task'=>$task->id,'group'=> $group->id])}}" class="btn a-btn-info">Submit</a>
+<a href="{{route('homework.show', ['task'=>$task->id,'group'=> $group->id])}}" class="btn btn-dark">Submit</a>
 

@@ -1,31 +1,26 @@
 @extends('templates.default')
-@section('nav')
-    @include('templates.topnav')
+@section('back')
+    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-secondary">Back</a>
 @endsection
 @section('content')
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 margin-0-auto">
-                <div class="panel panel-default">
-                    <div>
-                        @include('common.errors')
-                    </div>
-                    @if(!empty(session('mess')))
-                        <div>{{session('mess')}}</div>
-                    @endif
-                    <div>
-                        <form action="{{route('groups.addUser')}}" method="POST" class="d-flex flex-direction-column">
-                            {{csrf_field()}}
-                            {{method_field('patch')}}
-                            <label for="participant">Participant's email</label>
-                            <input type="text" name="email" id="participant">
-                            <input type="hidden" name="id" value="{{$group->id}}">
-                            <input type="submit" value="Add participant">
-                        </form>
-                    </div>
+    <div class="panel panel-default col-12">
+        <div>
+            @include('common.errors')
+        </div>
+        @if(!empty(session('mess')))
+            <div class="bg-warning pt-2 pb-2 text-center mb-3">{{session('mess')}}</div>
+        @endif
+        <div>
+            <form action="{{route('groups.addUser')}}" method="POST" class="text-center">
+                {{csrf_field()}}
+                {{method_field('patch')}}
+                <input type="hidden" name="id" value="{{$group->id}}">
+                <div class="form-group">
+                    <label for="participant">Participant's email</label>
+                    <input type="text" name="email" id="participant" class="form-control">
                 </div>
-            </div>
+                <button type="submit" class="btn btn-success">Add participant</button>
+            </form>
         </div>
     </div>
 @endsection

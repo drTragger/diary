@@ -12,9 +12,14 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use \Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('auth/login');
+    if(Auth::check()){
+        return redirect(\route('groups.index'));
+    } else {
+        return view('auth/login');
+    }
 });
 
 Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'auth'], function () {
