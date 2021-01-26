@@ -3,54 +3,67 @@
     --grey-main-color: #97989a;
     --ligth-main-color: #f1db4c;
     --logo-width: 100px;
-    --table-bg:rgba(183,216,253,1);
+    --table-bg: rgba(183, 216, 253, 1);
     --table-bg-hover: rgba(122, 175, 255, 1);
     --bg: #f1db4c;
 }
+
 /*ROOT END*/
 
 /*DEFAULT START*/
 html, body {
     height: 100%;
 }
+
 body {
     display: grid;
     grid-template-rows: 0fr 1fr;
 }
+
 header {
     background-color: var(--ligth-main-color);
 }
+
 main {
     background-color: var(--grey-main-color);
 }
+
 /*DEFAULT END*/
 
 .logo {
     width: var(--logo-width);
 }
+
 .table-color {
     background-color: var(--table-bg);
 }
+
 .table-color:hover {
     background-color: var(--table-bg-hover);
 }
+
 .margin-0-auto {
     margin: 0 auto;
 }
+
 .bg-task {
     background-color: var(--bg);
 }
+
 .word-wrap {
     word-break: break-all;
 }
+
 .grid-t-r {
     display: grid;
     grid-template-rows: 1fr 0fr;
 }
+
 .sticky {
     position: sticky;
     top: 0;
     left: 0;
 }
+
 
 
