@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Homework;
 
-use App\{Answer, Group, Http\Requests\AnswerRequest, Task};
+use App\{Answer, Group, Task};
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TaskRequest;
+use App\Http\Requests\{TaskRequest, AnswerRequest, MarkRequest};
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
 use Illuminate\Support\Facades\{Redirect, Auth, Storage};
@@ -112,7 +112,7 @@ class HomeworkController extends Controller
         return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
     }
 
-    public function setMark(Answer $answer, Request $request)
+    public function setMark(Answer $answer, MarkRequest $request)
     {
         $this->homeworkService->setMark($request->get('mark'), $answer);
         return redirect(route('homework.estimate', $request->get('task')));
