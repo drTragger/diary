@@ -6,7 +6,7 @@
     @if(count($groups)>0)
         <table class="table text-center">
             <thead>
-            <tr class="table-active">
+            <tr>
                 <th>Name</th>
                 <th>Teacher</th>
                 <th>Created</th>
@@ -22,13 +22,13 @@
                         <td>{{ $group->created_at }}</td>
                         <td>
                             <a href="{{ route('homework.index', $group->id) }}"
-                               class="btn btn-primary text-black">Homework</a>
+                               class="btn btn-primary">Homework</a>
                             <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-success">Marks</a>
                             @if($group->owner_id == Auth::user()->id)
                                 <a href="{{route('groups.showParticipants', $group->id)}}"
-                                   class="btn btn-info">Participants</a>
-                                <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-warning">Rename</a>
-                                <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn btn-danger">Deactivate</a>
+                                   class="btn btn-secondary">Participants</a>
+                                <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-secondary">Rename</a>
+                                <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn btn-secondary">Deactivate</a>
                             @endif
                         </td>
                     </tr>
