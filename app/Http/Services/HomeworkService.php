@@ -79,4 +79,9 @@ class HomeworkService
         $answer->mark = $mark;
         $answer->save();
     }
+
+    public function getUnmarkedAnswers()
+    {
+
+    }
 }

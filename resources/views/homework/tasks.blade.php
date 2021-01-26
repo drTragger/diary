@@ -12,7 +12,7 @@
             @foreach($tasks as $task)
                 <div class="col-5 border border-dark  pt-3 pb-3 bg-task mb-4 grid-t-r">
                     <div>
-                        <h4>Title: {{$task->name}}</h4>
+                        <h4 class="homework-title">{{$task->name}}</h4>
                         <p class="word-wrap">{{mb_strimwidth($task->content, 0 , 200, '...')}}</p>
                     </div>
                     <p>{{$task->created_at}}</p>
@@ -23,6 +23,10 @@
                     @endif
                     @if($check)
                         <div class="actions d-flex justify-content-center mt-4">
+                            @if(count($task->answers->where('mark', null)))
+                                <a href="{{ route('homework.estimate', ['task' => $task->id]) }}"
+                                   class="btn btn-success">Estimate</a>
+                            @endif
                             <form action="{{ route('homework.taskEdition', ['task' => $task->id]) }}"
                                   method="post">
                                 {{ csrf_field() }}

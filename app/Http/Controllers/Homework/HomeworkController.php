@@ -24,13 +24,14 @@ class HomeworkController extends Controller
         $check = $this->homeworkService->checkOwner($request);
         $tasks = Task::with('answers')->where('group_id', $group)->get();
 
-        if (!$check) {
-            $unsubmittedTasks = [];
-            foreach ($tasks as $task) {
-                if (empty($task->answers->where('owner_id', Auth::user()->id)->all())) {
-                    $unsubmittedTasks[] = $task;
-                }
+        $unsubmittedTasks = [];
+        foreach ($tasks as $task) {
+            if (empty($task->answers->where('owner_id', Auth::user()->id)->all())) {
+                $unsubmittedTasks[] = $task;
             }
+        }
+
+        if (!$check) {
             $tasks = $unsubmittedTasks;
         }
 

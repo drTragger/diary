@@ -33,12 +33,13 @@
     <nav class="navbar navbar-expand-sm col-12">
         <div class="col-2">
             <!--Logo-->
-            <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page" class="rounded logo"></a>
+            <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page"
+                                                     class="rounded logo"></a>
         </div>
         <div class="col-8">
             <!--Category-->
             <ul class="navbar-nav">
-                <a href="{{route('groups.index')}}" class="nav-link text-dark"><h3>Name of Site</h3></a>
+                <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3></a></li>
             </ul>
         </div>
         <div class="2">
@@ -50,7 +51,7 @@
 </header>
 <main class="d-flex flex-column position-relative">
     <div class="position-sticky sticky ">
-            @yield('back')
+        @yield('back')
     </div>
     <div class="container mt-4 mb-4">
         @yield('content')

@@ -17,7 +17,7 @@
             <input type="hidden" name="group_id" value="{{$group}}">
             <input type="hidden" name="task_id" value="{{$task->id}}">
             <label for="answer">Answer</label>
-            <textarea class="p-2" rows="5"></textarea>
+            <textarea class="p-2" rows="5" id="answer" name="answer"></textarea>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>

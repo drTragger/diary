@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    const ACTIVE = 1;
+    const INACTIVE = 2;
+
     protected $fillable = ['teacher_id', 'group_id', 'name', 'content'];
 
     public function user()
