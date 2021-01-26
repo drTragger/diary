@@ -1,4 +1,7 @@
 @extends('templates.default')
+@section('back')
+    <a href="{{route('groups.index')}}" class="btn btn-secondary">Back</a>
+@endsection
 
 @section('content')
     @include('common.errors')

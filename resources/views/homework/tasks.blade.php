@@ -1,38 +1,47 @@
 @extends('templates.default')
+@section('back')
+    <a href="{{route('groups.index')}}" class="btn btn-secondary">Back</a>
+@endsection
 
 @section('content')
-    <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
+    @if($group->owner_id == Auth::user()->id)
+        <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
+    @endif
     @if(count($tasks) > 0)
-        @foreach($tasks as $task)
-            <div class="col-6 group-item tasks margin-0-auto mb-3">
-                @if($check)
-                    <div class="actions">
-                        <form action="{{ route('homework.taskEdition', ['task' => $task->id]) }}"
-                              method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="group_id" value="{{ $group->id }}">
-                            <button type="submit" class="btn btn-secondary">Edit</button>
-                        </form>
-                        <form action="{{ route('homework.deleteTask', ['task' => $task->id]) }}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+        <div class="d-flex flex-wrap justify-content-around mt-4">
+            @foreach($tasks as $task)
+                <div class="col-5 border border-dark  pt-3 pb-3 bg-task mb-4 grid-t-r">
+                    <div>
+                        <h4>Title: {{$task->name}}</h4>
+                        <p class="word-wrap">{{mb_strimwidth($task->content, 0 , 200, '...')}}</p>
                     </div>
-                @endif
-                <h4>{{$task->name}}</h4>
-                <p>{{$task->content}}</p>
-                <p>{{$task->created_at}}</p>
-                @if($check)
-                    @include('homework.homeworkOwner')
-                @else
-                    @include('homework.homeworkStudent')
-                @endif
-            </div>
-        @endforeach
+                    <p>{{$task->created_at}}</p>
+                    @if($check)
+                        @include('homework.homeworkOwner')
+                    @else
+                        @include('homework.homeworkStudent')
+                    @endif
+                    @if($check)
+                        <div class="actions d-flex justify-content-center mt-4">
+                            <form action="{{ route('homework.taskEdition', ['task' => $task->id]) }}"
+                                  method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                <button type="submit" class="btn btn-secondary">Edit</button>
+                            </form>
+                            <form action="{{ route('homework.deleteTask', ['task' => $task->id]) }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    @endif
+                </div>
+            @endforeach
 
-        <div class="w-100 d-flex justify-center">
-            {{ $tasks->links() }}
+            <div class="w-100 d-flex justify-center">
+                {{ $tasks->links() }}
+            </div>
         </div>
     @else
         <div class="card bg-warning">

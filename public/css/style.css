@@ -5,6 +5,7 @@
     --logo-width: 100px;
     --table-bg:rgba(183,216,253,1);
     --table-bg-hover: rgba(122, 175, 255, 1);
+    --bg: #f1db4c;
 }
 /*ROOT END*/
 
@@ -36,4 +37,20 @@ main {
 .margin-0-auto {
     margin: 0 auto;
 }
+.bg-task {
+    background-color: var(--bg);
+}
+.word-wrap {
+    word-break: break-all;
+}
+.grid-t-r {
+    display: grid;
+    grid-template-rows: 1fr 0fr;
+}
+.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
 

@@ -21,13 +21,17 @@
                         <td>{{ $group->user->name }}</td>
                         <td>{{ $group->created_at }}</td>
                         <td>
-                            <a href="{{route('groups.showParticipants', $group->id)}}"
-                               class="btn btn-info">Participants</a>
-                            <a href="{{ route('homework.index', [$group->id]) }}" class="btn btn-primary">Homework</a>
+                            <a href="{{ route('homework.index', [$group->id]) }}"
+                               class="btn btn-primary">Homeworks</a>
                             <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-success">Marks</a>
-                            <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-warning">Rename Group</a>
-                            <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn btn-danger">Deactivate
-                                group</a>
+                            @if($group->owner_id == Auth::user()->id)
+                                <a href="{{route('groups.showParticipants', $group->id)}}"
+                                   class="btn btn-info">Participants</a>
+                                <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-warning">Rename
+                                    Group</a>
+                                <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn btn-danger">Deactivate
+                                    group</a>
+                            @endif
                         </td>
                     </tr>
                 @endif

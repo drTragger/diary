@@ -1,5 +1,7 @@
 @extends('templates.default')
-
+@section('back')
+    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-secondary">Back</a>
+@endsection
 @section('content')
     <div class="panel panel-default col-12">
         <div>

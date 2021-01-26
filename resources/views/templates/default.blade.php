@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body class="default">
+<body>
 <header class="default-header">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm col-12">
@@ -38,7 +38,7 @@
         <div class="col-8">
             <!--Category-->
             <ul class="navbar-nav">
-                <a href="{{route('groups.index')}}" class="nav-link text-dark">Название сайта</a>
+                <a href="{{route('groups.index')}}" class="nav-link text-dark"><h3>Name of Site</h3></a>
             </ul>
         </div>
         <div class="2">
@@ -48,7 +48,10 @@
         </div>
     </nav>
 </header>
-<main class="d-flex">
+<main class="d-flex flex-column position-relative">
+    <div class="position-sticky sticky ">
+            @yield('back')
+    </div>
     <div class="container mt-4 mb-4">
         @yield('content')
     </div>

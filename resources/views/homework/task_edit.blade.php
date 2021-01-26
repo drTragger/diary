@@ -1,4 +1,7 @@
 @extends('templates.default')
+@section('back')
+    <a href="{{route('homework.index', $group->id)}}" class="btn btn-secondary">Back</a>
+@endsection
 
 @section('content')
     <form action="{{ route('homework.editTask') }}" method="post">
@@ -15,6 +18,6 @@
             <label for="task">Task</label>
             <textarea name="task" id="task" class="form-control" cols="30" rows="10">{{ $task->content }}</textarea>
         </div>
-        <button type="submit" class="btn btn-default">Edit</button>
+        <button type="submit" class="btn btn-dark margin-0-auto">Edit</button>
     </form>
 @endsection
