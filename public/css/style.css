@@ -1,11 +1,12 @@
 /*ROOT START*/
 :root {
-    --grey-main-color: #97989a;
-    --ligth-main-color: #f1db4c;
+    /*--grey-main-color: white;*/
+    --grey-main-color: #1a1f25;
+    --ligth-main-color: #e6b333;
     --logo-width: 100px;
-    --table-bg: rgba(183, 216, 253, 1);
-    --table-bg-hover: rgba(122, 175, 255, 1);
-    --bg: #f1db4c;
+    --table-bg: #ffffff;
+    --form-bg: #f9e09e;
+    --table-bg-hover: #d1d2d3;
 }
 
 /*ROOT END*/
@@ -17,11 +18,12 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: 0fr 1fr;
+    grid-template-rows: 0 1fr;
 }
 
 header {
     background-color: var(--ligth-main-color);
+    box-shadow:20px 20px 20px 15px green;
 }
 
 main {
@@ -38,8 +40,14 @@ main {
     background-color: var(--table-bg);
 }
 
+table thead {
+    background-color: #e6b333;
+    color: var(--grey-main-color);;
+}
+
 .table-color:hover {
     background-color: var(--table-bg-hover);
+    transition: 1s;
 }
 
 .margin-0-auto {
@@ -56,7 +64,7 @@ main {
 
 .grid-t-r {
     display: grid;
-    grid-template-rows: 1fr 0fr;
+    grid-template-rows: 1fr 0;
 }
 
 .sticky {
@@ -98,3 +106,9 @@ main {
     padding: 5px;
     color: #000000;
 }
+.fill-bg{
+    background-color: var(--table-bg);
+    padding: 30px 10px;
+}
+
+
