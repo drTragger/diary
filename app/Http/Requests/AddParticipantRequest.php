@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AnswerRequest extends Request
+class AddParticipantRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,14 @@ class AnswerRequest extends Request
     public function rules()
     {
         return [
-            'answer' => 'required|max:65535',
-            'file' => 'image|file|max:1024',
+            'email' => 'required|min:6|email|exists:users',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.exists' => 'Such user does not exist',
         ];
     }
 }

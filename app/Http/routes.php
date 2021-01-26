@@ -48,6 +48,7 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
     Route::put('/save-answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+    Route::get('answers/download/{answer}', 'HomeworkController@downloadAnswer')->name('homework.downloadAnswer');
 
     Route::group(['prefix' => 'tasks'], function () {
         Route::get('/{group}', 'HomeworkController@task')->name('homework.task');
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
         Route::get('/{group}/submitted', 'HomeworkController@submittedTasks')->name('homework.submittedTask');
         Route::get('/{task}/estimate', 'HomeworkController@estimateTask')->name('homework.estimate');
         Route::post('/mark/{answer}', 'HomeworkController@setMark')->name('homework.setMark');
+        Route::get('/download/{task}', 'HomeworkController@downloadTask')->name('homework.downloadTask');
     });
 });
 

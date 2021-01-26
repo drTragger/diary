@@ -3,13 +3,16 @@
     <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-secondary">Back</a>
 @endsection
 @section('content')
-    <div class="panel panel-default col-12">
-        <div>
-            @include('common.errors')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-        @if(!empty(session('mess')))
-            <div class="bg-warning pt-2 pb-2 text-center mb-3">{{session('mess')}}</div>
-        @endif
+    @endif
+    <div class="panel panel-default col-12">
         <div>
             <form action="{{route('groups.addUser')}}" method="POST" class="text-center">
                 {{csrf_field()}}

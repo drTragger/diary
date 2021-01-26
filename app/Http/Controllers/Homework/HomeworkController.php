@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Homework;
 
-use App\{Answer, Group, Task};
+use App\{Answer, Group, Http\Requests\AnswerRequest, Task};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
-use Illuminate\Support\Facades\{Redirect, Auth};
+use Illuminate\Support\Facades\{Redirect, Auth, Storage};
 
 class HomeworkController extends Controller
 {
@@ -52,22 +52,10 @@ class HomeworkController extends Controller
 //        return view('homework.showHomework', ['task'=>$task, 'id'=>$request->group_id]);
     }
 
-    public function addAnswer(Request $request) //student
+    public function addAnswer(AnswerRequest $request) //student
     {
-        $this->validate(
-            $request,
-            [
-                'answer' => 'required',
-            ]
-        );
-        $group = json_decode($request->group_id);
-        Answer::create([
-            'owner_id' => Auth::user()->id,
-            'content' => $request->answer,
-            'group_id' => $group->id,
-            'task_id' => $request->task_id,
-        ]);
-        return redirect(route('homework.index', $group->id));
+        $this->homeworkService->addAnswer($request);
+        return redirect(route('homework.index', $request->group_id));
     }
 
     public function task(Group $group)
@@ -77,9 +65,9 @@ class HomeworkController extends Controller
 
     public function addTask(TaskRequest $request)
     {
-        return $this->homeworkService->addTask($request->all())
-            ? redirect(route('homework.index', $request->get('groupId')))
-            : redirect(route('homework.tasks', $request->get('groupId')))->with('error', 'Something went wrong');
+        return $this->homeworkService->addTask($request)
+            ? redirect(route('homework.index', $request->get('group_id')))
+            : redirect(route('homework.tasks', $request->get('group_id')))->with('error', 'Something went wrong');
     }
 
     public function showTask(Request $request)
@@ -104,6 +92,7 @@ class HomeworkController extends Controller
 
     public function deleteTask(Task $task)
     {
+        Storage::delete('public/homework/' . $task->file);
         $this->homeworkService->deleteTask($task);
         return Redirect::back();
     }
@@ -129,4 +118,19 @@ class HomeworkController extends Controller
         return redirect(route('homework.estimate', $request->get('task')));
     }
 
+    public function downloadTask(Task $task)
+    {
+        $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'homework' . DIRECTORY_SEPARATOR . $task->file);
+        return file_exists($path) ?
+            response()->download($path) :
+            redirect()->route('groups.index');
+    }
+
+    public function downloadAnswer(Answer $answer)
+    {
+        $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
+        return file_exists($path) ?
+            response()->download($path) :
+            redirect()->route('groups.index');
+    }
 }

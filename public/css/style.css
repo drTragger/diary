@@ -98,3 +98,13 @@ main {
     padding: 5px;
     color: #000000;
 }
+
+.inline {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.inline span {
+    margin-right: 1rem;
+    color: #FF0000;
+}

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HomeworkService
 {
@@ -23,14 +24,21 @@ class HomeworkService
             : Answer::with(['task', 'user'])->where('owner_id', $user->id)->get();
     }
 
-    public function addTask(array $task): bool
+    public function addTask(Request $task): bool
     {
         $createdTask = Task::create([
-            'name' => $task['subject'],
-            'content' => $task['task'],
+            'name' => $task->get('subject'),
+            'content' => $task->get('task'),
             'teacher_id' => Auth::user()->id,
-            'group_id' => $task['groupId'],
+            'group_id' => $task->get('group_id'),
         ]);
+
+        $fileName = $this->saveFile($task, $createdTask, 'public' . DIRECTORY_SEPARATOR . 'homework');
+
+        if ($fileName) {
+            $createdTask->file = $fileName;
+            $createdTask->save();
+        }
 
         if ($createdTask->name === $task['subject'] && $createdTask->content === $task['task']) {
             return true;
@@ -80,8 +88,35 @@ class HomeworkService
         $answer->save();
     }
 
-    public function getUnmarkedAnswers()
+    public function addAnswer($request)
     {
+        $answer = Answer::create([
+            'owner_id' => Auth::user()->id,
+            'content' => $request->answer,
+            'group_id' => $request->group_id,
+            'task_id' => $request->task_id,
+        ]);
 
+        $fileName = $this->saveFile($request, $answer, 'public' . DIRECTORY_SEPARATOR . 'answers');
+
+        if ($fileName) {
+            $answer->file = $fileName;
+            $answer->save();
+        }
+    }
+
+    protected function saveFile($request, $model, $namespace)
+    {
+        if ($request->files->count() > 0) {
+            $fileName = $request->get('group_id') . '-' . $model->id . '-' . Auth::user()->name . '.' . $request->file('file')->getClientOriginalExtension();
+            $path = $namespace . DIRECTORY_SEPARATOR . $fileName;
+
+            Storage::put(
+                $path,
+                file_get_contents($request->file('file')->getRealPath())
+            );
+            return $fileName;
+        }
+        return false;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Group, User};
+use App\{Group, Http\Requests\AddParticipantRequest, User};
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -138,14 +138,8 @@ class GroupController extends Controller
 
     }
 
-    public function addUser(Request $request)
+    public function addUser(AddParticipantRequest $request)
     {
-        $this->validate(
-            $request,
-            [
-                'email' => 'required|min:6|exists:users',
-            ]
-        );
         $user = User::where('email', $request->email)->first();
         if (count($user->usersGroups) == 0) {
             $mess = 'The participant was added';

@@ -11,6 +11,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Participant</th>
                     <th scope="col">Answer</th>
+                    <th scope="col">Attachment</th>
                     <th scope="col">Mark</th>
                 </tr>
                 </thead>
@@ -18,8 +19,14 @@
                 @foreach($answers as $answer)
                     <tr>
                         <th scope="row">{{$answer->id}}</th>
-                        <td>{{$answer->user->name}}</td>
-                        <td>{{$answer->content}}</td>
+                        <td>{{ $answer->user->name }}</td>
+                        <td>{{ $answer->content }}</td>
+                        @if(isset($task->file))
+                            <td>
+                                <a href="{{ route('homework.downloadAnswer', ['task' => $answer->id]) }}"
+                                   class="btn btn-info">Attachment</a>
+                            </td>
+                        @endif
                         <td>
                             <form action="{{ route('homework.setMark', $answer->id) }}" method="post"
                                   class="form-inline">

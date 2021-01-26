@@ -9,7 +9,7 @@ class Task extends Model
     const ACTIVE = 1;
     const INACTIVE = 2;
 
-    protected $fillable = ['teacher_id', 'group_id', 'name', 'content'];
+    protected $fillable = ['teacher_id', 'group_id', 'name', 'content', 'file'];
 
     public function user()
     {

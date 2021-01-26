@@ -27,6 +27,7 @@ class TaskRequest extends Request
         return [
             'subject' => 'required|max:255',
             'task' => 'required|max:65535',
+            'file' => 'image|file|max:1024'
         ];
     }
 }
