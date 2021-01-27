@@ -18,6 +18,7 @@
                 {{csrf_field()}}
                 {{method_field('patch')}}
                 <input type="hidden" name="id" value="{{$group->id}}">
+                <input type="hidden" name="group_id" value="{{ $group->id }}">
                 <div class="form-group">
                     <label for="participant">Participant's email:</label>
                     <input type="text" name="email" id="participant" class="form-control mt-3">
