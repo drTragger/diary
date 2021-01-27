@@ -38,8 +38,8 @@
         </table>
         <div class="pages">{{$groups->render()}}</div>
     @else
-        <div class="bg-warning text-center pt-3 pb-2">
-            <h4>You have no groups at the moment</h4>
+        <div class="card bg-warning mt-4">
+            <div class="card-body">There are no groups</div>
         </div>
     @endif
 @endsection

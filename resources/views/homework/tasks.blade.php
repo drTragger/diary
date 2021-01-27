@@ -39,7 +39,7 @@
             </div>
         </div>
     @else
-        <div class="card bg-warning">
+        <div class="card bg-warning mt-4">
             <div class="card-body">You have no homework</div>
         </div>
     @endif

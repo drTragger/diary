@@ -35,7 +35,7 @@
 
         </table>
     @else
-        <div class="card bg-warning">
+        <div class="card bg-warning mt-4">
             <div class="card-body">There are no participants</div>
         </div>
     @endif

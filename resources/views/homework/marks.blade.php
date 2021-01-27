@@ -24,7 +24,8 @@
                         @if(isset($mark->mark))
                             {{ $mark->mark }}
                         @elseif($check)
-                            <a href="{{ route('homework.estimate', ['task' => $mark->task_id]) }}" class="btn btn-secondary">Estimate</a>
+                            <a href="{{ route('homework.estimate', ['task' => $mark->task_id]) }}"
+                               class="btn btn-secondary">Estimate</a>
                         @else
                             Not estimated
                         @endif
@@ -34,7 +35,7 @@
             </tbody>
         </table>
     @else
-        <div class="card bg-warning">
+        <div class="card bg-warning mt-4">
             <div class="card-body">There are no marks</div>
         </div>
     @endif

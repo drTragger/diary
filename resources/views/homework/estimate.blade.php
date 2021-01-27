@@ -55,8 +55,8 @@
             </table>
         </div>
     @else
-        <div class="bg-warning text-center pt-3 pb-2">
-            <p>Nothing to estimate</p>
+        <div class="card bg-warning mt-4">
+            <div class="card-body">Nothing to estimate</div>
         </div>
     @endif
 @endsection
