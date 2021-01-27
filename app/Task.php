@@ -11,11 +11,6 @@ class Task extends Model
 
     protected $fillable = ['teacher_id', 'group_id', 'name', 'content', 'file'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-
     public function group()
     {
         return $this->belongsTo('App\Group', 'group_id');

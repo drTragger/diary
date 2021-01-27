@@ -23,20 +23,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    public function groups() {
+
+    public function groups()
+    {
         return $this->hasMany('App\Group', 'owner_id');
     }
-    public function tasks() {
-        return $this->hasMany('App\Task' );
-    }
-    public function answers() {
+
+    public function answers()
+    {
         return $this->hasMany('App\Answer', 'owner_id');
     }
-    public function checkedAnswers() {
-        return $this->hasMany('App\Checked_answers');
-    }
-    public function usersGroups() {
+
+    public function usersGroups()
+    {
         return $this->belongsToMany('App\Group', 'users_groups', 'user_id', 'group_id')->withTimestamps()->withPivot('status');
     }
 }
