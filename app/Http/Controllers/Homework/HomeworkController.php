@@ -92,7 +92,6 @@ class HomeworkController extends Controller
 
     public function deleteTask(Task $task)
     {
-        Storage::delete('public/homework/' . $task->file);
         $this->homeworkService->deleteTask($task);
         return Redirect::back();
     }

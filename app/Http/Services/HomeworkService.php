@@ -73,6 +73,13 @@ class HomeworkService
 
     public function deleteTask(Task $task)
     {
+        $answers = Answer::where('task_id', $task->id)->get();
+        foreach ($answers as $answer) {
+            if (isset($answer->file)) {
+                Storage::delete('public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
+            }
+        }
+        Storage::delete('public' . DIRECTORY_SEPARATOR . 'homework' . DIRECTORY_SEPARATOR . $task->file);
         $task->delete();
     }
 
