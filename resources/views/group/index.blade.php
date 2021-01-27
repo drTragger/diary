@@ -4,7 +4,7 @@
     <a href="{{route('groups.create')}}" class="btn btn-success">Create group</a>
     @include('common.errors')
     @if(count($groups)>0)
-        <table class="table text-center">
+        <table class="table text-center mt-4">
             <thead>
             <tr>
                 <th>Name</th>

@@ -7,7 +7,7 @@
     @include('common.errors')
     <a href="{{route('groups.selectUser', $group->id)}}" class="btn btn-success">Add participant</a>
     @if(!empty($participants))
-        <table class="table text-center">
+        <table class="table text-center mt-4">
             <thead>
             <tr>
                 <th class="table-col-1">Name</th>

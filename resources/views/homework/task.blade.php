@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('homework.index', $group->id)}}" class="btn btn-secondary">Back</a>
+    <a href="{{route('homework.index', $group->id)}}" class="btn btn-warning">Back</a>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             </ul>
         </div>
     @endif
-    <div class="add-task fill-bg">
+    <div class="modern-form">
         <form action="{{ route('homework.addTask') }}" method="POST" enctype="multipart/form-data" class="text-center">
             {{ csrf_field() }}
             <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -30,7 +30,7 @@
                 <span>*optional</span>
                 <input type="file" name="file" class="form-control-file">
             </div>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-dark">Add</button>
         </form>
     </div>
 @endsection

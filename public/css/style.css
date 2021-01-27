@@ -6,6 +6,7 @@
     --table-bg: #ffffff;
     --form-bg: #f9e09e;
     --table-bg-hover: #d1d2d3;
+    --border: #22272d;
 }
 
 /*ROOT END*/
@@ -132,5 +133,31 @@ table thead {
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.modern-form {
+    padding: 2rem 5rem;
+    background-color: var(--border);
+}
+
+.modern-form, .modern-form button {
+    color: var(--ligth-main-color);
+}
+
+.modern-form button {
+    display: block;
+    margin: 0 auto;
+}
+
+.modern-form input[type="text"], .modern-form input[type="file"]:focus, .modern-form textarea, .modern-form textarea:focus {
+    background-color: transparent;
+    border: 1px solid #cdcdcd;
+    color: var(--ligth-main-color);
+    outline: none;
+    box-shadow: none;
+}
+
+.modern-form hr {
+    border-top: 1px solid var(--ligth-main-color);
 }
 

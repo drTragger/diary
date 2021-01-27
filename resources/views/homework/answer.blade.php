@@ -5,7 +5,7 @@
 
 @section('content')
     @include('common.errors')
-    <div class="container-form pt-4 fill-bg">
+    <div class="modern-form">
         <h3 class="text-center">Homework</h3>
         <h4 class="text-center">Title: {{$task->name}}</h4>
         <p class="word-wrap p-2">{{$task->content}}</p>
@@ -24,7 +24,7 @@
                 <span>*optional</span>
                 <input type="file" name="file" class="form-control-file">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
         </form>
     </div>
 @endsection
