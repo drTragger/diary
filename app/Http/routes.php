@@ -39,7 +39,7 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
 
 
 Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
-    Route::get('/{group}', 'HomeworkController@getMarks')->name('homework.marks');
+    Route::get('/{group}', 'HomeworkController@marks')->name('homework.marks');
 });
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {

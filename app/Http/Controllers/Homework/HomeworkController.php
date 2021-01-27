@@ -38,9 +38,13 @@ class HomeworkController extends Controller
         return view('homework.tasks', ['tasks' => $tasks, 'group' => $group, 'check' => $check]);
     }
 
-    public function getMarks(Group $group)
+    public function marks(Group $group)
     {
-        return view('homework.marks', ['marks' => $this->homeworkService->getMarks($group), 'group' => $group]);
+        return view('homework.marks', [
+            'marks' => $this->homeworkService->getMarks($group),
+            'group' => $group,
+            'check' => $this->homeworkService->checkOwner($group)
+        ]);
     }
 
     public function addAnswer(AnswerRequest $request) //student
