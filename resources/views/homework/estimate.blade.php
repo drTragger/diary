@@ -13,8 +13,8 @@
         </div>
     @endif
     @if(!empty($answers->all()))
-        <div class="container-form fill-bg">
-            <table class="table">
+        <div class="container-form">
+            <table class="table text-center mt-4">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                 @foreach($answers as $answer)
-                    <tr>
+                    <tr class="table-color">
                         <th scope="row">{{$answer->id}}</th>
                         <td>{{ $answer->user->name }}</td>
                         <td>{{ $answer->content }}</td>
