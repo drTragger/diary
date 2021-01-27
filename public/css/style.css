@@ -136,32 +136,6 @@ table thead {
     flex-direction: column;
 }
 
-.modern-form {
-    padding: 2rem 5rem;
-    background-color: var(--table-bg);
-}
-
-.modern-form, .modern-form button {
-    color: var(--grey-main-color);
-}
-
-.modern-form button {
-    display: block;
-    margin: 0 auto;
-}
-
-.modern-form input[type="text"], .modern-form input[type="file"]:focus, .modern-form textarea, .modern-form textarea:focus {
-    background-color: transparent;
-    border: 1px solid #cdcdcd;
-    color: var(--grey-main-color);
-    outline: none;
-    box-shadow: none;
-}
-
-.modern-form hr {
-    border-top: 1px solid var(--ligth-main-color);
-}
-
 .back {
     position: absolute;
     left: 1rem;
@@ -183,5 +157,3 @@ table thead {
 .text-decoration-line-none:hover {
     text-decoration-line: none;
 }
-
-
