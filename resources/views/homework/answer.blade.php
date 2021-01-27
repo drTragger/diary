@@ -7,11 +7,10 @@
     @include('common.errors')
     <div class="modern-form">
         <h3 class="text-center">Homework</h3>
-        <h4 class="text-center">Title: {{$task->name}}</h4>
-        <p class="word-wrap p-2">{{$task->content}}</p>
-        <hr>
+        <h4 class="text-center">{{$task->name}}</h4>
+        <p class="word-wrap my-2">Task: {{$task->content}}</p>
         <form action="{{route('homework.addAnswer')}}" method="POST" enctype="multipart/form-data"
-              class="text-center">
+              class="text-center mt-2">
             {{csrf_field()}}
             {{method_field('put')}}
             <input type="hidden" name="group_id" value="{{ $group->id }}">
