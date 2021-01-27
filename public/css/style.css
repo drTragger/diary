@@ -75,7 +75,7 @@ table thead {
 .homework-title {
     text-align: center;
     background-color: var(--ligth-main-color);
-    min-height: 3rem;
+    height: 3rem;
     line-height: 3rem;
     color: var(--grey-main-color);
 }
@@ -175,3 +175,11 @@ table thead {
 .back i {
     font-size: 1.5rem;
 }
+.text-decoration-line-none {
+    text-decoration-line: none;
+}
+
+.text-decoration-line-none:hover {
+    text-decoration-line: none;
+}
+

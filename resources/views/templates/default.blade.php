@@ -29,23 +29,32 @@
 </head>
 <body>
 <header class="default-header ">
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-sm col-12">
         <div class="col-5">
-            <!--Logo-->
             <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page"
                                                      class="rounded logo"></a>
         </div>
         <div class="col-6 text-center">
-            <!--Category-->
             <ul class="navbar-nav ">
-                <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3></a></li>
+                <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3>
+                    </a></li>
             </ul>
         </div>
-        <div class="col-1">
-            <!--User-->
-            <p title="It is you"><i class="fa fa-user-circle" aria-hidden="true"></i>: {{ Auth::user()->name }} </p>
-            <a href="{{ url('/logout') }}"><i class="fa fa-times" aria-hidden="true"></i> Logout</a>
+        <div class="collapse navbar-collapse col-1" id="app-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle text-dark text-decoration-line-none" data-toggle="dropdown"
+                       role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right text-center btn btn-light" role="menu">
+                        <li>
+                            <a href="{{ url('/logout') }}" class="text-dark text-decoration-line-none">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
@@ -58,12 +67,15 @@
     </div>
 </main>
 <!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
-        integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
