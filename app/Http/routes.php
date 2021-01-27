@@ -29,10 +29,12 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::get('/{group}/confirm-deactivate', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
     Route::put('/{group}/deactivate', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
     Route::get('/{group}/show', 'GroupController@show')->name('groups.show');
-    Route::get('/{group}/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
-    Route::patch('/add-participant', 'GroupController@addUser')->name('groups.addUser');
-    Route::get('/{group}/participants', 'GroupController@showParticipants')->name('groups.showParticipants');
-    Route::put('/participants/{participant}/deactivate', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
+        Route::group(['prefix' => 'participants'], function () {
+            Route::get('/{group}/add', 'GroupController@selectUser')->name('groups.selectUser');
+            Route::patch('/add', 'GroupController@addUser')->name('groups.addUser');
+            Route::get('/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
+            Route::put('/{participant}/deactivate', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
+        });
 });
 
 
@@ -43,7 +45,7 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::get('/task/{id}/answer', 'HomeworkController@answer')->name('homework.answer');
-    Route::get('/{id}', 'HomeworkController@index')->name('homework.index');
+    Route::get('/{group}', 'HomeworkController@index')->name('homework.index');
     Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
     Route::put('/save-answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
     Route::get('answers/download/{answer}', 'HomeworkController@downloadAnswer')->name('homework.downloadAnswer');
