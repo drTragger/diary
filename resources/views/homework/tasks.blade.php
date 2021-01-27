@@ -9,19 +9,19 @@
         <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
     @endif
     @if(count($tasks) > 0)
-        <div class="d-flex flex-wrap justify-content-around mt-4">
+        <div class="d-flex flex-wrap justify-content-between mt-4">
             @foreach($tasks as $task)
-                <div class="col-5 border border-dark  pt-3 pb-3 bg-task mb-4 grid-t-r fill-bg">
-                    <div>
-                        <h4 class="homework-title">{{$task->name}}</h4>
+                <div class="task border border-dark mb-5">
+                    <h4 class="homework-title">{{$task->name}}</h4>
+                    <div class="bg-task mb-4 grid-t-r task-info">
                         <p class="word-wrap">{{mb_strimwidth($task->content, 0 , 200, '...')}}</p>
+                        <p>{{$task->created_at}}</p>
+                        @if($check)
+                            @include('homework.homeworkOwner')
+                        @else
+                            @include('homework.homeworkStudent')
+                        @endif
                     </div>
-                    <p>{{$task->created_at}}</p>
-                    @if($check)
-                        @include('homework.homeworkOwner')
-                    @else
-                        @include('homework.homeworkStudent')
-                    @endif
                 </div>
             @endforeach
             <div class="pagination">

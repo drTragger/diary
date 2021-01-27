@@ -73,6 +73,9 @@ table thead {
 
 .homework-title {
     text-align: center;
+    background-color: var(--ligth-main-color);
+    height: 3rem;
+    line-height: 3rem;
 }
 
 .statistics {
@@ -114,9 +117,20 @@ table thead {
     margin-right: 1rem;
     color: #FF0000;
 }
-.fill-bg{
+
+.fill-bg {
     background-color: var(--table-bg);
     padding: 30px 10px;
 }
 
+.task {
+    background-color: var(--table-bg);
+    width: 45%;
+}
+
+.task-info {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
 
