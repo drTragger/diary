@@ -3,12 +3,10 @@
 
 namespace App\Http\Services;
 
-use App\{Answer, Group, Task, Checked_asnwers};
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use App\{Answer, Group, Task};
+use Illuminate\Database\Eloquent\{Builder, Collection};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{Auth, Storage};
 
 class HomeworkService
 {

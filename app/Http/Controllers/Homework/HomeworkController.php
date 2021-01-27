@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\{TaskRequest, AnswerRequest, MarkRequest};
 use Illuminate\Http\Request;
 use App\Http\Services\HomeworkService;
-use Illuminate\Support\Facades\{Redirect, Auth, Storage};
+use Illuminate\Support\Facades\{Redirect, Auth};
 
 class HomeworkController extends Controller
 {

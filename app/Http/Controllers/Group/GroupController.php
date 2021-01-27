@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Group, Http\Requests\AddParticipantRequest, User};
+use App\{Group, User};
+use App\Http\Requests\AddParticipantRequest;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\{RedirectResponse, Request};
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
