@@ -46,8 +46,7 @@ class HomeworkService
 
     public function checkOwner(Request $request)
     {
-        $group = $request->id;
-        $group = Group::where('id', $group)->first();
+        $group = Group::where('id', $request->id)->first();
         $owner = $group->owner_id;
         $user = Auth::user()->id;
         if ($owner === $user) {
