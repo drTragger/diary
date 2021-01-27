@@ -26,7 +26,7 @@
                             {{csrf_field()}}
                             {{method_field('put')}}
                             <input type="hidden" name="group_id" value="{{$group->id}}">
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-user-minus"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
