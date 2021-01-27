@@ -121,7 +121,7 @@ table thead {
 
 .fill-bg {
     background-color: var(--table-bg);
-    padding: 30px 10px;
+    padding: 30px;
 }
 
 .task {
@@ -137,11 +137,11 @@ table thead {
 
 .modern-form {
     padding: 2rem 5rem;
-    background-color: var(--border);
+    background-color: var(--table-bg);
 }
 
 .modern-form, .modern-form button {
-    color: var(--ligth-main-color);
+    color: var(--grey-main-color);
 }
 
 .modern-form button {
@@ -152,12 +152,8 @@ table thead {
 .modern-form input[type="text"], .modern-form input[type="file"]:focus, .modern-form textarea, .modern-form textarea:focus {
     background-color: transparent;
     border: 1px solid #cdcdcd;
-    color: var(--ligth-main-color);
+    color: var(--grey-main-color);
     outline: none;
     box-shadow: none;
-}
-
-.modern-form hr {
-    border-top: 1px solid var(--ligth-main-color);
 }
 
