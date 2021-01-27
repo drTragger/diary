@@ -23,16 +23,16 @@ Route::get('/', function () {
 Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'auth'], function () {
     Route::get('/', 'GroupController@index')->name('groups.index');
     Route::get('/create', 'GroupController@create')->name('groups.create');
-    Route::put('/', 'GroupController@addGroup')->name('groups.add');
-    Route::get('/rename/{group}', 'GroupController@renameGroup')->name('groups.renameGroup');
+    Route::put('/add', 'GroupController@addGroup')->name('groups.add');
+    Route::get('/{group}/rename', 'GroupController@renameGroup')->name('groups.renameGroup');
     Route::put('/rename', 'GroupController@saveRename')->name('groups.saveRename');
-    Route::get('/confirm-delete/{group}', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
-    Route::put('/{group}', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
-    Route::get('/{group}', 'GroupController@show')->name('groups.show');
-    Route::get('/select-participant/{group}', 'GroupController@selectUser')->name('groups.selectUser');
+    Route::get('/{group}/confirm-deactivate', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
+    Route::put('/{group}/deactivate', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
+    Route::get('/{group}/show', 'GroupController@show')->name('groups.show');
+    Route::get('/{group}/select-participant', 'GroupController@selectUser')->name('groups.selectUser');
     Route::patch('/add-participant', 'GroupController@addUser')->name('groups.addUser');
-    Route::get('/participants/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
-    Route::put('/participants/deactivate/{participant}', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
+    Route::get('/{group}/participants', 'GroupController@showParticipants')->name('groups.showParticipants');
+    Route::put('/participants/{participant}/deactivate', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
 });
 
 
@@ -51,14 +51,14 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     Route::group(['prefix' => 'tasks'], function () {
         Route::get('/{group}', 'HomeworkController@task')->name('homework.task');
         Route::post('/create', 'HomeworkController@addTask')->name('homework.addTask');
-        Route::post('/edit/{task}', 'HomeworkController@taskEdition')->name('homework.taskEdition');
-        Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
-        Route::delete('/delete/{task}', 'HomeworkController@deleteTask')->name('homework.deleteTask');
+        Route::post('/{task}/edit', 'HomeworkController@taskEdition')->name('homework.taskEdition');
+        Route::put('/save-edit', 'HomeworkController@editTask')->name('homework.editTask');
+        Route::delete('/{task}/delete', 'HomeworkController@deleteTask')->name('homework.deleteTask');
         Route::get('/{task}/group/{group}', 'HomeworkController@showTask')->name('homework.show');
         Route::get('/{group}/submitted', 'HomeworkController@submittedTasks')->name('homework.submittedTask');
         Route::get('/{task}/estimate', 'HomeworkController@estimateTask')->name('homework.estimate');
-        Route::post('/mark/{answer}', 'HomeworkController@setMark')->name('homework.setMark');
-        Route::get('/download/{task}', 'HomeworkController@downloadTask')->name('homework.downloadTask');
+        Route::post('/{answer}/mark', 'HomeworkController@setMark')->name('homework.setMark');
+        Route::get('/{task}/download', 'HomeworkController@downloadTask')->name('homework.downloadTask');
     });
 });
 
