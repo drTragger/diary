@@ -29,6 +29,7 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::get('/{group}/confirm-deactivate', 'GroupController@confirmDeactivate')->name('groups.confirmDeactivate');
     Route::put('/{group}/deactivate', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
     Route::get('/{group}/show', 'GroupController@show')->name('groups.show');
+
         Route::group(['prefix' => 'participants'], function () {
             Route::get('/{group}/add', 'GroupController@selectUser')->name('groups.selectUser');
             Route::patch('/add', 'GroupController@addUser')->name('groups.addUser');
@@ -43,23 +44,26 @@ Route::group(['prefix' => 'marks', 'namespace' => 'Homework',], function () {
 });
 
 Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
-    Route::get('/task/{id}/answer', 'HomeworkController@answer')->name('homework.answer');
     Route::get('/{group}', 'HomeworkController@index')->name('homework.index');
-    Route::get('/answers', 'HomeworkController@answer')->name('homework.answers');
-    Route::put('/save-answer', 'HomeworkController@addAnswer')->name('homework.addAnswer');
-    Route::get('answers/download/{answer}', 'HomeworkController@downloadAnswer')->name('homework.downloadAnswer');
+
+    Route::group(['prefix' => 'answers'], function () {
+        Route::get('/', 'HomeworkController@answer')->name('homework.answers');
+        Route::put('/', 'HomeworkController@addAnswer')->name('homework.addAnswer');
+        Route::get('/download/{answer}', 'HomeworkController@downloadAnswer')->name('homework.downloadAnswer');
+    });
 
     Route::group(['prefix' => 'tasks'], function () {
+        Route::get('/{id}/answer', 'HomeworkController@answer')->name('homework.answer');
         Route::get('/{group}', 'HomeworkController@task')->name('homework.task');
         Route::post('/create', 'HomeworkController@addTask')->name('homework.addTask');
         Route::post('/{task}/edit', 'HomeworkController@taskEdition')->name('homework.taskEdition');
-        Route::put('/save-edit', 'HomeworkController@editTask')->name('homework.editTask');
-        Route::delete('/{task}/delete', 'HomeworkController@deleteTask')->name('homework.deleteTask');
+        Route::put('/edit', 'HomeworkController@editTask')->name('homework.editTask');
+        Route::delete('/{task}', 'HomeworkController@deleteTask')->name('homework.deleteTask');
         Route::get('/{task}/group/{group}', 'HomeworkController@showTask')->name('homework.show');
         Route::get('/{group}/submitted', 'HomeworkController@submittedTasks')->name('homework.submittedTask');
         Route::get('/{task}/estimate', 'HomeworkController@estimateTask')->name('homework.estimate');
         Route::post('/{answer}/mark', 'HomeworkController@setMark')->name('homework.setMark');
-        Route::get('/{task}/download', 'HomeworkController@downloadTask')->name('homework.downloadTask');
+        Route::get('/download/{task}', 'HomeworkController@downloadTask')->name('homework.downloadTask');
     });
 });
 
