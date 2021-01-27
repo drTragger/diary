@@ -18,12 +18,11 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: 0 1fr;
+    grid-template-rows: 0fr 1fr;
 }
 
 header {
     background-color: var(--ligth-main-color);
-    box-shadow:20px 20px 20px 15px green;
 }
 
 main {
@@ -64,7 +63,7 @@ table thead {
 
 .grid-t-r {
     display: grid;
-    grid-template-rows: 1fr 0;
+    grid-template-rows: 1fr 0fr;
 }
 
 .sticky {
