@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.index')}}" class="btn btn-secondary">Back</a>
+    <a href="{{route('groups.index')}}" class="btn btn-warning">Back</a>
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
                             {{csrf_field()}}
                             {{method_field('put')}}
                             <input type="hidden" name="group_id" value="{{$group->id}}">
-                            <button type="submit" class="btn btn-danger">Kick</button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-user-minus"></i></button>
                         </form>
                     </td>
                 </tr>

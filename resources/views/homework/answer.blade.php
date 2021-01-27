@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('homework.index', $group->id)}}" class="btn btn-secondary">Back</a>
+    <a href="{{route('homework.index', $group->id)}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 
 @section('content')

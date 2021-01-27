@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{ url()->previous() }}" class="btn btn-warning">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
     @if ($errors->any())
@@ -33,7 +33,7 @@
                         @if(isset($answer->file))
                             <td>
                                 <a href="{{ route('homework.downloadAnswer', ['task' => $answer->id]) }}"
-                                   class="btn btn-info">Attachment</a>
+                                   class="btn btn-info"><i class="fas fa-file"></i></a>
                             </td>
                         @else
                             <td>No attachment</td>
@@ -46,7 +46,7 @@
                                 <input type="number" name="mark" class="form-control"
                                        placeholder="Enter the mark"
                                        required>
-                                <button type="submit" class="btn btn-secondary">Estimate</button>
+                                <button type="submit" class="btn btn-secondary"><i class="fas fa-check"></i></button>
                             </form>
                         </td>
                     </tr>

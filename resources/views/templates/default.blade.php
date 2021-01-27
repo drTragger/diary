@@ -50,7 +50,7 @@
     </nav>
 </header>
 <main class="d-flex flex-column position-relative">
-    <div class="position-sticky sticky ">
+    <div class="back">
         @yield('back')
     </div>
     <div class="container mt-4 mb-4">

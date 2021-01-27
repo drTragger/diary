@@ -75,7 +75,7 @@ table thead {
 .homework-title {
     text-align: center;
     background-color: var(--ligth-main-color);
-    height: 3rem;
+    min-height: 3rem;
     line-height: 3rem;
 }
 
@@ -161,3 +161,16 @@ table thead {
     border-top: 1px solid var(--ligth-main-color);
 }
 
+.back {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+}
+
+.btn i {
+    font-size: 1.3rem;
+}
+
+.back i {
+    font-size: 1.5rem;
+}
