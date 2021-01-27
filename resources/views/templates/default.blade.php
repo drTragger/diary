@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<header class="default-header " id="shadow">
+<header class="default-header ">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm col-12">
         <div class="col-5">
