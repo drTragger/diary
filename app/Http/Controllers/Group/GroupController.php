@@ -153,7 +153,7 @@ class GroupController extends Controller
             if (!in_array($request->id, $userGroups)) {
                 $mess = 'The participant was added';
                 $user->usersGroups()->attach($user->id, ['group_id' => $request->id, 'status' => Group::ACTIVE]);
-                return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
+                return redirect(route('groups.showParticipants', $request->id))->with('mess', $mess);
             } else {
                 $mess = 'This participant was added earlier!';
                 return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
