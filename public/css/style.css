@@ -175,6 +175,7 @@ table thead {
 .back i {
     font-size: 1.5rem;
 }
+
 .text-decoration-line-none {
     text-decoration-line: none;
 }
@@ -183,3 +184,6 @@ table thead {
     text-decoration-line: none;
 }
 
+.card {
+    margin-top: 1rem;
+}
