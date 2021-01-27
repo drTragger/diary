@@ -18,11 +18,10 @@ class HomeworkController extends Controller
         $this->homeworkService = $service;
     }
 
-    public function index(Request $request)
+    public function index(Group $group)
     {
-        $group = $request->id;
-        $check = $this->homeworkService->checkOwner($request);
-        $tasks = Task::with('answers')->where('group_id', $group)->get();
+        $check = $this->homeworkService->checkOwner($group);
+        $tasks = Task::with('answers')->where('group_id', $group->id)->get();
 
         $unsubmittedTasks = [];
         foreach ($tasks as $task) {
@@ -35,21 +34,13 @@ class HomeworkController extends Controller
             $tasks = $unsubmittedTasks;
         }
 
-        $tasks = Controller::paginate($tasks, 6)->setPath((int)$group);
-        $group = Group::where('id', $group)->first();
+        $tasks = Controller::paginate($tasks, 6)->setPath($group->id);
         return view('homework.tasks', ['tasks' => $tasks, 'group' => $group, 'check' => $check]);
     }
 
     public function getMarks(Group $group)
     {
         return view('homework.marks', ['marks' => $this->homeworkService->getMarks($group), 'group' => $group]);
-    }
-
-    public function answer(Request $request)
-    {
-        $task = json_decode($request->task);
-        dd($task);
-//        return view('homework.showHomework', ['task'=>$task, 'id'=>$request->group_id]);
     }
 
     public function addAnswer(AnswerRequest $request) //student
