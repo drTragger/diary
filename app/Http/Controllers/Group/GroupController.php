@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Group, User};
+use App\{Answer, Group, User};
 use App\Http\Requests\AddParticipantRequest;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\{Storage, Auth};
 use Illuminate\Http\{RedirectResponse, Request};
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class GroupController extends Controller
 {
-    public function __construct()
-    {
-
-    }
-
     public function index(Request $request)
     {
         $user = $request->user();
@@ -129,10 +124,18 @@ class GroupController extends Controller
         return view('group.showParticipants', ['participants' => $participants, 'group' => $group]);
     }
 
-    public function deactivateParticipant($participant, Request $request)
+    public function deactivateParticipant(User $participant, Request $request)
     {
-        $group = Group::find($request->group_id);
-        $group->students()->updateExistingPivot($participant, ['status' => Group::INACTIVE]);
+        $answers = Answer::where('owner_id', $participant->id)->get();
+
+        foreach ($answers as $answer) {
+            if (isset($answer->file)) {
+                Storage::delete('public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
+            }
+            $answer->delete();
+        }
+
+        $participant->usersGroups()->detach(['user_id' => $participant->id, 'group_id' => $request->group_id]);
 
         return redirect(route('groups.showParticipants', $request->group_id));
 

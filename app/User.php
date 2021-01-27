@@ -36,6 +36,6 @@ class User extends Authenticatable
 
     public function usersGroups()
     {
-        return $this->belongsToMany('App\Group', 'users_groups', 'user_id', 'group_id')->withTimestamps()->withPivot('status');
+        return $this->belongsToMany('App\Group', 'users_groups', 'user_id', 'group_id')->withTimestamps()->withPivot('id');
     }
 }
