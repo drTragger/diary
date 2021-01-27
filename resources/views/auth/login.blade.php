@@ -34,11 +34,6 @@
             <div>
                 <input type="submit" value="Sign in"/>
             </div>
-            <div id="remember-container">
-                <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
-                <span id="remember">Remember me</span>
-                <span class="forgot-label">Lost your password?</span>
-            </div>
 
             <div class="clear"></div>
         </form>
