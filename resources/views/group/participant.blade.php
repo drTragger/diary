@@ -1,6 +1,7 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{route('groups.showParticipants', $group->id)}}" class="btn btn-warning"><i
+                class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
     @if ($errors->any())
@@ -13,6 +14,11 @@
         </div>
     @endif
     <div class="panel panel-default col-12">
+        @if(session('mess'))
+            <div class="alert alert-danger">
+                <h4>{{ session('mess') }}</h4>
+            </div>
+        @endif
         <div class="fill-bg p-8">
             <form action="{{route('groups.addUser')}}" method="POST" class="m-3">
                 {{csrf_field()}}
