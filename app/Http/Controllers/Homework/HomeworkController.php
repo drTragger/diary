@@ -119,17 +119,23 @@ class HomeworkController extends Controller
 
     public function downloadTask(Task $task)
     {
-        $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'homework' . DIRECTORY_SEPARATOR . $task->file);
-        return file_exists($path) ?
-            response()->download($path) :
-            redirect()->route('groups.index');
+        if (isset($task->file)) {
+            $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'homework' . DIRECTORY_SEPARATOR . $task->file);
+            return file_exists($path) ?
+                response()->download($path) :
+                redirect()->back()->withErrors(['File does not exist']);
+        }
+        return redirect()->back()->withErrors(['File does not exist']);
     }
 
     public function downloadAnswer(Answer $answer)
     {
-        $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
-        return file_exists($path) ?
-            response()->download($path) :
-            redirect()->route('groups.index');
+        if (isset($answer->file)) {
+            $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
+            return file_exists($path) ?
+                response()->download($path) :
+                redirect()->back()->withErrors(['File does not exist']);
+        }
+        return redirect()->back()->withErrors(['File does not exist']);
     }
 }

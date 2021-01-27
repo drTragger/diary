@@ -4,7 +4,15 @@
 @endsection
 
 @section('content')
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @if($group->owner_id == Auth::user()->id)
         <a href="{{ route('homework.task', $group->id) }}" class="btn btn-success">Add homework</a>
     @endif
