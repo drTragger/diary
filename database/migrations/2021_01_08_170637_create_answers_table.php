@@ -16,6 +16,8 @@ class CreateAnswersTable extends Migration
             $table->increments('id')->unsigned();
             $table->unsignedInteger('owner_id');
             $table->text('content');
+            $table->string('file')->nullable();
+            $table->unsignedTinyInteger('mark')->nullable();
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('task_id');
             $table->timestamps();
