@@ -115,7 +115,7 @@ class HomeworkService
     protected function saveFile($request, $model, $namespace)
     {
         if ($request->files->count() > 0) {
-            $fileName = $request->get('group_id') . '-' . $model->id . '-' . Auth::user()->name . '.' . $request->file('file')->getClientOriginalExtension();
+            $fileName = $request->get('group_id') . '-' . $model->id . '-' . mb_strtolower(Auth::user()->name) . '.' . $request->file('file')->getClientOriginalExtension();
             $path = $namespace . DIRECTORY_SEPARATOR . $fileName;
 
             Storage::put(

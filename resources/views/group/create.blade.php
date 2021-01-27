@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.index')}}" class="btn btn-warning">Back</a>
+    <a href="{{route('groups.index')}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
     @include('common.errors')
