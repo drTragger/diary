@@ -34,18 +34,20 @@
             <a href="{{route('groups.index')}}"><img src="/images/logo.png" alt="Logo" title="To main the page"
                                                      class="rounded logo"></a>
         </div>
-        <div class="col-6 text-center">
+        <div class="col-5 text-center">
             <ul class="navbar-nav ">
                 <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3>
                     </a></li>
             </ul>
         </div>
-        <div class="collapse navbar-collapse col-1" id="app-navbar-collapse">
+        <div class="collapse navbar-collapse col-2" id="app-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle text-dark text-decoration-line-none" data-toggle="dropdown"
                        role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        <i class="fas fa-user-circle">
+                            {{ Auth::user()->name }}
+                        </i><span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-right text-center btn btn-light" role="menu">
