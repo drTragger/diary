@@ -29,7 +29,7 @@
             </div>
             <div class="inline">
                 <span>*optional</span>
-                <input type="file" name="file" class="form-control-file">
+                <input type="file" name="file" class="form-control-file" accept="image/*, application/msword, application/pdf">
             </div>
             <div class="text-center mt-2">
                 <button type="submit" class="btn btn-success">Add</button>
