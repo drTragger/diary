@@ -9,27 +9,32 @@
             <thead>
             <tr>
                 <th>Task title</th>
-                <th>Task</th>
+                <th>Date</th>
                 <th>Student</th>
                 <th>Mark</th>
+                <th>Date of estimate</th>
             </tr>
             </thead>
             <tbody>
             @foreach($marks as $mark)
                 <tr class="table-color">
                     <td>{{ $mark->task->name }}</td>
-                    <td>{{ $mark->task->content }}</td>
+                    <td>{{ $mark->task->updated_at }}</td>
                     <td>{{ $mark->user->name }}</td>
-                    <td>
-                        @if(isset($mark->mark))
-                            {{ $mark->mark }}
-                        @elseif($check)
+
+                    @if(isset($mark->mark))
+                        <td>Mark: {{ $mark->mark }}</td>
+                        <td>{{$mark->updated_at}}</td>
+                    @elseif($check)
+                        <td colspan="2">
                             <a href="{{ route('homework.estimate', ['task' => $mark->task_id]) }}"
                                class="btn btn-secondary">Estimate</a>
-                        @else
-                            Not estimated
-                        @endif
-                    </td>
+                        </td>
+                    @else
+                        Not estimated
+                    @endif
+
+
                 </tr>
             @endforeach
             </tbody>
