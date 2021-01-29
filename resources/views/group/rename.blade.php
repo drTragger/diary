@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('groups.index')}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{route('groups.index')}}" class="btn btn-warning" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
                     <input type="text" name="group_name" id="name" class="form-control" value="{{ $group->name }}">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success">Rename</button>
+                    <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
         </div>

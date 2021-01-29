@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{ url()->previous($group->id)}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{ url()->previous($group->id)}}" class="btn btn-warning" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
     @if ($errors->any())
@@ -46,7 +46,7 @@
                                 <input type="number" name="mark" class="form-control"
                                        placeholder="Enter the mark"
                                        required>
-                                <button type="submit" class="btn btn-secondary"><i class="fas fa-check"></i></button>
+                                <button type="submit" class="btn btn-secondary" title="Estimate"><i class="fas fa-check"></i></button>
                             </form>
                         </td>
                     </tr>

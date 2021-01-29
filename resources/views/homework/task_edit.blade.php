@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{route('homework.index', $group->id)}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{route('homework.index', $group->id)}}" class="btn btn-warning" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                 <label for="task">Task</label>
                 <textarea name="task" id="task" class="form-control" cols="30" rows="10">{{ $task->content }}</textarea>
             </div>
-            <button type="submit" class="btn btn-dark margin-0-auto">Edit</button>
+            <button type="submit" class="btn btn-dark margin-0-auto">Save</button>
         </form>
     </div>
 @endsection
