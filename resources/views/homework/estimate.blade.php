@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{ url()->previous($group->id)}}" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
     @if ($errors->any())
