@@ -53,7 +53,6 @@ Route::group(['prefix' => 'homework', 'namespace' => 'Homework'], function () {
     });
 
     Route::group(['prefix' => 'tasks'], function () {
-        Route::get('/{id}/answer', 'HomeworkController@answer')->name('homework.answer');
         Route::get('/{group}', 'HomeworkController@task')->name('homework.task');
         Route::post('/create', 'HomeworkController@addTask')->name('homework.addTask');
         Route::post('/{task}/edit', 'HomeworkController@taskEdition')->name('homework.taskEdition');
