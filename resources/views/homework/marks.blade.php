@@ -31,7 +31,8 @@
                                class="btn btn-secondary">Estimate</a>
                         </td>
                     @else
-                        Not estimated
+                        <td colspan="2">Not estimated</td>
+
                     @endif
 
 
