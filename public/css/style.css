@@ -136,6 +136,11 @@ table thead {
     flex-direction: column;
 }
 
+.modern-form {
+    padding: 2rem 5rem;
+    background-color: var(--table-bg);
+}
+
 .back {
     position: absolute;
     left: 1rem;
