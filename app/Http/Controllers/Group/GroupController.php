@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Answer, Group, User};
+use App\{Answer, Day, Group, Schedule, User};
 use App\Http\Requests\AddParticipantRequest;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\{Storage, Auth};
@@ -42,17 +43,20 @@ class GroupController extends Controller
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
-    public function addGroup(Request $request)
+    public function addGroup(Request $request)  // was changed
     {
+        dd(Carbon::now()->dayOfWeek);
         $this->validate(
             $request,
             [
                 'name' => 'required|min:6',
                 'description' => 'required|min:6',
+                'days' => 'required',
+                'calendar_start' => 'required',
+                'calendar_end' => 'required',
             ]
         );
-        $user = $request->user();
-        Group::create(
+        $group = Group::create(
             [
                 'name' => $request->name,
                 'description' => $request->description,
@@ -60,6 +64,24 @@ class GroupController extends Controller
                 'status' => Group::ACTIVE,
             ]
         );
+        $schedule = Schedule::create(
+            [
+                'group_id' => $group->id,
+                'start_at' => $request->calendar_start,
+                'end' => $request->end,
+            ]
+        );
+
+        foreach ($request->days as $day) {
+            Day::create(
+                [
+                    'schedule_id' => $schedule->id,
+                    'day' => $day,
+//                    'date' => , //TODO set date
+                    'status' => $request->status,
+                ]
+            );
+        }
         return redirect(route('groups.index'));
     }
 
@@ -162,5 +184,16 @@ class GroupController extends Controller
                 return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
             }
         }
+    }
+
+    public function getSchedule(Group $group)
+    {
+        $schedule = Schedule::where('group_id', $group->id)->first();
+        dd($schedule);
+//        $year = mb_substr($schedule->start_at, 0, 4);
+//        $month = mb_substr($schedule->start_at, 5, 2);
+//        $day = mb_substr($schedule->start_at, 8, 2);
+
+        return view('group.schedule', ['schedule' => $schedule,]);
     }
 }
