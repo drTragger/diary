@@ -4,21 +4,5 @@
 @endsection
 @section('content')
     @include('common.errors')
-
-    <table class="table">
-        <thead>
-        <tr>
-            <td>Mon</td>
-            <td>Tue</td>
-            <td>Wed</td>
-            <td>Thu</td>
-            <td>Fri</td>
-            <td>Sat</td>
-            <td>Sun</td>
-        </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <div id='calendar' class="fill-bg"></div>
 @endsection
