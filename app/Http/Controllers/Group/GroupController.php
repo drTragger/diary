@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Answer, Day, Group, Http\Requests\GroupRequest, Schedule, User};
-use App\Http\Requests\AddParticipantRequest;
+use App\{Answer, Day, Group, Schedule, User};
+use App\Http\Requests\{AddParticipantRequest, GroupRequest};
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -19,7 +19,7 @@ class GroupController extends Controller
     {
         $user = $request->user();
         $studentGroups = $user->usersGroups;
-        $groups = $user->groups->merge($studentGroups);
+        $groups = $user->groups()->where('status', '=', 1)->get()->merge($studentGroups);
         $groups = $this->paginate($groups, 10)->setPath('groups');
         return view(
             'group.index',

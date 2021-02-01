@@ -15,27 +15,26 @@
             </thead>
             <tbody>
             @foreach($groups as $group)
-                @if($group->status == '1')
-                    <tr class="table-color">
-                        <td>{{ $group->name }}</td>
-                        <td>{{ $group->user->name }}</td>
-                        <td>{{ $group->created_at }}</td>
-                        <td>
-                            <a href="{{ route('homework.index', $group->id) }}"
-                               class="btn btn-primary">Homework</a>
-                            <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-success">Marks</a>
-{{--                            START TEST--}}
-                            <a href="{{route('groups.getSchedule', $group->id)}}" class="btn btn-secondary">Schedule</a>
-{{--                            END TEST--}}
-                            @if($group->owner_id == Auth::user()->id)
-                                <a href="{{route('groups.showParticipants', $group->id)}}"
-                                   class="btn btn-secondary">Participants</a>
-                                <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-secondary">Rename</a>
-                                <a href="{{route('groups.confirmDeactivate', $group)}}" class="btn btn-secondary">Deactivate</a>
-                            @endif
-                        </td>
-                    </tr>
-                @endif
+                <tr class="table-color">
+                    <td>{{ $group->name }}</td>
+                    <td>{{ $group->user->name }}</td>
+                    <td>{{ $group->created_at }}</td>
+                    <td>
+                        <a href="{{ route('homework.index', $group->id) }}"
+                           class="btn btn-primary">Homework</a>
+                        <a href="{{ route('homework.marks', $group->id) }}" class="btn btn-success">Marks</a>
+                        {{--                            START TEST--}}
+                        <a href="{{route('groups.getSchedule', $group->id)}}" class="btn btn-secondary">Schedule</a>
+                        {{--                            END TEST--}}
+                        @if($group->owner_id == Auth::user()->id)
+                            <a href="{{route('groups.showParticipants', $group->id)}}"
+                               class="btn btn-secondary">Participants</a>
+                            <a href="{{route('groups.renameGroup', $group)}}" class="btn btn-secondary">Rename</a>
+                            <a href="{{route('groups.confirmDeactivate', $group)}}"
+                               class="btn btn-secondary">Deactivate</a>
+                        @endif
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>
