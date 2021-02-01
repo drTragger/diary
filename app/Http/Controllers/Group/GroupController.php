@@ -45,6 +45,10 @@ class GroupController extends Controller
      */
     public function addGroup(GroupRequest $request)  // was changed
     {
+        $start = Carbon::parse($request->start);
+        $end = Carbon::parse($request->end);
+        $days = $end->diffInDays($start);
+
         $group = Group::create(
             [
                 'name' => $request->name,
@@ -53,23 +57,29 @@ class GroupController extends Controller
                 'status' => Group::ACTIVE,
             ]
         );
+
         $schedule = Schedule::create(
             [
                 'group_id' => $group->id,
-                'start' => $request->calendar_start,
+                'start' => $request->start,
                 'end' => $request->end,
             ]
         );
 
-        foreach ($request->days as $day) {
-            Day::create(
-                [
-                    'schedule_id' => $schedule->id,
-                    'day' => $day,
-//                    'date' => , //TODO set date
-                    'status' => $request->status,
-                ]
-            );
+        for ($i = 0; $i < $days; $i++) {
+            foreach ($request->days as $day) {
+                if ($start->dayOfWeek == $day) {
+                    Day::create(
+                        [
+                            'schedule_id' => $schedule->id,
+                            'day' => $day,
+                            'date' => $start,
+                            'status' => Group::ACTIVE,
+                        ]
+                    );
+                }
+            }
+            $start->addDay();
         }
         return redirect(route('groups.index'));
     }
@@ -108,12 +118,15 @@ class GroupController extends Controller
 
     /**
      *  Deactivate the group from storage.
-     * @param $group
+     * @param Group $group
      * @return RedirectResponse|Redirector
      */
-    public function deactivateGroup($group)
+    public function deactivateGroup(Group $group)
     {
-        Group::where('id', $group)->update(['status' => Group::INACTIVE]);
+        $group->update(['status' => Group::INACTIVE]);
+
+//        $group->schedule->days()->update(['status' => Group::INACTIVE], ['date' => false]);
+
         return redirect(route('groups.index'));
     }
 

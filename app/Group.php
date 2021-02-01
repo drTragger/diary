@@ -25,4 +25,9 @@ class Group extends Model
     {
         return $this->hasMany('App\Task', 'group_id');
     }
+
+    public function schedule()
+    {
+        return $this->hasOne(Schedule::class, 'group_id');
+    }
 }

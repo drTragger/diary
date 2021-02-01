@@ -38,34 +38,34 @@
                             <div class="d-flex flex-column">
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="monday"
-                                           value="monday">
+                                           value="1">
                                     <label for="monday" class="form-check-label">Monday</label>
                                 </div>
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="tuesday"
-                                           value="tuesday">
+                                           value="2">
                                     <label for="tuesday" class="form-check-label">Tuesday</label>
                                 </div>
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="wednesday"
-                                           value="wednesday">
+                                           value="3">
                                     <label for="wednesday" class="form-check-label">Wednesday</label>
                                 </div>
                             </div>
                             <div class="d-flex flex-column">
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="thursday"
-                                           value="thursday">
+                                           value="4">
                                     <label for="thursday" class="form-check-label">Thursday</label>
                                 </div>
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="friday"
-                                           value="friday">
+                                           value="5">
                                     <label for="friday" class="form-check-label">Friday</label>
                                 </div>
                                 <div class="form-check-inline">
                                     <input type="checkbox" class="form-check-input" name="days[]" id="saturday"
-                                           value="saturday">
+                                           value="6">
                                     <label for="saturday" class="form-check-label">Saturday</label>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                         <div class="d-flex align-self-center">
                             <div class="form-check-inline">
                                 <input type="checkbox" class="form-check-input" name="days[]" id="sunday"
-                                       value="sunday">
+                                       value="7">
                                 <label for="sunday" class="form-check-label">Sunday</label>
                             </div>
                         </div>
