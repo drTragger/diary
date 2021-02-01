@@ -92,16 +92,15 @@ class HomeworkController extends Controller
 
     public function submittedTasks(Request $request)
     {
-        $group = $request->group;
-        $tasks = Task::where('group_id', $group)->get();
-        $group = Group::find($group);
+        $tasks = Task::where('group_id', $request->group)->get();
+        $group = $this->homeworkService->getGroupById($request->group);
         return view('homework.submittedTask', ['tasks' => $tasks, 'group' => $group]);
     }
 
     public function estimateTask(Task $task)
     {
         $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->get();
-        $group = Group::find($task->group_id);
+        $group = $this->homeworkService->getGroupById($task->group_id);
         return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
     }
 
