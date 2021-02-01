@@ -40,7 +40,7 @@ class GroupController extends Controller
 
     /**
      * Add a newly created resource in storage.
-     * @param Request $request
+     * @param GroupRequest $request
      * @return Application|RedirectResponse|Redirector
      */
     public function addGroup(GroupRequest $request)  // was changed

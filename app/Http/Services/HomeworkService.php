@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 use App\{Answer, Group, Task};
 use Illuminate\Database\Eloquent\{Builder, Collection};
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Storage};
 
@@ -22,6 +23,10 @@ class HomeworkService
             : Answer::with(['task', 'user'])->where('owner_id', $user->id)->get();
     }
 
+    /**
+     * @param Request $task
+     * @return bool
+     */
     public function addTask(Request $task): bool
     {
         $createdTask = Task::create([
@@ -44,29 +49,39 @@ class HomeworkService
         return false;
     }
 
+    /**
+     * @param Group $group
+     * @return bool
+     */
     public function checkOwner(Group $group)
     {
-        $owner = $group->owner_id;
-        $user = Auth::user()->id;
-        if ($owner === $user) {
-            return true;
-        }
-        return false;
+        return $group->owner_id === Auth::user()->id;
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getTask(int $id)
     {
-        return Task::where('id', $id);
+        return Task::find($id);
     }
 
+    /**
+     * @param $request
+     */
     public function editTask($request)
     {
-        $task = Task::where('id', '=', $request['task_id'])->first();
+        $task = Task::find($request['task_id']);
         $task->name = $request['subject'];
         $task->content = $request['task'];
         $task->save();
     }
 
+    /**
+     * @param Task $task
+     * @throws Exception
+     */
     public function deleteTask(Task $task)
     {
         $answers = Answer::where('task_id', $task->id)->get();
@@ -79,11 +94,19 @@ class HomeworkService
         $task->delete();
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getGroupById(int $id)
     {
-        return Group::where('id', $id)->first();
+        return Group::find($id);
     }
 
+    /**
+     * @param int $mark
+     * @param Answer $answer
+     */
     public function setMark(int $mark, Answer $answer)
     {
         $answer = Answer::where('id', '=', $answer->id)->first();
@@ -91,6 +114,9 @@ class HomeworkService
         $answer->save();
     }
 
+    /**
+     * @param $request
+     */
     public function addAnswer($request)
     {
         $answer = Answer::create([
@@ -108,6 +134,12 @@ class HomeworkService
         }
     }
 
+    /**
+     * @param $request
+     * @param $model
+     * @param $namespace
+     * @return false|string
+     */
     protected function saveFile($request, $model, $namespace)
     {
         if ($request->files->count() > 0) {

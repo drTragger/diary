@@ -67,15 +67,14 @@ class HomeworkController extends Controller
 
     public function showTask(Request $request)
     {
-        $task = $tasks = Task::where('id', $request->task)->first();
-        $group = $request->group;
-        $group = Group::where('id', $group)->first();
+        $task = $this->homeworkService->getTask($request->task);
+        $group = Group::find($request->group);
         return view('homework.answer', ['task' => $task, 'group' => $group]);
     }
 
     public function taskEdition(Task $task, Request $request)
     {
-        $task = $this->homeworkService->getTask($task->id)->first();
+        $task = $this->homeworkService->getTask($task->id);
         return view('homework.task_edit', ['task' => $task, 'group' => $this->homeworkService->getGroupById($request->get('group_id'))]);
     }
 
@@ -95,14 +94,14 @@ class HomeworkController extends Controller
     {
         $group = $request->group;
         $tasks = Task::where('group_id', $group)->get();
-        $group = Group::where('id', $group)->first();
+        $group = Group::find($group);
         return view('homework.submittedTask', ['tasks' => $tasks, 'group' => $group]);
     }
 
     public function estimateTask(Task $task)
     {
         $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->get();
-        $group = Group::where('id', $task->group_id)->first();
+        $group = Group::find($task->group_id);
         return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
     }
 
@@ -116,9 +115,9 @@ class HomeworkController extends Controller
     {
         if (isset($task->file)) {
             $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'homework' . DIRECTORY_SEPARATOR . $task->file);
-            return file_exists($path) ?
-                response()->download($path) :
-                redirect()->back()->withErrors(['File does not exist']);
+            return file_exists($path)
+                ? response()->download($path)
+                : redirect()->back()->withErrors(['File does not exist']);
         }
         return redirect()->back()->withErrors(['File does not exist']);
     }
@@ -127,9 +126,9 @@ class HomeworkController extends Controller
     {
         if (isset($answer->file)) {
             $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'answers' . DIRECTORY_SEPARATOR . $answer->file);
-            return file_exists($path) ?
-                response()->download($path) :
-                redirect()->back()->withErrors(['File does not exist']);
+            return file_exists($path)
+                ? response()->download($path)
+                : redirect()->back()->withErrors(['File does not exist']);
         }
         return redirect()->back()->withErrors(['File does not exist']);
     }
