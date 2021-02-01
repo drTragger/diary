@@ -21,29 +21,62 @@
                 </div>
 
                 <h4 class="text-center">Schedule</h4>
-                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
                     <div class="d-flex flex-column flex-wrap col-4">
-                        <label for="calendar">start</label>
-                        <input type="date" name="calendar_start" id="calendar_start" required>
-                        <label for="calendar">end</label>
-                        <input type="date" name="calendar_end" id="calendar_end" required>
+                        <div class="form-group">
+                            <label for="calendar_start">Start</label>
+                            <input type="date" name="start" id="calendar_start" class="form-control" value="{{ old('start') }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calendar_end">End</label>
+                            <input type="date" name="end" id="calendar_end" class="form-control" value="{{ old('end') }}" required>
+                        </div>
                     </div>
-
-                    <div>
-                        <input type="checkbox" name="days[]" id="monday" value="monday">
-                        <label for="monday">Monday</label>
-                        <input type="checkbox" name="days[]" id="tuesday" value="tuesday">
-                        <label for="tuesday">Tuesday</label>
-                        <input type="checkbox" name="days[]" id="wednesday" value="wednesday">
-                        <label for="wednesday">Wednesday</label>
-                        <input type="checkbox" name="days[]" id="thursday" value="thursday">
-                        <label for="thursday">Thursday</label>
-                        <input type="checkbox" name="days[]" id="friday" value="friday">
-                        <label for="friday">Friday</label>
-                        <input type="checkbox" name="days[]" id="saturday" value="saturday">
-                        <label for="saturday">Saturday</label>
-                        <input type="checkbox" name="days[]" id="sunday" value="sunday">
-                        <label for="sunday">Sunday</label>
+                    <div class="d-flex flex-column justify-content-between">
+                        <h5 class="text-center">Days</h5>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="monday"
+                                           value="monday">
+                                    <label for="monday" class="form-check-label">Monday</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="tuesday"
+                                           value="tuesday">
+                                    <label for="tuesday" class="form-check-label">Tuesday</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="wednesday"
+                                           value="wednesday">
+                                    <label for="wednesday" class="form-check-label">Wednesday</label>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="thursday"
+                                           value="thursday">
+                                    <label for="thursday" class="form-check-label">Thursday</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="friday"
+                                           value="friday">
+                                    <label for="friday" class="form-check-label">Friday</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" name="days[]" id="saturday"
+                                           value="saturday">
+                                    <label for="saturday" class="form-check-label">Saturday</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-self-center">
+                            <div class="form-check-inline">
+                                <input type="checkbox" class="form-check-input" name="days[]" id="sunday"
+                                       value="sunday">
+                                <label for="sunday" class="form-check-label">Sunday</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

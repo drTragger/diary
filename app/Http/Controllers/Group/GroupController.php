@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Group;
 
-use App\{Answer, Day, Group, Schedule, User};
+use App\{Answer, Day, Group, Http\Requests\GroupRequest, Schedule, User};
 use App\Http\Requests\AddParticipantRequest;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
@@ -43,19 +43,8 @@ class GroupController extends Controller
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
-    public function addGroup(Request $request)  // was changed
+    public function addGroup(GroupRequest $request)  // was changed
     {
-        dd(Carbon::now()->dayOfWeek);
-        $this->validate(
-            $request,
-            [
-                'name' => 'required|min:6',
-                'description' => 'required|min:6',
-                'days' => 'required',
-                'calendar_start' => 'required',
-                'calendar_end' => 'required',
-            ]
-        );
         $group = Group::create(
             [
                 'name' => $request->name,
@@ -67,7 +56,7 @@ class GroupController extends Controller
         $schedule = Schedule::create(
             [
                 'group_id' => $group->id,
-                'start_at' => $request->calendar_start,
+                'start' => $request->calendar_start,
                 'end' => $request->end,
             ]
         );
@@ -189,7 +178,6 @@ class GroupController extends Controller
     public function getSchedule(Group $group)
     {
         $schedule = Schedule::where('group_id', $group->id)->first();
-        dd($schedule);
 //        $year = mb_substr($schedule->start_at, 0, 4);
 //        $month = mb_substr($schedule->start_at, 5, 2);
 //        $day = mb_substr($schedule->start_at, 8, 2);
