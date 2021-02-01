@@ -19,7 +19,7 @@ class GroupController extends Controller
     {
         $user = $request->user();
         $studentGroups = $user->usersGroups;
-        $groups = $user->groups()->where('status', '=', 1)->get()->merge($studentGroups);
+        $groups = $user->groups()->where('status', Group::ACTIVE)->get()->merge($studentGroups);
         $groups = $this->paginate($groups, 10)->setPath('groups');
         return view(
             'group.index',

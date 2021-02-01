@@ -29,7 +29,6 @@
 
         #notfound {
             position: relative;
-            height: 100vh;
         }
 
         #notfound .notfound {

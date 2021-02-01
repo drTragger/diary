@@ -38,7 +38,11 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pages">{{$groups->render()}}</div>
+        <div class="pagination">
+            <div class="pagination-buttons">
+                {{ $groups->links() }}
+            </div>
+        </div>
     @else
         <div class="card bg-warning mt-4">
             <div class="card-body">There are no groups</div>
