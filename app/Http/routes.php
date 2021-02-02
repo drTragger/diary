@@ -37,12 +37,12 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
         Route::get('/{day}/change', 'GroupController@changeLesson')->name('groups.changeLesson');
     });
 
-        Route::group(['prefix' => 'participants'], function () {
-            Route::get('/{group}/add', 'GroupController@selectUser')->name('groups.selectUser');
-            Route::patch('/add', 'GroupController@addUser')->name('groups.addUser');
-            Route::get('/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
-            Route::put('/{participant}/deactivate', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
-        });
+    Route::group(['prefix' => 'participants'], function () {
+        Route::get('/{group}/add', 'GroupController@selectUser')->name('groups.selectUser');
+        Route::patch('/add', 'GroupController@addUser')->name('groups.addUser');
+        Route::get('/{group}', 'GroupController@showParticipants')->name('groups.showParticipants');
+        Route::put('/{participant}/deactivate', 'GroupController@deactivateParticipant')->name('groups.deactivateParticipant');
+    });
 });
 
 
