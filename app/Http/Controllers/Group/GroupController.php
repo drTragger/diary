@@ -211,4 +211,7 @@ class GroupController extends Controller
         return $this->getSchedule($group);
     }
 
+    public function changeLesson(){
+        //TODO function
+    }
 }
