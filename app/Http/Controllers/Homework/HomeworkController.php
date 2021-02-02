@@ -99,7 +99,7 @@ class HomeworkController extends Controller
 
     public function estimateTask(Task $task)
     {
-        $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->get();
+        $answers = Answer::with('user')->where('mark', '=', null)->where('task_id', '=', $task->id)->paginate(5);
         $group = $this->homeworkService->getGroupById($task->group_id);
         return view('homework.estimate', ['answers' => $answers, 'group' => $group, 'task' => $task]);
     }
