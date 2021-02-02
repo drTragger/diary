@@ -10,7 +10,9 @@
             <tr>
                 <th>Task title</th>
                 <th>Date</th>
-                <th>Student</th>
+                @if($check)
+                    <th>Student</th>
+                @endif
                 <th>Mark</th>
                 <th>Date of estimate</th>
             </tr>
@@ -20,7 +22,9 @@
                 <tr class="table-color">
                     <td>{{ $mark->task->name }}</td>
                     <td>{{ $mark->task->updated_at }}</td>
-                    <td>{{ $mark->user->name }}</td>
+                    @if($check)
+                        <td>{{ $mark->user->name }}</td>
+                    @endif
 
                     @if(isset($mark->mark))
                         <td>{{ $mark->mark }}</td>
