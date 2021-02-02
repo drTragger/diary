@@ -191,7 +191,11 @@ class GroupController extends Controller
     public function getSchedule(Group $group)
     {
         $schedule = Schedule::where('group_id', $group->id)->first();
-        $days = Day::where('schedule_id', $schedule->id)->get();
-        return view('group.schedule', ['days' => $days]);
+        $days = Day::where([
+            ['schedule_id', $schedule->id],
+            ['status', 1],
+        ])->get();
+        $check = Auth::user()->id == $group->owner_id;
+            return view('group.schedule', ['days' => $days, 'check' => $check]);
     }
 }
