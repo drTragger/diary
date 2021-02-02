@@ -41,7 +41,7 @@ main {
 
 table thead {
     background-color: #e6b333;
-    color: var(--grey-main-color);;
+    color: var(--grey-main-color);
 }
 
 .table-color:hover {
@@ -168,4 +168,26 @@ table thead {
 
 .text-decoration-line-none:hover {
     text-decoration-line: none;
+}
+
+
+#calendar .fc-event {
+    background-color: transparent;
+    border: #e6b333 2px solid;
+    padding: 5px;
+    width: 45%;
+    margin: 5px auto;
+}
+
+#calendar .fc-view-container {
+    height: 70%;
+}
+
+#calendar .fc-event-title {
+    color: var(--grey-main-color);
+}
+
+#calendar {
+    width: 90%;
+    margin: 0 auto;
 }
