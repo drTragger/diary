@@ -23,7 +23,7 @@
                     <td>{{ $mark->user->name }}</td>
 
                     @if(isset($mark->mark))
-                        <td>Mark: {{ $mark->mark }}</td>
+                        <td>{{ $mark->mark }}</td>
                         <td>{{$mark->updated_at}}</td>
                     @elseif($check)
                         <td colspan="2">
@@ -32,10 +32,7 @@
                         </td>
                     @else
                         <td colspan="2">Not estimated</td>
-
                     @endif
-
-
                 </tr>
             @endforeach
             </tbody>
