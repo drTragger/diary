@@ -191,10 +191,27 @@ class GroupController extends Controller
     public function getSchedule(Group $group)
     {
         $schedule = Schedule::where('group_id', $group->id)->first();
-//        $year = mb_substr($schedule->start_at, 0, 4);
-//        $month = mb_substr($schedule->start_at, 5, 2);
-//        $day = mb_substr($schedule->start_at, 8, 2);
+        $days = Day::where([
+            ['schedule_id', $schedule->id],
+            ['status', 1],
+        ])->get();
+        $check = Auth::user()->id == $group->owner_id;
+            return view('group.schedule', ['days' => $days, 'check' => $check]);
+    }
 
-        return view('group.schedule', ['schedule' => $schedule,]);
+    public function cancelLesson(Day $day){
+        return view('group.cancelLesson', ['day' => $day]);
+    }
+
+    public function deactivateLesson(Day $day){
+        $day->status = 0;
+        $day->save();
+        $schedule = Schedule::where('id', $day->schedule_id)->first();
+        $group = Group::where('id', $schedule->group_id)->first();
+        return $this->getSchedule($group);
+    }
+
+    public function changeLesson(){
+        //TODO function
     }
 }
