@@ -30,7 +30,12 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
     Route::put('/{group}/deactivate', 'GroupController@deactivateGroup')->name('groups.deactivateGroup');
     Route::get('/{group}/show', 'GroupController@show')->name('groups.show');
 
-    Route::get('/{group}/calendar', 'GroupController@getSchedule')->name('groups.getSchedule');
+    Route::group(['prefix' => 'calendar'], function () {
+        Route::get('/{group}', 'GroupController@getSchedule')->name('groups.getSchedule');
+        Route::get('/{day}/cancel', 'GroupController@cancelLesson')->name('groups.cancelLesson');
+        Route::get('/{day}/deactivate', 'GroupController@deactivateLesson')->name('groups.deactivateLesson');
+        Route::get('/{day}/change', 'GroupController@changeLesson')->name('groups.changeLesson');
+    });
 
         Route::group(['prefix' => 'participants'], function () {
             Route::get('/{group}/add', 'GroupController@selectUser')->name('groups.selectUser');
