@@ -82,27 +82,15 @@
         crossorigin="anonymous"></script>
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
-
-
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-<script>
-    $(document).ready(function() {
-        // page is now ready, initialize the calendar...
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            events : [
-                    @foreach($dates as $date)
-                {
-                    title : 'Lesson',
-                    start : '{{ $date->start_at }}',
-                    {{--url : '{{ route('tasks.edit', $task->id) }}'--}}
-                },
-                @endforeach
-            ]
-        })
-    });
-</script>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+<link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js'></script>
+@if(isset($days))
+    @yield('actions')
+@endif
 </body>
 </html>
