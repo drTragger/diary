@@ -191,10 +191,7 @@ class GroupController extends Controller
     public function getSchedule(Group $group)
     {
         $schedule = Schedule::where('group_id', $group->id)->first();
-//        $year = mb_substr($schedule->start_at, 0, 4);
-//        $month = mb_substr($schedule->start_at, 5, 2);
-//        $day = mb_substr($schedule->start_at, 8, 2);
-
-        return view('group.schedule', ['schedule' => $schedule,]);
+        $days = Day::where('schedule_id', $schedule->id)->get();
+        return view('group.schedule', ['days' => $days]);
     }
 }
