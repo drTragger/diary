@@ -139,6 +139,13 @@ table thead {
 .modern-form {
     padding: 2rem 5rem;
     background-color: var(--table-bg);
+    margin-bottom: 1rem;
+}
+
+.modern-form > .answer:not(:last-of-type) {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000000;
 }
 
 .back {
