@@ -198,4 +198,9 @@ class GroupController extends Controller
         $check = Auth::user()->id == $group->owner_id;
             return view('group.schedule', ['days' => $days, 'check' => $check]);
     }
+
+    public function cancelLesson(Day $day){
+        return view('group.cancelLesson', ['day' => $day]);
+    }
+
 }
