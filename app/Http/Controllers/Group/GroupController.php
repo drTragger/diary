@@ -170,7 +170,7 @@ class GroupController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         $group = Group::find($request->group_id);
-        if($user->id == $group->owner_id) {
+        if ($user->id == $group->owner_id) {
             $mess = "You cannot add yourself because you are admin this group";
             return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
         } else if (count($user->usersGroups) == 0) {
@@ -201,26 +201,27 @@ class GroupController extends Controller
             ['status', 1],
         ])->get();
         $check = Auth::user()->id == $group->owner_id;
-            return view('group.schedule', ['days' => $days, 'check' => $check]);
+        return view('group.schedule', ['days' => $days, 'check' => $check]);
     }
 
-    public function cancelLesson(Day $day){
+    public function cancelLesson(Day $day)
+    {
         return view('group.cancelLesson', ['day' => $day]);
     }
 
-    public function deactivateLesson(Day $day){
+    public function deactivateLesson(Day $day): RedirectResponse
+    {
         $day->status = 0;
         $day->save();
         $schedule = Schedule::where('id', $day->schedule_id)->first();
         return redirect()->route('groups.getSchedule', $schedule->group_id);
     }
 
-    public function changeLesson(Day $day, Request $request){
-        $start = Carbon::parse($request->start);
-        $day->day = $start->dayOfWeek;
-        $day->date = $start;
-        $day->save();
-        $schedule = Schedule::where('id', $day->schedule_id)->first();
+    public function changeLesson(Day $day, Request $request): RedirectResponse
+    {
+        $datetime = Carbon::parse($request->datetime);
+        $day->update(['day' => $datetime->dayOfWeek, 'date' => $datetime]);
+        $schedule = Schedule::find($day->schedule_id);
         return redirect()->route('groups.getSchedule', $schedule->group_id);
     }
 

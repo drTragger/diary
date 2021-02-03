@@ -20,10 +20,10 @@
             {{csrf_field()}}
             {{method_field('PUT')}}
             <div class="d-flex flex-wrap justify-content-center align-items-center ">
-                <div class="d-flex flex-column flex-wrap col-4">
+                <div class="d-flex flex-column flex-wrap col-4 change">
                     <div class="form-group">
                         <label for="calendar_start"></label>
-                        <input type="date" name="start" id="calendar_start" class="form-control"
+                        <input type="datetime-local" name="datetime" id="calendar_start" class="form-control"
                                value="{{ old('start') }}" required>
                     </div>
                 </div>
