@@ -4,15 +4,7 @@
 @endsection
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('common.errors')
     <div class="modern-form">
         <h4 class=" text-center">Add Task</h4>
         <form action="{{ route('homework.addTask') }}" method="POST" enctype="multipart/form-data">

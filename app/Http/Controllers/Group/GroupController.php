@@ -74,7 +74,8 @@ class GroupController extends Controller
                         [
                             'schedule_id' => $schedule->id,
                             'day' => $day,
-                            'date' => $start->setTimeFromTimeString($time[$key]),
+                            'date' => $start,
+                            'time' => Carbon::createFromTimeString($time[$key])->format('H:i:s'),
                             'status' => Group::ACTIVE,
                         ]
                     );
@@ -219,10 +220,19 @@ class GroupController extends Controller
 
     public function changeLesson(Day $day, Request $request): RedirectResponse
     {
-        $datetime = Carbon::parse($request->datetime);
-        $day->update(['day' => $datetime->dayOfWeek, 'date' => $datetime]);
-        $schedule = Schedule::find($day->schedule_id);
-        return redirect()->route('groups.getSchedule', $schedule->group_id);
+        $date = Carbon::parse($request->get('datetime'))->format('Y-m-d');
+        $time = Carbon::parse($request->get('datetime'))->format('H:i:s');
+        $busyDay = Day::where('schedule_id', $day->schedule_id)->where('date', $date)->first();
+
+        if (isset($busyDay) && Carbon::parse($time)->diffInMinutes($busyDay->time) < 60) {
+            $busyTime = Carbon::parse($busyDay->time);
+            return redirect()->route('groups.cancelLesson', $day->id)->withErrors(['error' => "This time is busy. There is a lesson at {$busyTime->format('H:i')}. Please, select another time"]);
+        } else {
+            $datetime = Carbon::parse($request->datetime);
+            $day->update(['day' => $datetime->dayOfWeek, 'date' => $datetime]);
+            $schedule = Schedule::find($day->schedule_id);
+            return redirect()->route('groups.getSchedule', $schedule->group_id);
+        }
     }
 
 }

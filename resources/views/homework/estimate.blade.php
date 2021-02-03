@@ -4,15 +4,7 @@
                 class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('common.errors')
     @if(!empty($answers->all()))
         <div class="modern-form">
             @foreach($answers as $answer)

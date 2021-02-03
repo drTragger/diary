@@ -4,15 +4,7 @@
                 class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('common.errors')
     <div class="panel panel-default col-12">
         @if(session('mess'))
             <div class="alert alert-danger">
