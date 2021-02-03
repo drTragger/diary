@@ -90,7 +90,6 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="status" value="on">
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Create</button>
                 </div>
