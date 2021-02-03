@@ -1,6 +1,6 @@
 @extends('templates.default')
 @section('back')
-    <a href="{{url()->previous()}}" class="btn btn-warning" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="{{ route('groups.getSchedule', $day->schedule_id) }}" class="btn btn-warning" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
 @endsection
 
 @section('content')
