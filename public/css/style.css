@@ -170,6 +170,19 @@ table thead {
     text-decoration-line: none;
 }
 
+#calendar .fc-list-event.fc-event {
+    border: transparent 2px solid;
+    padding: 5px;
+    width: 100%;
+    margin: 5px auto;
+    color: var(--grey-main-color);
+}
+
+#calendar .fc-list-event-title {
+    width: 100%;
+    background-color: var(--ligth-main-color);
+    text-align: center;
+}
 
 #calendar .fc-event {
     background-color: transparent;
@@ -177,6 +190,12 @@ table thead {
     padding: 5px;
     width: 45%;
     margin: 5px auto;
+    color: var(--grey-main-color);
+}
+
+#calendar .fc-event:hover {
+    background-color: var(--ligth-main-color);
+    transition: 0.7s;
 }
 
 #calendar .fc-view-container {
