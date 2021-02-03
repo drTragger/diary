@@ -8,7 +8,7 @@
 @endsection
 @section('actions')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -20,19 +20,19 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
                 dayMaxEvents: true, // allow "more" link when too many events
-                events : [
+                events: [
                         @foreach($days as $day)
                         @if($check)
                     {
-                        title : 'Cancel',
-                        start : '{{$day->date}}',
-                        url : '{{ route('groups.cancelLesson', $day->id) }}',
+                        title: 'Cancel',
+                        start: '{{$day->datetime}}',
+                        url: '{{ route('groups.cancelLesson', $day->id) }}',
 
                     },
                         @else
                     {
-                        title : 'Lesson',
-                        start : '{{$day->date}}',
+                        title: 'Lesson',
+                        start: '{{$day->datetime}}',
                     },
                     @endif
                     @endforeach

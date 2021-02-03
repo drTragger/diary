@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Group;
 
 use App\{Answer, Day, Group, Schedule, User};
-use App\Http\Requests\{AddParticipantRequest, GroupRequest};
+use App\Http\Requests\{AddParticipantRequest, ChangeLessonRequest, GroupRequest};
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -74,8 +74,7 @@ class GroupController extends Controller
                         [
                             'schedule_id' => $schedule->id,
                             'day' => $day,
-                            'date' => $start,
-                            'time' => Carbon::createFromTimeString($time[$key])->format('H:i:s'),
+                            'datetime' => $start->setTimeFromTimeString($time[$key]),
                             'status' => Group::ACTIVE,
                         ]
                     );
@@ -218,21 +217,19 @@ class GroupController extends Controller
         return redirect()->route('groups.getSchedule', $schedule->group_id);
     }
 
-    public function changeLesson(Day $day, Request $request): RedirectResponse
+    public function changeLesson(Day $day, ChangeLessonRequest $request): RedirectResponse
     {
-        $date = Carbon::parse($request->get('datetime'))->format('Y-m-d');
-        $time = Carbon::parse($request->get('datetime'))->format('H:i:s');
-        $busyDay = Day::where('schedule_id', $day->schedule_id)->where('date', $date)->first();
+        $datetime = Carbon::parse($request->get('datetime'));
+        $busyDay = Day::where('schedule_id', $day->schedule_id)->whereDate('datetime', '=', $datetime->toDateString())->first();
 
-        if (isset($busyDay) && Carbon::parse($time)->diffInMinutes($busyDay->time) < 60) {
-            $busyTime = Carbon::parse($busyDay->time);
-            return redirect()->route('groups.cancelLesson', $day->id)->withErrors(['error' => "This time is busy. There is a lesson at {$busyTime->format('H:i')}. Please, select another time"]);
+        if (isset($busyDay) && Carbon::parse($datetime->toTimeString())->diffInMinutes(Carbon::parse($busyDay->datetime)->toTimeString()) < 60) {
+            $busyTime = Carbon::parse($busyDay->datetime);
+            return redirect()->route('groups.cancelLesson', $day->id)
+                ->withErrors(['error' => "This time is busy. There is a lesson at {$busyTime->format('H:i')}. Please, select another time"]);
         } else {
-            $datetime = Carbon::parse($request->datetime);
-            $day->update(['day' => $datetime->dayOfWeek, 'date' => $datetime]);
+            $day->update(['day' => $datetime->dayOfWeek, 'datetime' => $datetime]);
             $schedule = Schedule::find($day->schedule_id);
             return redirect()->route('groups.getSchedule', $schedule->group_id);
         }
     }
-
 }

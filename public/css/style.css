@@ -188,7 +188,7 @@ table thead {
     background-color: transparent;
     border: #e6b333 2px solid;
     padding: 5px;
-    width: 45%;
+    width: 90%;
     margin: 5px auto;
     color: var(--grey-main-color);
 }
