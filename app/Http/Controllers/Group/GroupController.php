@@ -232,4 +232,13 @@ class GroupController extends Controller
             return redirect()->route('groups.getSchedule', $schedule->group_id);
         }
     }
+
+    public function cancelledLesson(Day $day)
+    {
+        $day->status = Group::CANCELLED;
+        $day->save();
+        $schedule = Schedule::where('id', $day->schedule_id)->first();
+        return redirect(route('groups.getSchedule', $schedule ));
+    }
+
 }
