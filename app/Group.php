@@ -8,6 +8,7 @@ class Group extends Model
 {
     const ACTIVE = 1;
     const INACTIVE = 2;
+    const CANCELLED = 3;
 
     protected $fillable = ['name', 'description', 'owner_id', 'status',];
 
