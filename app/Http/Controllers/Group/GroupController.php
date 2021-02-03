@@ -207,8 +207,7 @@ class GroupController extends Controller
         $day->status = 0;
         $day->save();
         $schedule = Schedule::where('id', $day->schedule_id)->first();
-        $group = Group::where('id', $schedule->group_id)->first();
-        return $this->getSchedule($group);
+        return redirect()->route('groups.getSchedule', $schedule->group_id);
     }
 
     public function changeLesson(Day $day, Request $request){
