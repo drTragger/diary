@@ -213,7 +213,7 @@ class GroupController extends Controller
 
     public function deactivateLesson(Day $day): RedirectResponse
     {
-        $day->status = 0;
+        $day->status = Group::INACTIVE;
         $day->save();
         $schedule = Schedule::where('id', $day->schedule_id)->first();
         return redirect()->route('groups.getSchedule', $schedule->group_id);
