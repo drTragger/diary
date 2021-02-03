@@ -27,8 +27,7 @@
                         title: 'Canceled',
                         start: '{{date_create($day->start)->Format('Y-m-d')}}',
                     },
-                        @else
-                        @if($check)
+                        @elseif($check)
                     {
                         title: 'Cancel',
                         start: '{{$day->start}}',
@@ -41,7 +40,6 @@
                         start: '{{$day->start}}',
                         end: '{{$day->end}}',
                     },
-                    @endif
                     @endif
                     @endforeach
                 ]
