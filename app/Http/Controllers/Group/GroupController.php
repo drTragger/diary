@@ -62,13 +62,13 @@ class GroupController extends Controller
         $schedule = Schedule::create(
             [
                 'group_id' => $group->id,
-                'start' => $request->start,
-                'end' => $request->end,
+                'start' => $request->get('start'),
+                'end' => $request->get('start'),
             ]
         );
 
         for ($i = 0; $i < $days; $i++) {
-            foreach ($request->days as $key => $day) {
+            foreach ($request->get('days') as $key => $day) {
                 if ($start->dayOfWeek == $day) {
                     Day::create(
                         [
