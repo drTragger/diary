@@ -4,6 +4,9 @@
 @endsection
 @section('content')
     @include('common.errors')
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{{ route('groups.addLesson', $group->id) }}" class="btn btn-success">Add a lesson</a>
+    </div>
     <div id='calendar' class="fill-bg"></div>
 @endsection
 @section('actions')

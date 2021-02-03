@@ -25,7 +25,9 @@ class ChangeLessonRequest extends Request
     public function rules()
     {
         return [
-            'datetime' => 'required|date',
+            'date' => 'required|date',
+            'start' => 'required',
+            'end' => 'required',
         ];
     }
 }

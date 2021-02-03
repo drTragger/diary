@@ -11,7 +11,8 @@ class Day extends Model
 
     protected $fillable = ['schedule_id', 'day', 'start', 'end', 'status'];
 
-//    public function schedule() {
-//        return $this->hasOne(Schedule::class, 'schedule_id');
-//    }
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class, 'schedule_id');
+    }
 }

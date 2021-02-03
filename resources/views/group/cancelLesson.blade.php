@@ -8,7 +8,7 @@
     @include('common.errors')
     <div class="modern-form">
         <h3 class="text-center pt-3 pb-3">Cancel the Lesson</h3>
-        <h6 class="text-center pl-2 pr-2 mb-3">You can cancel or choose another day of the lesson</h6>
+        <h6 class="text-center pl-2 pr-2 mb-3">You can cancel, delete or choose another day of the lesson</h6>
         <div class="d-flex justify-content-center text-center">
             <div class="m-2">
                 <form action="{{ route('groups.deactivateLesson', $day->id) }}" method="post">
@@ -18,9 +18,9 @@
                 </form>
             </div>
             <div class="m-2">
-                <form action="{{route('groups.cancelledLesson', $day)}}" method="post">
+                <form action="{{route('groups.cancelledLesson', $day->id)}}" method="post">
                     {{ csrf_field() }}
-                    <button class="btn btn-danger text-center mt-3 mb-5">Cancelled the lesson</button>
+                    <button class="btn btn-danger text-center mt-3 mb-5">Cancel the lesson</button>
                 </form>
             </div>
         </div>
@@ -29,11 +29,21 @@
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="d-flex flex-wrap justify-content-center align-items-center ">
-                <div class="d-flex flex-column flex-wrap col-4 change">
-                    <div class="form-group">
-                        <label for="calendar_start"></label>
-                        <input type="datetime-local" name="datetime" id="calendar_start" class="form-control"
-                               value="{{ old('datetime') }}" required>
+                <div class="d-flex flex-wrap w-100 justify-content-around text-center">
+                    <div class="form-group col-sm-3">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" class="form-control"
+                               value="{{ old('date') }}" required>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="start">Lesson starts</label>
+                        <input type="time" name="start" id="start" class="form-control" value="{{ old('start') }}"
+                               required>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="end">Lesson ends</label>
+                        <input type="time" name="end" id="end" class="form-control" value="{{ old('end') }}"
+                               required>
                     </div>
                 </div>
             </div>
