@@ -17,14 +17,14 @@
         </div>
         <h3 class="text-center col-12">Choose another day</h3>
         <form action="{{route('groups.changeLesson', $day->id)}}" method="POST" class="mt-3 col-12">
-            {{csrf_field()}}
-            {{method_field('PUT')}}
+            {{ csrf_field() }}
+            {{ method_field('PUT') }}
             <div class="d-flex flex-wrap justify-content-center align-items-center ">
                 <div class="d-flex flex-column flex-wrap col-4 change">
                     <div class="form-group">
                         <label for="calendar_start"></label>
                         <input type="datetime-local" name="datetime" id="calendar_start" class="form-control"
-                               value="{{ old('start') }}" required>
+                               value="{{ old('datetime') }}" required>
                     </div>
                 </div>
             </div>
