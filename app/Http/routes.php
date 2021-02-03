@@ -32,9 +32,9 @@ Route::group(['prefix' => 'groups', 'namespace' => 'Group', 'middleware' => 'aut
 
     Route::group(['prefix' => 'calendar'], function () {
         Route::get('/{group}', 'GroupController@getSchedule')->name('groups.getSchedule');
-        Route::get('/{day}/cancel', 'GroupController@cancelLesson')->name('groups.cancelLesson');
-        Route::get('/{day}/deactivate', 'GroupController@deactivateLesson')->name('groups.deactivateLesson');
-        Route::get('/{day}/change', 'GroupController@changeLesson')->name('groups.changeLesson');
+        Route::get('/days/{day}', 'GroupController@cancelLesson')->name('groups.cancelLesson');
+        Route::delete('/{day}', 'GroupController@deactivateLesson')->name('groups.deactivateLesson');
+        Route::put('/{day}', 'GroupController@changeLesson')->name('groups.changeLesson');
     });
 
     Route::group(['prefix' => 'participants'], function () {
