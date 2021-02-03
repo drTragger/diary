@@ -22,13 +22,18 @@
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: [
                         @foreach($days as $day)
+                        @if($day->status =='3')
+                    {
+                        title: 'Canceled',
+                        start: '{{date_create($day->start)->Format('Y-m-d')}}',
+                    },
+                        @else
                         @if($check)
                     {
                         title: 'Cancel',
                         start: '{{$day->start}}',
                         end: '{{$day->end}}',
                         url: '{{ route('groups.cancelLesson', $day->id) }}',
-
                     },
                         @else
                     {
@@ -36,6 +41,7 @@
                         start: '{{$day->start}}',
                         end: '{{$day->end}}',
                     },
+                    @endif
                     @endif
                     @endforeach
                 ]
