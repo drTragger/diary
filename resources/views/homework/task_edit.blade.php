@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    @include('common.errors')
     <div class="modern-form">
         <form action="{{ route('homework.editTask') }}" method="post" class="text-center">
             {{ csrf_field() }}
