@@ -25,14 +25,14 @@
                         @if($check)
                     {
                         title : 'Cancel',
-                        start : '{{date_create($day->date)->Format('Y-m-d')}}',
+                        start : '{{$day->date}}',
                         url : '{{ route('groups.cancelLesson', $day->id) }}',
 
                     },
                         @else
                     {
                         title : 'Lesson',
-                        start : '{{date_create($day->date)->Format('Y-m-d')}}',
+                        start : '{{$day->date}}',
                     },
                     @endif
                     @endforeach
