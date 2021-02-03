@@ -169,7 +169,11 @@ class GroupController extends Controller
     public function addUser(AddParticipantRequest $request)
     {
         $user = User::where('email', $request->email)->first();
-        if (count($user->usersGroups) == 0) {
+        $group = Group::find($request->group_id);
+        if($user->id == $group->owner_id) {
+            $mess = "You cannot add yourself because you are admin this group";
+            return redirect(route('groups.selectUser', $request->id))->with('mess', $mess);
+        } else if (count($user->usersGroups) == 0) {
             $mess = 'The participant was added';
             $user->usersGroups()->attach($user->id, ['group_id' => $request->id, 'status' => Group::ACTIVE]);
             return redirect(route('groups.showParticipants', $request->group_id))->with('mess', $mess);
