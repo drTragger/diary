@@ -29,6 +29,7 @@
 
         #notfound {
             position: relative;
+            background-color: #1a1f25;
         }
 
         #notfound .notfound {
@@ -63,17 +64,18 @@
             -webkit-transform: translateX(-50%);
             -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-            background: url('https://xc-life.ru/wp-content/uploads/2019/11/zvezdnoe-nebo.jpg') no-repeat;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: cover;
-            background-position: center;
+            color: #e6b333;
+            /*background: url('https://xc-life.ru/wp-content/uploads/2019/11/zvezdnoe-nebo.jpg') no-repeat;*/
+            /*-webkit-background-clip: text;*/
+            /*-webkit-text-fill-color: transparent;*/
+            /*background-size: cover;*/
+            /*background-position: center;*/
         }
 
 
         .notfound h2 {
             font-family: 'Montserrat', sans-serif;
-            color: #000;
+            color: #e6b333;
             font-size: 24px;
             font-weight: 700;
             text-transform: uppercase;
@@ -82,7 +84,7 @@
 
         .notfound p {
             font-family: 'Montserrat', sans-serif;
-            color: #000;
+            color: #e6b333;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 20px;
@@ -97,8 +99,19 @@
             display: inline-block;
             padding: 15px 30px;
             border-radius: 40px;
-            color: #fff;
+            color: #1a1f25;
             font-weight: 700;
+        }
+
+        .btn-404 {
+            background-color: rgba(230, 179, 51, .8);
+            border-color: #343a40;
+        }
+
+        .btn-404:hover {
+            color: #fff;
+            background-color: rgba(230, 179, 51, 1);
+            border-color: #343a40;
         }
 
 
@@ -106,6 +119,7 @@
             .notfound .notfound-404 {
                 height: 142px;
             }
+
             .notfound .notfound-404 h1 {
                 font-size: 112px;
             }
@@ -124,7 +138,8 @@
             </div>
             <div class="col-5 text-center">
                 <ul class="navbar-nav ">
-                    <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK classroom</h3>
+                    <li><a href="{{route('groups.index')}}" class="nav-link text-dark"><h3 class="title">MKSK
+                                classroom</h3>
                         </a></li>
                 </ul>
             </div>
@@ -142,7 +157,7 @@
         </div>
         <h2>404 - Page not found</h2>
         <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-        <button type="button" class="btn btn-dark"><a href="{{ url('/') }}">Go To Homepage</a></button>
+        <button type="button" class="btn btn-404"><a href="{{ url('/') }}">Go To Homepage</a></button>
     </div>
 </div>
 
