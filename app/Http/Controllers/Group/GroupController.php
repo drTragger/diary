@@ -48,7 +48,8 @@ class GroupController extends Controller
         $start = Carbon::parse($request->start);
         $end = Carbon::parse($request->end);
         $days = $end->diffInDays($start);
-        $time = $request->get('time');
+        $startTime = $request->get('start_time');
+        $endTime = $request->get('end_time');
 
         $group = Group::create(
             [
@@ -74,7 +75,8 @@ class GroupController extends Controller
                         [
                             'schedule_id' => $schedule->id,
                             'day' => $day,
-                            'datetime' => $start->setTimeFromTimeString($time[$key]),
+                            'start' => (string)$start->setTimeFromTimeString($startTime[$key]),
+                            'end' => (string)$start->setTimeFromTimeString($endTime[$key]),
                             'status' => Group::ACTIVE,
                         ]
                     );

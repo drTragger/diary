@@ -30,7 +30,8 @@ class GroupRequest extends Request
             'days' => 'required|array',
             'start' => 'required|date',
             'end' => 'required|date',
-            'time' => 'required|array'
+            'start_time' => 'required|array',
+            'end_time' => 'required|array',
         ];
     }
 }
