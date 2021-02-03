@@ -211,7 +211,13 @@ class GroupController extends Controller
         return $this->getSchedule($group);
     }
 
-    public function changeLesson(){
-        //TODO function
+    public function changeLesson(Day $day, Request $request){
+        $start = Carbon::parse($request->start);
+        $day->day = $start->dayOfWeek;
+        $day->date = $start;
+        $day->save();
+        $schedule = Schedule::where('id', $day->schedule_id)->first();
+        return redirect()->route('groups.getSchedule', $schedule->group_id);
     }
+
 }
