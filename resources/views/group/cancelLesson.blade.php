@@ -14,16 +14,17 @@
                 <form action="{{ route('groups.deactivateLesson', $day->id) }}" method="post">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-danger text-center mt-3 mb-5">Delete the lesson</button>
+                    <button class="btn btn-danger text-center">Delete the lesson</button>
                 </form>
             </div>
             <div class="m-2">
                 <form action="{{route('groups.cancelledLesson', $day->id)}}" method="post">
                     {{ csrf_field() }}
-                    <button class="btn btn-danger text-center mt-3 mb-5">Cancel the lesson</button>
+                    <button class="btn btn-danger text-center">Cancel the lesson</button>
                 </form>
             </div>
         </div>
+        <hr class="mb-4 mt-4">
         <h3 class="text-center col-12">Choose another day</h3>
         <form action="{{route('groups.changeLesson', $day->id)}}" method="POST" class="mt-3 col-12">
             {{ csrf_field() }}
