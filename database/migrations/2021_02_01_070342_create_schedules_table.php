@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSchedulesTable extends Migration
 {
@@ -15,8 +16,8 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->unsignedInteger('group_id');
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
 
             $table->foreign('group_id')

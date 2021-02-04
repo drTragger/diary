@@ -16,8 +16,8 @@ class CreateDaysTable extends Migration
             $table->increments('id')->unsigned();
             $table->unsignedInteger('schedule_id');
             $table->tinyInteger('day');
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->dateTime('start');
+            $table->datetime('end');
             $table->tinyInteger('status');
             $table->timestamps();
 
