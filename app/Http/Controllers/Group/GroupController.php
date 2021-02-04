@@ -199,7 +199,7 @@ class GroupController extends Controller
     {
         $schedule = Schedule::where('group_id', $group->id)->first();
         $days = Day::where('schedule_id', $schedule->id)
-            ->whereIn('status', [1,3])
+            ->whereIn('status', [1, 3])
             ->get();
         $check = Auth::user()->id == $group->owner_id;
         return view('group.schedule', ['days' => $days, 'check' => $check, 'group' => $group]);
@@ -223,17 +223,20 @@ class GroupController extends Controller
         $date = Carbon::parse($request->get('date'));
         $start = Carbon::parse($request->get('start'));
         $end = Carbon::parse($request->get('end'));
-        $busyDay = Day::where('schedule_id', $day->schedule_id)->whereDate('start', '=', $date)->first();
+        $busyDay = Day::where('schedule_id', $day->schedule_id)->whereDate('start', '=', $date)->get();
 
-        if (isset($busyDay) && $day->day != $date->dayOfWeek && ($start > Carbon::parse($busyDay->start) && $start <= Carbon::parse($busyDay->end)) || ($end <= Carbon::parse($busyDay->start) && $end < Carbon::parse($busyDay->end))) {
-            $busyTimeStart = Carbon::parse($busyDay->start)->format('H:i');
-            $busyTimeEnd = Carbon::parse($busyDay->end)->format('H:i');
-            return redirect()->route('groups.cancelLesson', $day->id)
-                ->withErrors(['error' => "This time is busy. There is a lesson from {$busyTimeStart} till {$busyTimeEnd}. Please, select another time"]);
-        } else {
-            $day->update(['day' => $date->dayOfWeek, 'start' => $start, 'end' => $end]);
-            return redirect()->route('groups.getSchedule', $day->schedule->group_id);
+        if (isset($busyDays)) {
+            $startBetween = $date->setTimeFrom($start)->isBetween(Carbon::parse($busyDay->start), Carbon::parse($busyDay->end));
+            $endBetween = $date->setTimeFrom($end)->isBetween(Carbon::parse($busyDay->start), Carbon::parse($busyDay->end));
+            if ($startBetween || $endBetween) {
+                $busyTimeStart = Carbon::parse($busyDay->start)->format('H:i');
+                $busyTimeEnd = Carbon::parse($busyDay->end)->format('H:i');
+                return redirect()->route('groups.cancelLesson', $day->id)
+                    ->withErrors(['error' => "This time is busy. There is a lesson from {$busyTimeStart} till {$busyTimeEnd}. Please, select another time"]);
+            }
         }
+        $day->update(['day' => $date->dayOfWeek, 'start' => (string)$date->setTimeFrom($start), 'end' => (string)$date->setTimeFrom($end)]);
+        return redirect()->route('groups.getSchedule', $day->schedule->group_id);
     }
 
     public function cancelledLesson(Day $day)
