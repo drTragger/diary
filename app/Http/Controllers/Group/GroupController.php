@@ -64,7 +64,7 @@ class GroupController extends Controller
             [
                 'group_id' => $group->id,
                 'start' => $request->get('start'),
-                'end' => $request->get('start'),
+                'end' => $request->get('end'),
             ]
         );
 
