@@ -12,15 +12,15 @@
             <div class="d-flex justify-content-around flex-wrap text-center mb-3 mt-3">
                 <div class="form-group col-sm-3">
                     <label for="date">Select date</label>
-                    <input type="date" name="date" class="form-control" id="date">
+                    <input type="date" name="date" class="form-control" id="date" required>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="date">Lesson starts</label>
-                    <input type="time" name="start" class="form-control" id="date">
+                    <input type="time" name="start" class="form-control" id="date" required>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="date">Lesson ends</label>
-                    <input type="time" name="end" class="form-control" id="date">
+                    <input type="time" name="end" class="form-control" id="date" required>
                 </div>
             </div>
             <div class="text-center">
