@@ -231,8 +231,8 @@ class GroupController extends Controller
         Day::create([
             'schedule_id' => $day->schedule_id,
             'day' => $date->dayOfWeek,
-            'start' => (string)$start,
-            'end' => (string)$end,
+            'start' => $date->setTimeFrom($start),
+            'end' => $date->setTimeFrom($end),
             'status' => Group::ACTIVE,
         ]);
 
